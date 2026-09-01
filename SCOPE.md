@@ -14,10 +14,10 @@
 | **Hours** | Mon–Thu 9 am–5 pm · Fri 9 am–3 pm |
 | **Production domain** | radiantnutrition.com |
 | **Agency** | TheTribeMaker |
-| **GitHub org** | yavindigital |
+| **GitHub org** | Yavin-Digital |
 | **Slug** | radiant-nutrition |
-| **Prototype repo** | yavindigital/radiant-nutrition-prototype |
-| **App repo** | yavindigital/radiant-nutrition-app |
+| **Prototype repo** | Yavin-Digital/radiant-nutrition-prototype |
+| **App repo** | Yavin-Digital/radiant-nutrition-app |
 | **Review URL** | https://radiantnutrition.clientreview.co |
 
 ## Project Type
