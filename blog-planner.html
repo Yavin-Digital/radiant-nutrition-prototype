@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Content Planner | Radiant Nutrition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root{--gold:#AF8A3B;--gold-light:#C8A557;--dark:#434445;--cream:#faf8f5;--white:#ffffff;--font-head:'Cormorant Garamond',Georgia,serif;--font-body:'Raleway',sans-serif;--max-w:1100px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}body{font-family:var(--font-body);color:var(--dark);background:var(--white);line-height:1.7;}
+    a{color:inherit;text-decoration:none;}
+    .container{max-width:var(--max-w);margin:0 auto;padding:0 24px;}
+    .btn{display:inline-block;padding:11px 28px;border-radius:50px;font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .25s;border:1.5px solid transparent;}
+    .btn-gold{background:var(--gold);color:var(--white);border-color:var(--gold);}
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:100;background:var(--white);box-shadow:0 1px 16px rgba(0,0,0,.08);}
+    .nav__inner{display:flex;align-items:center;justify-content:space-between;height:96px;}
+    .nav__logo img{height:71px;width:auto;}
+    .nav__links{display:flex;gap:34px;list-style:none;}
+    .nav__links a{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;color:var(--dark);transition:color .2s;}
+    .nav__links a:hover{color:var(--gold);}
+    .nav__cta{display:flex;align-items:center;gap:12px;}
+    .nav__burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+    .nav__burger span{display:block;width:24px;height:1.5px;background:var(--dark);border-radius:2px;}
+    .nav__mobile{display:none;flex-direction:column;background:var(--white);padding:16px 24px 24px;border-top:1px solid #f0ece6;}
+    .nav__mobile a{font-size:13px;letter-spacing:2px;text-transform:uppercase;font-weight:600;padding:12px 0;border-bottom:1px solid #f5f0ea;display:block;}
+    .nav__mobile.open{display:flex;}
+    @media(max-width:820px){.nav__links,.nav__cta{display:none;}.nav__burger{display:flex;}}
+    /* HERO */
+    .page-hero{background:linear-gradient(135deg,#1c160b,#2e2618);padding:64px 0 56px;text-align:center;position:relative;overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;inset:0;background:url('https://storage.googleapis.com/msgsndr/Q4i3VdMSLVwO3MoF3Imn/media/6793a8a54f0aebdc3b532b06.jpeg') center/cover no-repeat;opacity:.1;}
+    .page-hero__inner{position:relative;z-index:1;}
+    .page-hero__tag{font-size:11px;letter-spacing:4px;text-transform:uppercase;font-weight:600;color:var(--gold-light);margin-bottom:14px;}
+    .page-hero__title{font-family:var(--font-head);font-size:clamp(36px,4.5vw,64px);font-weight:400;font-style:italic;color:var(--white);line-height:1.1;margin-bottom:14px;}
+    .page-hero__sub{color:rgba(255,255,255,.7);max-width:600px;margin:0 auto;font-size:15px;font-weight:300;}
+    /* CONTROLS */
+    .controls{background:var(--cream);border-bottom:1px solid #ede8e0;padding:16px 0;}
+    .controls__inner{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+    .filter-btn{padding:7px 18px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border:1.5px solid #ddd;background:var(--white);color:#888;transition:all .2s;}
+    .filter-btn.active,.filter-btn:hover{background:var(--gold);color:var(--white);border-color:var(--gold);}
+    .export-btn{margin-left:auto;padding:8px 18px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:1.5px solid var(--gold);background:none;color:var(--gold);transition:all .2s;display:flex;align-items:center;gap:6px;}
+    .export-btn:hover{background:var(--gold);color:var(--white);}
+    /* GRID */
+    .planner-section{padding:56px 0 80px;}
+    .planner-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    @media(max-width:900px){.planner-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:580px){.planner-grid{grid-template-columns:1fr;}}
+    .post-card{background:var(--white);border-radius:16px;border:1px solid #ede8e0;box-shadow:0 2px 16px rgba(0,0,0,.05);display:flex;flex-direction:column;transition:box-shadow .3s,transform .3s;}
+    .post-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.09);}
+    .post-card__head{padding:20px 20px 0;}
+    .post-card__num{font-size:11px;font-weight:700;letter-spacing:2px;color:#ccc;text-transform:uppercase;margin-bottom:6px;}
+    .post-card__cat{display:inline-block;padding:3px 12px;border-radius:12px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+    .cat-tips{background:#fef9ec;color:#b08c2a;}
+    .cat-recipes{background:#f0faf0;color:#3a8a3a;}
+    .cat-weight{background:#fef0f5;color:#b03a72;}
+    .cat-diabetes{background:#f0f4ff;color:#3a5ab0;}
+    .cat-kids{background:#fff5f0;color:#b05a3a;}
+    .cat-sports{background:#f5f0ff;color:#6a3ab0;}
+    .cat-local{background:#f0fffe;color:#2a8a8a;}
+    .post-card__title{font-family:var(--font-head);font-size:18px;font-style:italic;font-weight:400;color:var(--dark);line-height:1.35;margin-bottom:10px;}
+    .post-card__body{padding:0 20px 20px;flex:1;display:flex;flex-direction:column;gap:12px;}
+    .post-card__desc{font-size:13px;color:#666;line-height:1.75;}
+    .post-card__prompt-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:4px;}
+    .post-card__prompt{background:var(--cream);border-left:3px solid var(--gold);padding:10px 14px;border-radius:0 8px 8px 0;font-size:12px;color:#555;line-height:1.7;font-style:italic;}
+    .post-card__copy{align-self:flex-end;margin-top:4px;background:none;border:none;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#bbb;cursor:pointer;transition:color .2s;display:flex;align-items:center;gap:4px;}
+    .post-card__copy:hover{color:var(--gold);}
+    /* FOOTER */
+    .footer{background:#1c160b;color:rgba(255,255,255,.5);padding:48px 0 28px;}
+    .footer-inner{display:flex;align-items:flex-start;gap:48px;margin-bottom:36px;}
+    .footer-logo img{height:56px;}
+    .footer-links{display:flex;gap:24px;flex-wrap:wrap;margin-top:6px;}
+    .footer-links a{font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.45);transition:color .2s;}
+    .footer-links a:hover{color:var(--gold-light);}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;text-align:center;font-size:12px;}
+    @media(max-width:640px){.footer-inner{flex-direction:column;gap:24px;}}
+  </style>
+</head>
+<body>
+<!-- NAV -->
+<header class="nav">
+  <div class="container">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo"><img src="logo.webp" alt="Radiant Nutrition Logo" /></a>
+      <nav><ul class="nav__links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="team.html">Our Team</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="index.html#faq">FAQs</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul></nav>
+      <div class="nav__cta"><a href="index.html#booking" class="btn btn-gold">Book Now</a></div>
+      <button class="nav__burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="nav__mobile" id="mobileMenu">
+    <a href="index.html#about">About</a><a href="team.html">Our Team</a>
+    <a href="index.html#services">Services</a><a href="blog.html">Blog</a>
+    <a href="index.html#faq">FAQs</a><a href="index.html#contact">Contact</a>
+    <a href="index.html#booking" class="btn btn-gold" style="margin-top:12px;text-align:center;">Book Now</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="container page-hero__inner">
+    <p class="page-hero__tag">Content Strategy · Argyle &amp; Northlake, TX</p>
+    <h1 class="page-hero__title">30-Post Blog Content Planner</h1>
+    <p class="page-hero__sub">Each card has a title, description, and a ready-to-use Augment prompt to write a fully SEO-optimized blog post localized to Argyle and Northlake, Texas.</p>
+  </div>
+</section>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <div class="container">
+    <div class="controls__inner">
+      <button class="filter-btn active" onclick="filterCards('all',this)">All 30</button>
+      <button class="filter-btn" onclick="filterCards('Nutrition Tips',this)">Nutrition Tips</button>
+      <button class="filter-btn" onclick="filterCards('Recipes',this)">Recipes</button>
+      <button class="filter-btn" onclick="filterCards('Weight Management',this)">Weight</button>
+      <button class="filter-btn" onclick="filterCards('Diabetes',this)">Diabetes</button>
+      <button class="filter-btn" onclick="filterCards('Kids & Family',this)">Kids</button>
+      <button class="filter-btn" onclick="filterCards('Sports Nutrition',this)">Sports</button>
+      <button class="filter-btn" onclick="filterCards('Local SEO',this)">Local SEO</button>
+      <button class="export-btn" onclick="exportJSON()"><i class="fa-solid fa-file-export"></i> Export JSON</button>
+    </div>
+  </div>
+</div>
+
+<!-- PLANNER GRID -->
+<section class="planner-section">
+  <div class="container">
+    <div class="planner-grid" id="plannerGrid"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo"><img src="logo.webp" alt="Radiant Nutrition" /></a>
+      <nav class="footer-links">
+        <a href="index.html">Home</a><a href="team.html">Our Team</a>
+        <a href="blog.html">Blog</a><a href="agreement.html">Client Agreement</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Radiant Nutrition · 306 Hwy 377, Suite F, Argyle, TX 76226 · (940) 464-9800</p></div>
+  </div>
+</footer>
+
+<script>
+const POSTS = [
+  {n:1,cat:'Local SEO',title:'Best Dietitian Near Argyle TX: What to Look For',desc:'A guide for Argyle and Northlake residents on how to choose a registered dietitian — and why local, in-person care makes a difference.',prompt:'Write a 900-word SEO blog post titled "Best Dietitian Near Argyle TX: What to Look For" for Radiant Nutrition. Target keywords: "dietitian Argyle TX", "registered dietitian Northlake TX", "nutrition counseling near me". Include an intro that addresses why residents of Argyle and Northlake, TX search for local dietitians, 4-5 tips for choosing an RD, and a CTA to book at Radiant Nutrition. Tone: warm, professional, feminine. Brand fonts context: Cormorant Garamond headings, Raleway body.'},
+  {n:2,cat:'Nutrition Tips',title:'5 Nutrition Myths Busted by an Argyle Registered Dietitian',desc:'Common food myths — from "carbs are bad" to "eat less, move more" — debunked with evidence-based science and practical advice for Texas families.',prompt:'Write a 900-word SEO blog post titled "5 Nutrition Myths Busted by a Registered Dietitian in Argyle TX" for Radiant Nutrition. Target keywords: "nutrition myths", "dietitian Argyle Texas", "evidence-based nutrition". Bust 5 popular myths. Use a friendly but authoritative tone. End with a CTA to book a session at Radiant Nutrition in Argyle, TX.'},
+  {n:3,cat:'Weight Management',title:'Sustainable Weight Loss in North Texas: A Dietitian\'s Honest Guide',desc:'No fads, no quick fixes. A realistic, compassionate approach to losing weight that actually lasts for busy families in Argyle and Northlake.',prompt:'Write an 850-word blog post titled "Sustainable Weight Loss in North Texas: A Dietitian\'s Honest Guide" for Radiant Nutrition. Target keywords: "weight loss dietitian Argyle TX", "sustainable weight management Northlake TX". Cover 3 pillars: consistency over perfection, flexible eating patterns, and behavior change. Avoid diet culture language. Warm, encouraging tone. End with a CTA to book at Radiant Nutrition.'},
+  {n:4,cat:'Recipes',title:'High-Protein Texas Sheet-Pan Dinner Ready in 30 Minutes',desc:'A sheet-pan chicken and vegetable recipe built for busy North Texas weeknights — high in protein, low in prep time, and dietitian-approved.',prompt:'Write a 700-word SEO recipe blog post titled "High-Protein Texas Sheet-Pan Dinner Ready in 30 Minutes" for Radiant Nutrition. Include: intro about busy Argyle/Northlake families, ingredients list (serves 4), step-by-step instructions, nutrition highlight callout, and a tip from the dietitian. Target keywords: "healthy dinner recipes Texas", "high protein meal prep Argyle". CTA: Book a session to get a personalized meal plan.'},
+  {n:5,cat:'Diabetes',title:'Managing Diabetes Through Food: A Guide for Argyle & Northlake Families',desc:'Practical, non-intimidating advice on using nutrition to manage blood sugar — written for Texans living with Type 1, Type 2, or prediabetes.',prompt:'Write a 900-word SEO blog post titled "Managing Diabetes Through Food: A Guide for Argyle & Northlake Families" for Radiant Nutrition. Target keywords: "diabetes dietitian Argyle TX", "blood sugar nutrition Northlake TX", "medical nutrition therapy diabetes". Cover: carb awareness (not elimination), glycemic index basics, meal timing, and working with an RD. Include a disclaimer that this is educational not medical advice. CTA: Book MNT at Radiant Nutrition.'},
+  {n:6,cat:'Kids & Family',title:'Feeding Picky Eaters: Dietitian Tips for Argyle Parents',desc:'Practical strategies for Argyle and Northlake parents to expand their child\'s diet without mealtime battles — backed by pediatric nutrition science.',prompt:'Write an 800-word SEO blog post titled "Feeding Picky Eaters: Dietitian Tips for Argyle Parents" for Radiant Nutrition. Target keywords: "pediatric dietitian Argyle TX", "picky eater tips Northlake", "kids nutrition Texas". Cover: division of responsibility, repeated exposure, bridging foods, and when to seek help from an RD. Warm, supportive, parent-friendly tone. CTA: Book a pediatric nutrition consult.'},
+  {n:7,cat:'Nutrition Tips',title:'What Is Medical Nutrition Therapy — and Does Insurance Cover It?',desc:'Explaining MNT in plain language for patients in Argyle, TX — including common conditions it covers and how to verify insurance benefits.',prompt:'Write a 900-word SEO blog post titled "What Is Medical Nutrition Therapy — and Does Insurance Cover It?" for Radiant Nutrition in Argyle, TX. Target keywords: "medical nutrition therapy Argyle TX", "does insurance cover dietitian", "MNT covered by insurance Texas". Explain what MNT is, common diagnoses it covers (diabetes, heart disease, obesity, eating disorders), and how to verify benefits. CTA: Call Radiant Nutrition to verify your plan.'},
+  {n:8,cat:'Recipes',title:'5 Make-Ahead Breakfast Ideas for Busy Northlake Mornings',desc:'Quick, nutritious breakfasts you can prep on Sunday and grab all week — perfect for busy Northlake and Argyle families and commuters.',prompt:'Write a 750-word SEO blog post titled "5 Make-Ahead Breakfast Ideas for Busy Northlake Mornings" for Radiant Nutrition. Target keywords: "healthy breakfast ideas Texas", "meal prep Argyle TX", "dietitian approved breakfast". List 5 recipes with brief instructions each. Include a note on protein at breakfast and satiety. CTA: Book a meal-planning session with an Argyle dietitian.'},
+  {n:9,cat:'Weight Management',title:'Why the Scale Isn\'t the Best Measure of Your Health Progress',desc:'A dietitian\'s perspective on moving beyond the number on the scale and focusing on meaningful markers of health and wellbeing.',prompt:'Write an 850-word blog post titled "Why the Scale Isn\'t the Best Measure of Your Health Progress" for Radiant Nutrition. Target keywords: "weight management dietitian Argyle TX", "health beyond the scale", "body composition nutrition". Discuss non-scale victories, body composition vs weight, and how an RD tracks real progress. Tone: empowering, body-positive, realistic. CTA: Book at Radiant Nutrition in Argyle TX.'},
+  {n:10,cat:'Local SEO',title:'Top 5 Reasons Northlake TX Families Choose Radiant Nutrition',desc:'A locally-focused post highlighting why residents of Northlake and Argyle trust Radiant Nutrition for their family\'s health and wellness goals.',prompt:'Write a 750-word local SEO blog post titled "Top 5 Reasons Northlake TX Families Choose Radiant Nutrition" for Radiant Nutrition. Target keywords: "dietitian Northlake TX", "Radiant Nutrition Argyle", "nutrition counseling near Northlake". Highlight: insurance acceptance, 2-hour first visit, telehealth option, all-ages care, and personalized plans. First-person brand voice. CTA: Book now.'},
+  {n:11,cat:'Diabetes',title:'The Best Foods for Stable Blood Sugar — Ranked by a Dietitian',desc:'A practical, evidence-based list of foods that support balanced blood sugar levels — ideal for anyone with diabetes or prediabetes in Texas.',prompt:'Write an 850-word SEO blog post titled "The Best Foods for Stable Blood Sugar — Ranked by a Dietitian" for Radiant Nutrition. Target keywords: "blood sugar foods dietitian", "diabetes nutrition Argyle TX", "prediabetes diet Texas". Rank and explain 8-10 foods by their blood sugar impact. Use a warm, educational tone. Include a disclaimer. CTA: Book a diabetes nutrition consult at Radiant Nutrition.'},
+  {n:12,cat:'Nutrition Tips',title:'How to Read a Nutrition Label the Right Way',desc:'A step-by-step guide from a registered dietitian on decoding food labels — perfect for health-conscious shoppers in Argyle and Northlake.',prompt:'Write a 750-word SEO blog post titled "How to Read a Nutrition Label the Right Way" for Radiant Nutrition. Target keywords: "nutrition label guide Texas", "dietitian food label tips Argyle". Walk through: serving size, calories, macros, % DV, ingredient list, and marketing red flags. Include practical grocery shopping tips. Tone: educational, approachable. CTA: Book a personalized nutrition session.'},
+  {n:13,cat:'Recipes',title:'Dietitian-Approved Texas Chili: Hearty, Healthy & High-Protein',desc:'A lighter take on a Texas classic — a chili recipe packed with protein and fiber that feels indulgent without the nutritional guilt.',prompt:'Write a 700-word SEO recipe blog post titled "Dietitian-Approved Texas Chili: Hearty, Healthy & High-Protein" for Radiant Nutrition. Include: intro tying it to North Texas culture, ingredients (serves 6), step-by-step instructions, macros per serving callout, and a dietitian tip on fiber and satiety. Target keywords: "healthy Texas recipes", "high protein chili Argyle TX". CTA: Book a meal planning session.'},
+  {n:14,cat:'Sports Nutrition',title:'Fueling Youth Athletes in Argyle: A Sports Nutrition Primer',desc:'A dietitian\'s guide to feeding young athletes in North Texas — covering pre-game meals, hydration in Texas heat, and recovery snacks.',prompt:'Write a 900-word SEO blog post titled "Fueling Youth Athletes in Argyle: A Sports Nutrition Primer" for Radiant Nutrition. Target keywords: "sports nutrition Argyle TX", "youth athlete nutrition Northlake", "dietitian for athletes Texas". Cover: pre-game nutrition, hydration in Texas heat, post-game recovery, and supplements (what to avoid). Audience: parents of student athletes. CTA: Book a pediatric sports nutrition consult.'},
+  {n:15,cat:'Kids & Family',title:'Building Healthy Eating Habits That Last: A Family Nutrition Roadmap',desc:'How Argyle and Northlake families can create a healthy food environment at home — without stress, restriction, or constant battles at the table.',prompt:'Write an 850-word SEO blog post titled "Building Healthy Eating Habits That Last: A Family Nutrition Roadmap" for Radiant Nutrition. Target keywords: "family nutrition Argyle TX", "healthy eating habits kids Northlake", "dietitian for families Texas". Cover: shared family meals, involving kids in cooking, avoiding food as punishment/reward, and modeling positive eating. CTA: Book a family nutrition consult.'}
+];
+
+const POSTS2 = [
+  {n:16,cat:'Nutrition Tips',title:'The Truth About Protein: How Much Do You Really Need?',desc:'Cutting through the noise on protein — how much you actually need based on age, activity, and goals, explained by a registered dietitian.',prompt:'Write an 850-word SEO blog post titled "The Truth About Protein: How Much Do You Really Need?" for Radiant Nutrition. Target keywords: "protein intake dietitian Argyle TX", "how much protein do I need Texas". Cover RDA, activity-based needs, best sources, and timing. Dispel high-protein diet myths. Tone: calm, science-backed. CTA: Book a nutrition assessment at Radiant Nutrition.'},
+  {n:17,cat:'Weight Management',title:'Emotional Eating: How to Break the Cycle with Help from a Dietitian',desc:'A compassionate look at emotional eating — what drives it, how to recognize it, and the steps to building a healthier relationship with food.',prompt:'Write a 900-word SEO blog post titled "Emotional Eating: How to Break the Cycle with Help from a Dietitian" for Radiant Nutrition in Argyle TX. Target keywords: "emotional eating help Texas", "dietitian eating behavior Northlake", "food relationship counseling Argyle". Cover triggers, hunger vs emotion cues, and how MNT helps. Non-diet, compassionate tone. CTA: Book a session.'},
+  {n:18,cat:'Recipes',title:'Easy Anti-Inflammatory Meal Plan for a Busy Texas Week',desc:'A 5-day anti-inflammatory eating framework with simple recipes designed for North Texas families who want to reduce inflammation through food.',prompt:'Write a 900-word SEO blog post titled "Easy Anti-Inflammatory Meal Plan for a Busy Texas Week" for Radiant Nutrition. Target keywords: "anti-inflammatory diet Texas", "meal plan dietitian Argyle TX", "inflammation nutrition Northlake". Include a 5-day framework (breakfast/lunch/dinner), key anti-inflammatory foods list, and shopping tips. CTA: Book a custom meal plan session at Radiant Nutrition.'},
+  {n:19,cat:'Local SEO',title:'Telehealth Nutrition Counseling in Argyle & Northlake TX',desc:'How telehealth dietitian appointments work at Radiant Nutrition — and why they\'re a perfect fit for busy North Texas families and remote workers.',prompt:'Write an 800-word local SEO blog post titled "Telehealth Nutrition Counseling in Argyle & Northlake TX" for Radiant Nutrition. Target keywords: "telehealth dietitian Texas", "online nutrition counseling Argyle TX", "virtual RD Northlake". Cover: what to expect, tech requirements, insurance billing for telehealth, and who benefits most. CTA: Book a telehealth appointment.'},
+  {n:20,cat:'Diabetes',title:'Navigating Holiday Eating with Diabetes: A Texas Dietitian\'s Tips',desc:'Practical holiday eating strategies for people with diabetes — covering Thanksgiving, Christmas, and Texas BBQ season without fear or deprivation.',prompt:'Write a 900-word SEO blog post titled "Navigating Holiday Eating with Diabetes: A Texas Dietitian\'s Tips" for Radiant Nutrition. Target keywords: "diabetes holiday eating tips Texas", "dietitian diabetes Argyle TX". Cover: plate method for holiday meals, alcohol and blood sugar, smart swaps for Texas BBQ classics, and mindful eating strategies. Warm, non-restrictive tone. CTA: Book an appointment before the holidays.'},
+  {n:21,cat:'Sports Nutrition',title:'Hydration for Texas Athletes: Why Water Alone Isn\'t Enough',desc:'Why hydration for active people in the Texas heat requires more than just water — and what a dietitian recommends for optimal performance and recovery.',prompt:'Write an 800-word SEO blog post titled "Hydration for Texas Athletes: Why Water Alone Isn\'t Enough" for Radiant Nutrition. Target keywords: "hydration sports nutrition Texas", "electrolytes athletes Argyle TX", "dietitian athlete hydration Northlake". Cover electrolytes, sweat rate, timing, and best hydration sources for Texas heat. Include a section on youth athletes. CTA: Book a sports nutrition consult.'},
+  {n:22,cat:'Nutrition Tips',title:'Heart-Healthy Eating After 40: A Dietitian\'s Guide for Texans',desc:'How nutrition needs shift in your 40s and beyond — and how to protect your heart, energy, and metabolism through evidence-based food choices.',prompt:'Write a 900-word SEO blog post titled "Heart-Healthy Eating After 40: A Dietitian\'s Guide for Texans" for Radiant Nutrition. Target keywords: "heart health dietitian Argyle TX", "nutrition after 40 Texas", "cardiovascular nutrition Northlake". Cover: key nutrients (omega-3, fiber, potassium), foods to prioritize and limit, and lifestyle tips. Tone: empowering, not fear-based. CTA: Book a heart-health nutrition consult.'},
+  {n:23,cat:'Kids & Family',title:'Lunchbox Ideas from a Dietitian: 10 School Lunch Builds for Argyle Kids',desc:'Ten balanced, kid-approved school lunch ideas that parents in Argyle and Northlake can rotate all year — no more lunchbox stress.',prompt:'Write a 750-word SEO blog post titled "Lunchbox Ideas from a Dietitian: 10 School Lunch Builds for Argyle Kids" for Radiant Nutrition. Target keywords: "kids school lunch ideas Texas", "dietitian lunch Argyle TX", "healthy lunchbox Northlake". List 10 lunch combinations with protein/carb/fat components. Include tips on involving kids in packing. CTA: Book a pediatric nutrition consult.'},
+  {n:24,cat:'Recipes',title:'3-Ingredient Overnight Oats the Whole North Texas Family Will Love',desc:'A quick, customizable overnight oats recipe that works for kids and adults alike — perfect for rushed Argyle and Northlake mornings.',prompt:'Write a 650-word SEO recipe blog post titled "3-Ingredient Overnight Oats the Whole North Texas Family Will Love" for Radiant Nutrition. Include: 3 base variations, topping ideas, nutrition benefits, and a dietitian tip on fiber and satiety. Target keywords: "overnight oats recipe Texas", "healthy breakfast Argyle TX". Conversational, relatable tone. CTA: Book a personalized meal plan.'},
+  {n:25,cat:'Local SEO',title:'Does Aetna / BCBS / United Cover a Dietitian in Argyle TX?',desc:'A plain-language breakdown of how major insurance plans commonly cover nutrition counseling — and how to verify your benefits at Radiant Nutrition.',prompt:'Write an 850-word local SEO blog post titled "Does My Insurance Cover a Dietitian Near Argyle TX?" for Radiant Nutrition. Target keywords: "insurance cover dietitian Texas", "Aetna BCBS United dietitian Argyle", "nutrition counseling insurance Northlake TX". Explain how MNT coverage works, common covered diagnoses, and steps to verify benefits. Emphasize Radiant Nutrition is in-network. CTA: Call to verify your plan.'},
+  {n:26,cat:'Weight Management',title:'Why BMI Is Not the Whole Story: A Dietitian\'s Perspective',desc:'A nuanced look at BMI\'s limitations and what actually matters when assessing health — including body composition, energy, and lifestyle markers.',prompt:'Write an 850-word blog post titled "Why BMI Is Not the Whole Story: A Dietitian\'s Perspective" for Radiant Nutrition. Target keywords: "BMI limitations dietitian", "body composition nutrition Argyle TX", "health beyond BMI Northlake". Explain BMI history, flaws, what better metrics look like, and how an RD approaches weight holistically. Body-positive, evidence-based tone. CTA: Book at Radiant Nutrition.'},
+  {n:27,cat:'Diabetes',title:'Prediabetes: What It Means and How Nutrition Can Reverse It',desc:'An empowering guide for Argyle and Northlake residents recently diagnosed with prediabetes — covering what it is, what to eat, and when to see an RD.',prompt:'Write a 900-word SEO blog post titled "Prediabetes: What It Means and How Nutrition Can Reverse It" for Radiant Nutrition. Target keywords: "prediabetes dietitian Argyle TX", "reverse prediabetes Texas", "prediabetes nutrition Northlake". Cover: what prediabetes is, lifestyle intervention research, dietary strategies, and role of MNT. Include a disclaimer. CTA: Book an MNT appointment at Radiant Nutrition.'},
+  {n:28,cat:'Sports Nutrition',title:'College Athlete Nutrition Guide: Fueling Performance at UNT and TWU',desc:'A sports nutrition guide for college athletes at North Texas universities — covering energy needs, meal timing, and eating on a student budget.',prompt:'Write an 850-word SEO blog post titled "College Athlete Nutrition Guide: Fueling Performance in North Texas" for Radiant Nutrition. Target keywords: "college athlete dietitian Texas", "sports nutrition UNT TWU", "student athlete nutrition Argyle Northlake". Cover energy needs, dining hall hacks, budget meal ideas, supplement red flags, and when to see an RD. CTA: Book a sports nutrition telehealth session.'},
+  {n:29,cat:'Nutrition Tips',title:'Gut Health 101: What a Dietitian Wants You to Know',desc:'A practical introduction to gut health — explaining the microbiome, prebiotics and probiotics, and what to eat for a healthy digestive system.',prompt:'Write an 850-word SEO blog post titled "Gut Health 101: What a Registered Dietitian Wants You to Know" for Radiant Nutrition. Target keywords: "gut health dietitian Argyle TX", "microbiome nutrition Texas", "probiotics prebiotics Northlake". Cover: what the microbiome is, foods that support it, what disrupts it, and practical daily habits. Tone: educational, demystifying. CTA: Book a gut health nutrition consult.'},
+  {n:30,cat:'Local SEO',title:'New to Argyle or Northlake TX? Here\'s How to Find a Dietitian',desc:'A welcome guide for families new to Argyle and Northlake, TX — covering how to set up nutrition care, what to expect, and why Radiant Nutrition is a top local choice.',prompt:'Write a 750-word local SEO blog post titled "New to Argyle or Northlake TX? Here\'s How to Find a Registered Dietitian" for Radiant Nutrition. Target keywords: "dietitian Argyle TX new resident", "find RD Northlake Texas", "Radiant Nutrition Argyle TX". Cover: how to find an in-network RD, what to expect at a first visit, and why Radiant Nutrition is an excellent local choice. Welcoming, community-focused tone. CTA: Book your first appointment.'}
+];
+
+const ALL_POSTS = [...POSTS, ...POSTS2];
+let activeFilter = 'all';
+
+const CAT_CLASSES = {
+  'Nutrition Tips':'cat-tips','Recipes':'cat-recipes','Weight Management':'cat-weight',
+  'Diabetes':'cat-diabetes','Kids & Family':'cat-kids','Sports Nutrition':'cat-sports','Local SEO':'cat-local'
+};
+
+function renderCards(posts) {
+  const grid = document.getElementById('plannerGrid');
+  grid.innerHTML = posts.map(p => `
+    <div class="post-card" data-cat="${p.cat}">
+      <div class="post-card__head">
+        <div class="post-card__num">Post #${p.n} of 30</div>
+        <span class="post-card__cat ${CAT_CLASSES[p.cat]||''}">${p.cat}</span>
+        <div class="post-card__title">${p.title}</div>
+      </div>
+      <div class="post-card__body">
+        <p class="post-card__desc">${p.desc}</p>
+        <div>
+          <div class="post-card__prompt-label"><i class="fa-solid fa-wand-magic-sparkles"></i> Augment Prompt</div>
+          <div class="post-card__prompt">${p.prompt}</div>
+        </div>
+        <button class="post-card__copy" onclick="copyPrompt(this,'${p.n}')">
+          <i class="fa-regular fa-copy"></i> Copy Prompt
+        </button>
+      </div>
+    </div>`).join('');
+}
+
+function filterCards(cat, btn) {
+  activeFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCards(cat==='all' ? ALL_POSTS : ALL_POSTS.filter(p=>p.cat===cat));
+}
+
+function copyPrompt(btn, n) {
+  const post = ALL_POSTS.find(p=>p.n==n);
+  if (!post) return;
+  navigator.clipboard.writeText(post.prompt).then(()=>{
+    btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+    btn.style.color = 'var(--gold)';
+    setTimeout(()=>{ btn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy Prompt'; btn.style.color=''; }, 2000);
+  });
+}
+
+function exportJSON() {
+  const data = ALL_POSTS.map(p=>({
+    title: p.title, description: p.desc, category: p.cat,
+    date: '', author: 'Janna Weaver, RD', link: '#'
+  }));
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'radiant-nutrition-blog-posts.json'; a.click();
+}
+
+renderCards(ALL_POSTS);
+</script>
+</body>
+</html>

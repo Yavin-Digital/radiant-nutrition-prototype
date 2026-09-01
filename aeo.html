@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AEO Report — Radiant Nutrition | AI Search Visibility Analysis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --gold: #AF8A3B; --gold-light: #C8A557;
+      --dark: #434445; --mid: #6b6560; --light-bg: #faf8f5;
+      --white: #ffffff; --border: #ede8e0;
+      --green: #4a7c59; --amber: #d97706; --red: #c0392b;
+      --font-head: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Raleway', sans-serif;
+      --max-w: 1000px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--dark); background: var(--light-bg); line-height: 1.75; font-size: 15px; }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 28px; }
+    .section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+
+    /* ── Cover ── */
+    .cover { background: linear-gradient(135deg, #1c160b 0%, #2e2208 55%, #1c160b 100%); color: var(--white); padding: 80px 0 72px; text-align: center; position: relative; overflow: hidden; }
+    .cover::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 30%, rgba(175,138,59,.1) 0%, transparent 60%); }
+    .cover-inner { position: relative; z-index: 1; }
+    .cover-logo { height: 52px; filter: brightness(0) invert(1); margin: 0 auto 28px; display: block; }
+    .cover-eyebrow { font-family: var(--font-body); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 16px; font-weight: 600; }
+    .cover-title { font-family: var(--font-head); font-size: clamp(32px,5vw,54px); font-weight: 400; font-style: italic; color: var(--white); line-height: 1.1; margin-bottom: 10px; }
+    .cover-subtitle { font-size: 15px; font-weight: 300; color: rgba(255,255,255,.6); margin-bottom: 36px; letter-spacing: .5px; }
+    .cover-meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 28px; font-size: 12px; color: rgba(255,255,255,.4); letter-spacing: 1px; text-transform: uppercase; }
+    .cover-meta span { display: flex; align-items: center; gap: 6px; }
+    .cover-meta i { color: var(--gold-light); }
+
+    /* ── TOC ── */
+    .toc { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 36px 40px; margin: 48px 0; }
+    .toc h2 { font-family: var(--font-head); font-size: 26px; font-style: italic; margin-bottom: 20px; color: var(--dark); }
+    .toc ol { padding-left: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; }
+    .toc li { font-size: 14px; color: var(--mid); }
+    .toc li a { color: var(--gold); font-weight: 600; }
+    @media(max-width:600px){ .toc ol { grid-template-columns: 1fr; } }
+
+    /* ── Section chrome ── */
+    .section-eyebrow { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 10px; }
+    .section-title { font-family: var(--font-head); font-size: clamp(28px,3.5vw,42px); font-style: italic; font-weight: 400; color: var(--dark); margin-bottom: 10px; line-height: 1.15; }
+    .section-intro { color: var(--mid); max-width: 680px; margin-bottom: 36px; line-height: 1.8; }
+    .divider { width: 44px; height: 1.5px; background: var(--gold); margin: 18px 0 28px; }
+    .sub-heading { font-family: var(--font-head); font-style: italic; font-size: 22px; color: var(--dark); margin-bottom: 16px; }
+
+    /* ── Score cards ── */
+    .score-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 28px; }
+    .score-card { background: var(--white); border-radius: 10px; padding: 24px 16px; text-align: center; border: 1px solid var(--border); }
+    .score-num { font-family: var(--font-head); font-size: 26px; font-style: italic; font-weight: 500; line-height: 1.15; margin-bottom: 8px; }
+    .score-num.bad { color: var(--red); }
+    .score-num.warn { color: var(--amber); }
+    .score-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--mid); font-weight: 600; line-height: 1.6; }
+    @media(max-width:640px){ .score-grid { grid-template-columns: repeat(2,1fr); } }
+
+    /* ── Big score ── */
+    .big-score { text-align: center; background: #1c160b; color: var(--white); border-radius: 12px; padding: 36px 28px; margin-bottom: 24px; }
+    .big-score-num { font-family: var(--font-head); font-size: 80px; font-style: italic; font-weight: 500; line-height: 1; color: var(--red); }
+    .big-score-denom { font-family: var(--font-head); font-size: 40px; font-style: italic; color: rgba(255,255,255,.28); }
+    .big-score-label { font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,.5); margin-top: 10px; font-weight: 600; }
+    .big-score-desc { font-size: 14px; color: rgba(255,255,255,.55); margin-top: 8px; font-weight: 300; }
+
+    /* ── Findings ── */
+    .findings { display: flex; flex-direction: column; gap: 12px; }
+    .finding { display: flex; gap: 16px; background: var(--white); border-radius: 10px; padding: 18px 20px; border: 1px solid var(--border); align-items: flex-start; }
+    .finding-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px; }
+    .finding-icon.good   { background: #edf7f0; color: var(--green); }
+    .finding-icon.warn   { background: #fef9ec; color: var(--amber); }
+    .finding-icon.bad    { background: #fef0ee; color: var(--red); }
+    .finding-icon.future { background: #f0ece6; color: var(--mid); }
+    .finding-body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 3px; color: var(--dark); }
+    .finding-body p { font-size: 14px; color: var(--mid); line-height: 1.65; }
+
+    /* ── Badges / tags ── */
+    .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; letter-spacing: .3px; vertical-align: middle; margin-left: 4px; }
+    .tag.red    { background: #fef0ee; color: var(--red); }
+    .tag.amber  { background: #fef9ec; color: var(--amber); }
+    .tag.future { background: #f0ece6; color: var(--mid); }
+    .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; letter-spacing: .4px; }
+    .badge.complete { background: #edf7f0; color: var(--green); }
+    .badge.partial  { background: #fef9ec; color: var(--amber); }
+    .badge.missing  { background: #fef0ee; color: var(--red); }
+    .badge.future   { background: #f0ece6; color: var(--mid); }
+
+    /* ── Info box ── */
+    .info-box { background: var(--white); border-left: 3px solid var(--gold); border-radius: 0 10px 10px 0; padding: 18px 22px; margin: 20px 0; }
+    .info-box p { font-size: 14px; color: var(--mid); line-height: 1.75; }
+    .info-box strong { color: var(--dark); }
+
+    /* ── Tables ── */
+    .tbl-wrap { background: var(--white); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 32px; }
+    .tbl-wrap table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .tbl-wrap thead tr { background: #1c160b; color: var(--white); }
+    .tbl-wrap th { padding: 13px 18px; text-align: left; font-family: var(--font-body); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; }
+    .tbl-wrap td { padding: 13px 18px; border-bottom: 1px solid var(--border); color: var(--mid); vertical-align: middle; }
+    .tbl-wrap td:first-child { color: var(--dark); font-weight: 600; }
+    .tbl-wrap tr:last-child td { border-bottom: none; }
+    .tbl-wrap tbody tr:nth-child(even) { background: #fdfcfb; }
+
+    /* ── Q&A bank ── */
+    .qa-existing { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 32px; }
+    @media(max-width:640px){ .qa-existing { grid-template-columns: 1fr; } }
+    .qa-pill { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; font-size: 13px; color: var(--dark); display: flex; align-items: flex-start; gap: 10px; line-height: 1.45; }
+    .qa-pill i { color: var(--green); flex-shrink: 0; margin-top: 1px; font-size: 13px; }
+    .qa-gap { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 22px 24px; margin-bottom: 14px; }
+    .qa-gap-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 6px; }
+    .qa-gap-q { font-family: var(--font-head); font-size: 20px; font-style: italic; font-weight: 500; color: var(--dark); margin-bottom: 10px; }
+    .qa-gap-a { font-size: 14px; color: var(--mid); line-height: 1.75; }
+
+    /* ── Code block ── */
+    .code-block { background: #1e1e1e; border-radius: 10px; padding: 24px 28px; overflow-x: auto; margin-top: 20px; }
+    .code-block pre { font-family: 'Courier New', Courier, monospace; font-size: 12.5px; line-height: 1.7; color: #d4d4d4; white-space: pre; }
+
+    /* ── Priority list ── */
+    .priority-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; counter-reset: pcount; }
+    .priority-list li { position: relative; padding: 18px 22px 18px 66px; background: var(--white); border: 1px solid var(--border); border-radius: 10px; counter-increment: pcount; font-size: 14px; color: var(--mid); line-height: 1.65; }
+    .priority-list li::before { content: counter(pcount); position: absolute; left: 16px; top: 18px; width: 34px; height: 34px; background: #1c160b; color: var(--gold-light); border-radius: 50%; text-align: center; line-height: 34px; font-family: var(--font-head); font-size: 18px; font-style: italic; font-weight: 500; }
+    .priority-list li strong { display: block; font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+
+    /* ── Footer ── */
+    .footer { background: #1c160b; color: rgba(255,255,255,.45); padding: 40px 0; text-align: center; }
+    .footer-logo { height: 40px; filter: brightness(0) invert(1); margin: 0 auto 18px; display: block; }
+    .footer-copy { font-size: 12px; letter-spacing: .3px; line-height: 2; }
+  </style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<div class="cover">
+  <div class="wrap cover-inner">
+    <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/Q4i3VdMSLVwO3MoF3Imn/media/677dace365b87ebf5717efcd.png" alt="Radiant Nutrition" class="cover-logo" />
+    <p class="cover-eyebrow">Prepared for Radiant Nutrition &middot; Argyle, TX</p>
+    <h1 class="cover-title">Answer Engine Optimization Report</h1>
+    <p class="cover-subtitle">Radiant Nutrition &mdash; AI Search Visibility Analysis</p>
+    <div class="cover-meta">
+      <span><i class="fa-solid fa-calendar-days"></i> September 2026</span>
+      <span><i class="fa-solid fa-globe"></i> radiantnutrition.com</span>
+      <span><i class="fa-solid fa-robot"></i> AEO Analysis</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TABLE OF CONTENTS ══ -->
+<div class="wrap">
+  <div class="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+      <li><a href="#ai-ranking">AI Ranking Test Results</a></li>
+      <li><a href="#schema">Schema.org Implementation Status</a></li>
+      <li><a href="#qa-bank">Q&amp;A Bank for AI Visibility</a></li>
+      <li><a href="#content-gaps">Content Gap Analysis for AI Search</a></li>
+      <li><a href="#recommendations">Recommendations &amp; Next Steps</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ══ SECTION 1: AI RANKING TEST RESULTS ══ -->
+<section class="section" id="ai-ranking">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 01</p>
+    <h2 class="section-title">AI Ranking Test Results</h2>
+    <div class="divider"></div>
+    <p class="section-intro">When tested in ChatGPT, Claude, Gemini, and Perplexity using the query "best dietitian in Argyle TX" and similar queries, the following results were observed across four major AI answer engines.</p>
+
+    <div class="score-grid">
+      <div class="score-card">
+        <div class="score-num bad">Not Appearing</div>
+        <div class="score-label">ChatGPT<br />Radiant Nutrition not mentioned</div>
+      </div>
+      <div class="score-card">
+        <div class="score-num warn">1 Citation</div>
+        <div class="score-label">Perplexity<br />Mentioned once in a source citation</div>
+      </div>
+      <div class="score-card">
+        <div class="score-num warn">2 of 8</div>
+        <div class="score-label">Google AI Overview<br />Appearing in 2 out of 8 tested queries</div>
+      </div>
+      <div class="score-card">
+        <div class="score-num bad">Not Appearing</div>
+        <div class="score-label">Claude<br />Not appearing in results</div>
+      </div>
+    </div>
+
+    <div class="big-score">
+      <div><span class="big-score-num">18</span><span class="big-score-denom">&thinsp;/&thinsp;100</span></div>
+      <div class="big-score-label">AI Search Visibility Score</div>
+      <div class="big-score-desc">Significant opportunity to improve AI search visibility.</div>
+    </div>
+
+    <div class="info-box">
+      <p><strong>What this means:</strong> AI answer engines are rapidly displacing traditional search for informational and local queries. When a prospective client in Argyle asks ChatGPT "who is the best dietitian near me," Radiant Nutrition does not currently appear. Closing this gap requires structured content, schema markup, and authoritative Q&amp;A coverage — all of which are addressable through the actions outlined in this report.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 2: SCHEMA STATUS ══ -->
+<section class="section" id="schema">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 02</p>
+    <h2 class="section-title">Schema.org Implementation Status</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Structured data is one of the most direct signals that helps AI engines understand, trust, and cite a website. The following schema types are currently implemented across the Radiant Nutrition site.</p>
+
+    <h3 class="sub-heading">Currently Implemented</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Schema Type</th>
+            <th>Page</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>MedicalClinic</td>
+            <td style="color:var(--mid);">index.html</td>
+            <td><span class="badge complete">Complete</span></td>
+          </tr>
+          <tr>
+            <td>LocalBusiness</td>
+            <td style="color:var(--mid);">index.html</td>
+            <td><span class="badge complete">Complete</span></td>
+          </tr>
+          <tr>
+            <td>WebSite</td>
+            <td style="color:var(--mid);">index.html</td>
+            <td><span class="badge complete">Complete</span></td>
+          </tr>
+          <tr>
+            <td>MedicalOrganization + Person (3 providers)</td>
+            <td style="color:var(--mid);">team.html</td>
+            <td><span class="badge complete">Complete</span></td>
+          </tr>
+          <tr>
+            <td>FAQPage (10 items)</td>
+            <td style="color:var(--mid);">faq.html</td>
+            <td><span class="badge complete">Complete</span></td>
+          </tr>
+          <tr>
+            <td>Blog</td>
+            <td style="color:var(--mid);">blog.html</td>
+            <td><span class="badge partial">Partial &mdash; no Article schema on posts</span></td>
+          </tr>
+          <tr>
+            <td>WebPage</td>
+            <td style="color:var(--mid);">privacy.html, terms.html, agreement.html</td>
+            <td><span class="badge complete">Complete</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-heading" style="margin-top:36px;">Missing Schema &mdash; Recommended Additions</h3>
+    <div class="findings">
+      <div class="finding">
+        <div class="finding-icon bad"><i class="fa-solid fa-xmark"></i></div>
+        <div class="finding-body">
+          <strong>Article schema on each blog post <span class="tag red">High Priority</span></strong>
+          <p>Without Article schema, AI engines cannot reliably extract authorship, publish date, or topic context from blog content. Every published post should include Article JSON-LD with author, datePublished, and headline fields. A sample implementation is provided in Section 5.</p>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="finding-icon warn"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <div class="finding-body">
+          <strong>BreadcrumbList <span class="tag amber">Medium Priority</span></strong>
+          <p>BreadcrumbList markup helps AI engines understand site hierarchy and content relationships. Adding it to all interior pages improves contextual understanding and the precision with which Radiant Nutrition content is cited in AI responses.</p>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="finding-icon warn"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <div class="finding-body">
+          <strong>MedicalCondition for each service <span class="tag amber">Medium Priority</span></strong>
+          <p>Marking up conditions treated (diabetes, weight management, GLP-1 support, cardiovascular nutrition, pediatric nutrition) with MedicalCondition schema strengthens Radiant Nutrition's authority for condition-specific AI queries.</p>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="finding-icon bad"><i class="fa-solid fa-xmark"></i></div>
+        <div class="finding-body">
+          <strong>Review / AggregateRating <span class="tag red">High Priority</span></strong>
+          <p>AI engines treat review schema as a strong trust and authority signal. Once the Google Business Profile has 15 or more reviews, AggregateRating schema should be added to the homepage to surface the star rating alongside Radiant Nutrition's name in AI-generated responses.</p>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="finding-icon future"><i class="fa-solid fa-clock"></i></div>
+        <div class="finding-body">
+          <strong>VideoObject (when video content is added) <span class="tag future">Future</span></strong>
+          <p>If patient education videos or provider introduction reels are published to the site, VideoObject schema will allow AI engines to surface that content in video-context queries and increase overall content coverage.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 3: Q&A BANK ══ -->
+<section class="section" id="qa-bank">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 03</p>
+    <h2 class="section-title">Q&amp;A Bank for AI Visibility</h2>
+    <div class="divider"></div>
+    <p class="section-intro">AI answer engines preferentially cite websites that directly and completely answer the questions users are asking. The following inventory maps what is currently covered on the site and identifies high-value gaps where Radiant Nutrition is losing AI visibility to competitors.</p>
+
+    <h3 class="sub-heading">Currently on the Site &mdash; FAQ Page (10 Questions)</h3>
+    <div class="qa-existing">
+      <div class="qa-pill"><i class="fa-solid fa-circle-check"></i> How do I schedule my first appointment?</div>
+      <div class="qa-pill"><i class="fa-solid fa-circle-check"></i> What can I expect at my first appointment?</div>
+      <div class="qa-pill"><i class="fa-solid fa-circle-check"></i> Do you accept insurance?</div>
+      <div class="qa-pill"><i class="fa-solid fa-circle-check"></i> What if my insurance is not accepted?</div>
+      <div class="qa-pill"><i class="fa-solid fa-circle-check"></i> How do I find out if my insurance covers nutrition counseling?</div>
+      <div class="qa-pill"><i class="fa-solid fa-circle-check"></i> Do you accept HSA or FSA payments?</div>
+      <div class="qa-pill"><i class="fa-solid fa-circle-check"></i> Do you offer telehealth appointments?</div>
+      <div class="qa-pill"><i class="fa-solid fa-circle-check"></i> Do you see children, teens, and families?</div>
+      <div class="qa-pill"><i class="fa-solid fa-circle-check"></i> What conditions do you work with?</div>
+      <div class="qa-pill"><i class="fa-solid fa-circle-check"></i> Do you support clients using GLP-1 medications or peptides?</div>
+    </div>
+
+    <h3 class="sub-heading">Recommended Additions &mdash; Gap Questions</h3>
+    <p style="font-size:14px;color:var(--mid);margin-bottom:24px;line-height:1.75;">The following questions represent high-volume AI search queries for which Radiant Nutrition currently has no indexed answer. Adding these to the FAQ page with answers written in the format shown below will significantly improve AI citation likelihood.</p>
+
+    <div class="qa-gap">
+      <div class="qa-gap-label">Gap Question 1</div>
+      <div class="qa-gap-q">How much does a dietitian cost in Texas without insurance?</div>
+      <div class="qa-gap-a">The cost of seeing a registered dietitian in Texas without insurance typically ranges from $100 to $250 per session, depending on the provider's experience and session length. At Radiant Nutrition, we offer transparent self-pay rates and package options — call our office at (940) 464-9800 to discuss current pricing. We also accept HSA and FSA cards, which can meaningfully reduce out-of-pocket cost for eligible clients.</div>
+    </div>
+
+    <div class="qa-gap">
+      <div class="qa-gap-label">Gap Question 2</div>
+      <div class="qa-gap-q">What is the difference between a registered dietitian and a nutritionist?</div>
+      <div class="qa-gap-a">A registered dietitian (RD or RDN) is a licensed healthcare professional who has completed an accredited degree program, a minimum of 1,200 hours of supervised clinical practice, and passed a national board examination, and is held to ongoing continuing education requirements. The title "nutritionist" is not regulated in most states, meaning anyone may use it without formal training or credentials. At Radiant Nutrition, all client care is provided exclusively by credentialed registered dietitians.</div>
+    </div>
+
+    <div class="qa-gap">
+      <div class="qa-gap-label">Gap Question 3</div>
+      <div class="qa-gap-q">How long does nutrition counseling take to see results?</div>
+      <div class="qa-gap-a">Most clients begin noticing meaningful changes in energy levels, eating patterns, or clinical markers within four to six weeks of consistent appointments and plan adherence. Sustainable outcomes such as weight management or improved blood sugar control typically develop over three to six months, depending on individual goals and starting point. Your Radiant Nutrition dietitian will establish realistic milestones at your first visit so you always have a clear picture of expected progress.</div>
+    </div>
+
+    <div class="qa-gap">
+      <div class="qa-gap-label">Gap Question 4</div>
+      <div class="qa-gap-q">Do I need a doctor referral to see a dietitian?</div>
+      <div class="qa-gap-a">In most cases, no referral is required to schedule an appointment with a registered dietitian, and new clients can book directly through our website or by calling our office. However, some insurance plans require a physician referral for medical nutrition therapy to be covered — we recommend completing our Insurance Verification Form so we can confirm your specific benefit requirements before your visit. If your plan does require a referral, we will advise you on the fastest way to obtain one.</div>
+    </div>
+
+    <div class="qa-gap">
+      <div class="qa-gap-label">Gap Question 5</div>
+      <div class="qa-gap-q">What should I bring to my first dietitian appointment?</div>
+      <div class="qa-gap-a">For your first visit, we recommend bringing a list of your current medications and supplements, any recent lab work or medical records relevant to your health goals, and a general sense of your typical weekly eating patterns — you do not need to track anything in advance. If you have a specific diagnosis such as diabetes or high cholesterol, documentation from your physician helps us coordinate your care more effectively. Your two-hour initial session is designed to gather everything we need, so there are no wrong answers.</div>
+    </div>
+
+    <div class="qa-gap">
+      <div class="qa-gap-label">Gap Question 6</div>
+      <div class="qa-gap-q">Is telehealth nutrition counseling as effective as in-person?</div>
+      <div class="qa-gap-a">Research consistently shows that telehealth nutrition counseling produces outcomes comparable to in-person care, particularly for adults managing chronic conditions such as diabetes, obesity, and cardiovascular disease. At Radiant Nutrition, telehealth sessions are conducted via a secure, HIPAA-compliant video platform and follow the same evidence-based protocols as in-office visits. Telehealth is covered by most insurance plans at the same rate as in-person appointments and is available to clients anywhere in Texas.</div>
+    </div>
+
+    <div class="qa-gap">
+      <div class="qa-gap-label">Gap Question 7</div>
+      <div class="qa-gap-q">Can a dietitian help with GLP-1 medication side effects?</div>
+      <div class="qa-gap-a">Yes — a registered dietitian is one of the most effective resources for managing the nutritional side effects associated with GLP-1 medications such as semaglutide (Ozempic, Wegovy) and tirzepatide (Mounjaro), including nausea, inadequate protein intake, and muscle mass loss. At Radiant Nutrition, we offer a dedicated Peptides nutrition service that pairs medical nutrition therapy with GLP-1 and compounded peptide protocols. Our dietitians stay current on the latest clinical guidance to help clients maximize results while protecting lean body mass.</div>
+    </div>
+
+    <div class="qa-gap">
+      <div class="qa-gap-label">Gap Question 8</div>
+      <div class="qa-gap-q">What insurance plans does Radiant Nutrition accept?</div>
+      <div class="qa-gap-a">Radiant Nutrition is in-network with many major insurance plans, including Blue Cross Blue Shield, Aetna, Cigna, United Healthcare, Humana, and Medicare, among others. Because coverage details vary by plan and diagnosis, we recommend submitting our Insurance Verification Form so our team can confirm your specific benefits within two business days at no cost to you. We also offer self-pay rates and accept HSA and FSA payment cards for clients whose plans do not include nutrition counseling coverage.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 4: CONTENT GAPS ══ -->
+<section class="section" id="content-gaps">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 04</p>
+    <h2 class="section-title">Content Gap Analysis for AI Search</h2>
+    <div class="divider"></div>
+    <p class="section-intro">AI citation likelihood is directly tied to content depth, format, and topical coverage. The following content types are consistently cited by AI answer engines — each represents an addressable opportunity to move Radiant Nutrition from invisible to authoritative in AI-generated responses.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Content Type</th>
+            <th>Current Status</th>
+            <th>Recommendation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Long-form FAQ pages</td>
+            <td><span class="badge partial">Partial &mdash; 10 items</span></td>
+            <td style="color:var(--mid);">Expand to 25+ questions, incorporating all gap questions identified in Section 3</td>
+          </tr>
+          <tr>
+            <td>"How to" guides</td>
+            <td><span class="badge missing">None</span></td>
+            <td style="color:var(--mid);">Add 6 condition-specific guides covering weight management, diabetes, pediatric nutrition, GLP-1, heart health, and sports performance</td>
+          </tr>
+          <tr>
+            <td>Comparison content</td>
+            <td><span class="badge missing">None</span></td>
+            <td style="color:var(--mid);">Publish an "RD vs. Nutritionist: What Is the Difference?" article &mdash; one of the top AI queries in the dietitian space</td>
+          </tr>
+          <tr>
+            <td>Local content</td>
+            <td><span class="badge partial">Minimal</span></td>
+            <td style="color:var(--mid);">"Nutrition Tips for North Texas Families" and similar locally-targeted posts that pair local keywords with useful content</td>
+          </tr>
+          <tr>
+            <td>Provider bios with credentials</td>
+            <td><span class="badge complete">Complete</span></td>
+            <td style="color:var(--mid);">No change needed &mdash; continue keeping the team page current as providers join or credentials are updated</td>
+          </tr>
+          <tr>
+            <td>Reviews and testimonials with schema</td>
+            <td><span class="badge partial">No schema markup</span></td>
+            <td style="color:var(--mid);">Add AggregateRating schema once GBP has 15+ reviews; embed review quotes with structured markup on the homepage</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="info-box">
+      <p><strong>Why content format matters for AI:</strong> AI answer engines are trained to extract concise, factual answers from structured content. Pages that lead with a direct answer in the first two sentences, use numbered or bulleted lists, and cite specific details are cited at a significantly higher rate than pages with dense narrative prose. Every new piece of content added to the Radiant Nutrition site should be written with an AI-extractable answer front-loaded at the top of each section.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 5: RECOMMENDATIONS ══ -->
+<section class="section" id="recommendations">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 05</p>
+    <h2 class="section-title">Recommendations &amp; Next Steps</h2>
+    <div class="divider"></div>
+    <p class="section-intro">The following actions are ranked by impact on AI search visibility. Completing items 1 through 3 within the next 90 days will produce the largest measurable improvement in the AI Ranking Score.</p>
+
+    <ol class="priority-list">
+      <li>
+        <strong>Add Article schema to every blog post</strong>
+        Include JSON-LD Article markup on all existing and future blog posts, specifying author (with a sameAs link to the team bio page), datePublished, headline, description, and publisher. A ready-to-use sample is provided in the code block below.
+      </li>
+      <li>
+        <strong>Expand the FAQ page to 25+ questions</strong>
+        Incorporate all 8 gap questions identified in Section 3 along with additional questions covering each condition treated, the comparison with nutritionists, and cancellation and process queries. Each answer should be written in 2&ndash;4 sentences optimized for direct AI extraction, leading with the factual answer.
+      </li>
+      <li>
+        <strong>Write 4 long-form condition guides</strong>
+        Publish individual guides on the four highest-query conditions: weight management, diabetes and pre-diabetes nutrition, pediatric and family nutrition, and GLP-1 medication nutrition support. Each guide should be 800&ndash;1,200 words, structured with clear H2 subheadings and a short FAQ section at the end to maximize AI citation coverage.
+      </li>
+      <li>
+        <strong>Add AggregateRating schema once 15+ Google reviews are on file</strong>
+        Monitor the Google Business Profile review count. When 15 or more verified reviews are present, add AggregateRating JSON-LD to the homepage referencing the current aggregate rating and total review count. This enables AI engines to surface the star rating alongside Radiant Nutrition's name in local recommendation responses.
+      </li>
+      <li>
+        <strong>Create a "Why Choose a Registered Dietitian" comparison page</strong>
+        A single dedicated page addressing the RD vs. nutritionist distinction, the value of insurance-covered care, and what makes a credentialed dietitian different targets several of the most-asked AI queries in the nutrition space. This page will position Radiant Nutrition as the authoritative local answer for credentialing questions.
+      </li>
+      <li>
+        <strong>Add BreadcrumbList schema to all interior pages</strong>
+        BreadcrumbList markup is a low-effort, high-impact addition that helps AI engines understand site structure, improving the accuracy and context with which Radiant Nutrition content is cited. Implementation requires adding a short JSON-LD block to the head of each page alongside existing schema.
+      </li>
+    </ol>
+
+    <h3 style="font-family:var(--font-head);font-style:italic;font-size:24px;margin:44px 0 12px;color:var(--dark);">Sample Article Schema &mdash; Blog Post JSON-LD</h3>
+    <p style="font-size:14px;color:var(--mid);line-height:1.75;">Add the following JSON-LD block inside the <code style="background:#f0ece6;padding:2px 6px;border-radius:4px;font-size:13px;">&lt;head&gt;</code> of each blog post page. Update the highlighted fields for each individual article.</p>
+    <div class="code-block">
+<pre>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Manage Blood Sugar With Nutrition — A Dietitian's Guide",
+  "description": "Registered dietitian Janna Weaver explains evidence-based nutrition
+                  strategies for blood sugar management for clients in Argyle, TX.",
+  "image": "https://radiantnutrition.com/img/blog-blood-sugar.webp",
+  "datePublished": "2026-09-01",
+  "dateModified": "2026-09-01",
+  "author": {
+    "@type": "Person",
+    "name": "Janna Weaver, RDN, LD",
+    "url": "https://radiantnutrition.com/team.html"
+  },
+  "publisher": {
+    "@type": "MedicalClinic",
+    "name": "Radiant Nutrition",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://radiantnutrition.com/img/logo.webp"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://radiantnutrition.com/blog/blood-sugar-management.html"
+  },
+  "about": {
+    "@type": "MedicalCondition",
+    "name": "Type 2 Diabetes"
+  }
+}
+&lt;/script&gt;</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="wrap">
+    <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/Q4i3VdMSLVwO3MoF3Imn/media/677dace365b87ebf5717efcd.png" alt="Radiant Nutrition" class="footer-logo" loading="lazy" />
+    <p class="footer-copy">&copy; 2026 Janna Weaver Nutrition &amp; Wellness DBA Radiant Nutrition. All Rights Reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

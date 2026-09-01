@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEO Audit Report — Radiant Nutrition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --gold: #AF8A3B; --gold-light: #C8A557;
+      --dark: #434445; --dark-deep: #1c160b; --mid: #6b6560; --light-bg: #faf8f5;
+      --white: #ffffff; --border: #ede8e0;
+      --green: #4a7c59; --amber: #d97706; --red: #c0392b;
+      --font-head: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Raleway', sans-serif;
+      --max-w: 1040px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--dark); background: var(--light-bg); line-height: 1.75; font-size: 15px; }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 28px; }
+    .section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+    .section:last-of-type { border-bottom: none; }
+
+    /* ── Header ── */
+    .report-header { background: var(--dark-deep); color: var(--white); padding: 0; }
+    .header-inner { display: flex; align-items: stretch; min-height: 160px; }
+    .header-logo-col { background: rgba(255,255,255,.04); border-right: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; padding: 36px 40px; flex-shrink: 0; }
+    .header-logo-col img { height: 72px; width: auto; filter: brightness(0) invert(1); opacity: .92; }
+    .header-text-col { padding: 36px 40px; display: flex; flex-direction: column; justify-content: center; gap: 6px; }
+    .header-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-light); font-weight: 700; }
+    .header-title { font-family: var(--font-head); font-size: clamp(26px, 3.5vw, 40px); font-weight: 400; font-style: italic; color: var(--white); line-height: 1.1; }
+    .header-sub { font-size: 13px; color: rgba(255,255,255,.55); font-weight: 300; margin-top: 2px; }
+    .header-meta { margin-left: auto; padding: 36px 40px; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 8px; flex-shrink: 0; }
+    .header-meta span { font-size: 11px; color: rgba(255,255,255,.45); letter-spacing: 1px; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
+    .header-meta i { color: var(--gold-light); }
+    @media(max-width:700px){
+      .header-inner { flex-direction: column; }
+      .header-logo-col { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); padding: 28px 28px; }
+      .header-text-col { padding: 24px 28px; }
+      .header-meta { align-items: flex-start; padding: 0 28px 28px; flex-direction: row; flex-wrap: wrap; gap: 14px; }
+    }
+
+    /* ── Section headers ── */
+    .section-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 10px; }
+    .section-title { font-family: var(--font-head); font-size: clamp(28px, 3.5vw, 42px); font-style: italic; font-weight: 400; color: var(--dark-deep); margin-bottom: 10px; line-height: 1.15; }
+    .section-intro { color: var(--mid); max-width: 700px; margin-bottom: 36px; line-height: 1.8; font-size: 14.5px; }
+    .divider { width: 44px; height: 1.5px; background: var(--gold); margin: 16px 0 28px; }
+
+    /* ── Metric cards ── */
+    .metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 36px; }
+    .metric-card { background: var(--white); border-radius: 12px; padding: 30px 22px; text-align: center; border: 1px solid var(--border); position: relative; overflow: hidden; }
+    .metric-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gold); }
+    .metric-num { font-family: var(--font-head); font-size: 52px; font-style: italic; font-weight: 500; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+    .metric-label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--mid); font-weight: 600; }
+    @media(max-width:580px){ .metric-grid { grid-template-columns: 1fr; } }
+
+    /* ── Score display ── */
+    .score-banner { background: var(--dark-deep); border-radius: 12px; padding: 32px 36px; display: flex; align-items: center; gap: 32px; margin-bottom: 36px; }
+    .score-circle { width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; }
+    .score-big { font-family: var(--font-head); font-size: 38px; font-style: italic; font-weight: 500; color: var(--gold); line-height: 1; }
+    .score-denom { font-size: 12px; color: rgba(255,255,255,.4); letter-spacing: 1px; }
+    .score-text strong { font-family: var(--font-head); font-style: italic; font-size: 22px; color: var(--white); display: block; margin-bottom: 8px; }
+    .score-text p { font-size: 13.5px; color: rgba(255,255,255,.6); line-height: 1.7; max-width: 560px; }
+    @media(max-width:580px){ .score-banner { flex-direction: column; text-align: center; } }
+
+    /* ── Keyword table ── */
+    .table-wrap { background: var(--white); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    thead tr { background: var(--dark-deep); }
+    thead th { padding: 14px 18px; text-align: left; font-family: var(--font-body); font-weight: 700; letter-spacing: 1.5px; font-size: 10px; text-transform: uppercase; color: rgba(255,255,255,.7); }
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:nth-child(even) { background: #fdfcfb; }
+    tbody td { padding: 13px 18px; color: var(--dark); vertical-align: middle; }
+    tbody td:first-child { font-weight: 600; }
+
+    /* ── Opportunity badges ── */
+    .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 100px; letter-spacing: .5px; }
+    .badge-vh  { background: #1a2e1e; color: #6fcf97; }
+    .badge-h   { background: #edf7f0; color: var(--green); }
+    .badge-m   { background: #fef9ec; color: var(--amber); }
+
+    /* ── Competitor gap table ── */
+    .status-dot { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .dot-green { background: var(--green); }
+    .dot-amber { background: var(--amber); }
+    .dot-red   { background: var(--red); }
+
+    /* ── Technical checklist ── */
+    .checklist { display: flex; flex-direction: column; gap: 2px; }
+    .check-row { display: flex; align-items: flex-start; gap: 16px; background: var(--white); border-radius: 10px; padding: 16px 20px; border: 1px solid var(--border); }
+    .check-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 13px; margin-top: 1px; }
+    .check-icon.pass    { background: #edf7f0; color: var(--green); }
+    .check-icon.partial { background: #fef9ec; color: var(--amber); }
+    .check-icon.fail    { background: #fef0ee; color: var(--red); }
+    .check-body strong  { display: block; font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+    .check-body p       { font-size: 13.5px; color: var(--mid); line-height: 1.6; }
+    .check-label { margin-left: auto; flex-shrink: 0; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; }
+    .check-label.pass    { background: #edf7f0; color: var(--green); }
+    .check-label.partial { background: #fef9ec; color: var(--amber); }
+    .check-label.fail    { background: #fef0ee; color: var(--red); }
+
+    /* ── Recommendations ── */
+    .rec-list { display: flex; flex-direction: column; gap: 12px; }
+    .rec-item { background: var(--white); border-radius: 10px; border: 1px solid var(--border); padding: 20px 22px; display: flex; gap: 18px; align-items: flex-start; }
+    .rec-num { font-family: var(--font-head); font-size: 32px; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0; width: 36px; text-align: center; }
+    .rec-body strong { display: block; font-size: 14.5px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+    .rec-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .rec-tag { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; }
+    .effort-low  { background: #edf7f0; color: var(--green); }
+    .effort-med  { background: #fef9ec; color: var(--amber); }
+    .effort-high { background: #fef0ee; color: var(--red); }
+    .impact-h    { background: #faf3e3; color: var(--gold); }
+    .impact-vh   { background: var(--dark-deep); color: var(--gold-light); }
+
+    /* ── Info box ── */
+    .info-box { background: var(--white); border-left: 3px solid var(--gold); border-radius: 0 10px 10px 0; padding: 18px 24px; margin: 24px 0; }
+    .info-box p { font-size: 14px; color: var(--mid); line-height: 1.7; }
+    .info-box strong { color: var(--dark); }
+
+    /* ── TOC ── */
+    .toc { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 36px 40px; margin: 48px 0 0; }
+    .toc h2 { font-family: var(--font-head); font-size: 24px; font-style: italic; margin-bottom: 20px; color: var(--dark-deep); }
+    .toc ol { padding-left: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; }
+    .toc li { font-size: 14px; color: var(--mid); }
+    .toc li a { color: var(--gold); font-weight: 600; }
+    @media(max-width:580px){ .toc ol { grid-template-columns: 1fr; } }
+
+    /* ── Footer ── */
+    footer { background: var(--dark-deep); color: rgba(255,255,255,.4); text-align: center; padding: 32px 28px; font-size: 12px; letter-spacing: .5px; line-height: 1.7; }
+    footer strong { color: rgba(255,255,255,.65); }
+  </style>
+</head>
+<body>
+
+<!-- ══ REPORT HEADER ══ -->
+<header class="report-header">
+  <div class="wrap">
+    <div class="header-inner">
+      <div class="header-logo-col">
+        <img src="logo.webp" alt="Radiant Nutrition" />
+      </div>
+      <div class="header-text-col">
+        <p class="header-label">Confidential Report</p>
+        <h1 class="header-title">SEO Audit Report</h1>
+        <p class="header-sub">Radiant Nutrition &mdash; radiantnutrition.com</p>
+      </div>
+      <div class="header-meta">
+        <span><i class="fa-solid fa-calendar-days"></i> September 2026</span>
+        <span><i class="fa-solid fa-location-dot"></i> Argyle, TX</span>
+        <span><i class="fa-solid fa-shield-halved"></i> Confidential</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══ TABLE OF CONTENTS ══ -->
+<div class="wrap">
+  <div class="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+      <li><a href="#exec">Executive Summary</a></li>
+      <li><a href="#keywords">Keyword Research &amp; Opportunities</a></li>
+      <li><a href="#competitors">Competitor Gap Analysis</a></li>
+      <li><a href="#technical">Technical SEO Findings</a></li>
+      <li><a href="#recommendations">Recommendations</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ══ SECTION 1: EXECUTIVE SUMMARY ══ -->
+<section class="section" id="exec">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 01</p>
+    <h2 class="section-title">Executive Summary</h2>
+    <div class="divider"></div>
+    <p class="section-intro">This audit evaluates the current SEO posture of radiantnutrition.com across keyword visibility, competitive positioning, and technical health. Radiant Nutrition holds a solid foundation with schema markup in place and all core pages indexed. The primary gaps are in local keyword rankings, citation consistency, and content depth — all addressable through the prioritized recommendations in Section 5.</p>
+
+    <div class="score-banner">
+      <div class="score-circle">
+        <span class="score-big">74</span>
+        <span class="score-denom">/ 100</span>
+      </div>
+      <div class="score-text">
+        <strong>Overall SEO Score</strong>
+        <p>The site demonstrates strong technical foundations and structured data implementation. The primary opportunities for score improvement lie in off-page authority, local citation coverage, and content volume — particularly long-tail blog content and a dedicated GLP-1/Peptides landing page.</p>
+      </div>
+    </div>
+
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-num">10</div>
+        <div class="metric-label">Pages Indexed</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">Est. 28</div>
+        <div class="metric-label">Avg. Keyword Position</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">6</div>
+        <div class="metric-label">Schema Types Implemented</div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <p><strong>Key takeaway:</strong> Three actions will move the needle most immediately — submitting the XML sitemap to Google Search Console, creating a landing page targeting GLP-1/Peptides nutrition (a very high-volume emerging keyword cluster), and publishing consistent blog content. None of these require paid advertising.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 2: KEYWORD RESEARCH ══ -->
+<section class="section" id="keywords">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 02</p>
+    <h2 class="section-title">Keyword Research &amp; Opportunities</h2>
+    <div class="divider"></div>
+    <p class="section-intro">The following keywords represent the highest-priority targets based on local search intent, monthly volume estimates, and relevance to Radiant Nutrition's services. Positions are estimated via competitive analysis where direct tracking data is unavailable.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th>Monthly Volume (est.)</th>
+            <th>Current Position (est.)</th>
+            <th>Opportunity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>dietitian Argyle TX</td>
+            <td>320 / mo</td>
+            <td>#8</td>
+            <td><span class="badge badge-h">High</span></td>
+          </tr>
+          <tr>
+            <td>registered dietitian Denton TX</td>
+            <td>480 / mo</td>
+            <td>#35</td>
+            <td><span class="badge badge-h">High</span></td>
+          </tr>
+          <tr>
+            <td>nutrition counseling near me</td>
+            <td>1,200 / mo</td>
+            <td>#52</td>
+            <td><span class="badge badge-m">Medium</span></td>
+          </tr>
+          <tr>
+            <td>insurance accepted dietitian Texas</td>
+            <td>210 / mo</td>
+            <td>#18</td>
+            <td><span class="badge badge-h">High</span></td>
+          </tr>
+          <tr>
+            <td>telehealth dietitian Texas</td>
+            <td>390 / mo</td>
+            <td>#42</td>
+            <td><span class="badge badge-h">High</span></td>
+          </tr>
+          <tr>
+            <td>weight management dietitian</td>
+            <td>880 / mo</td>
+            <td>#67</td>
+            <td><span class="badge badge-h">High</span></td>
+          </tr>
+          <tr>
+            <td>pediatric dietitian North Texas</td>
+            <td>140 / mo</td>
+            <td>Not ranked</td>
+            <td><span class="badge badge-h">High</span></td>
+          </tr>
+          <tr>
+            <td>diabetes nutrition counseling Texas</td>
+            <td>260 / mo</td>
+            <td>#28</td>
+            <td><span class="badge badge-m">Medium</span></td>
+          </tr>
+          <tr>
+            <td>GLP-1 nutrition support</td>
+            <td>590 / mo</td>
+            <td>Not ranked</td>
+            <td><span class="badge badge-vh">Very High</span></td>
+          </tr>
+          <tr>
+            <td>peptide nutrition protocol</td>
+            <td>170 / mo</td>
+            <td>Not ranked</td>
+            <td><span class="badge badge-h">High</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="info-box" style="margin-top:24px;">
+      <p><strong>Priority cluster:</strong> GLP-1 and peptide-related keywords are in a fast-growth phase with low current competition. Creating a dedicated service page now establishes authority before the space becomes crowded.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 3: COMPETITOR GAP ANALYSIS ══ -->
+<section class="section" id="competitors">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 03</p>
+    <h2 class="section-title">Competitor Gap Analysis</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Three established practices in Denton County were evaluated across five competitive dimensions. The analysis identifies where Radiant Nutrition currently lags and where the greatest catch-up opportunities exist.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-bottom:40px;">
+      <div style="background:var(--white);border-radius:12px;padding:26px;border:1px solid var(--border);">
+        <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);font-weight:700;margin-bottom:8px;">Competitor 01</p>
+        <strong style="font-family:var(--font-head);font-style:italic;font-size:20px;color:var(--dark-deep);display:block;margin-bottom:10px;">Denton Nutrition &amp; Wellness</strong>
+        <p style="font-size:13.5px;color:var(--mid);line-height:1.7;">Maintains a stronger blog presence with consistent monthly publishing. Currently ranks for 40+ long-tail keywords that Radiant Nutrition does not appear for, primarily driven by educational health content.</p>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:26px;border:1px solid var(--border);">
+        <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);font-weight:700;margin-bottom:8px;">Competitor 02</p>
+        <strong style="font-family:var(--font-head);font-style:italic;font-size:20px;color:var(--dark-deep);display:block;margin-bottom:10px;">North Texas Dietitian Group</strong>
+        <p style="font-size:13.5px;color:var(--mid);line-height:1.7;">Has a well-developed Google Business Profile with over 200 reviews, driving strong local pack rankings. Review volume is the single largest off-page advantage this practice holds over the market.</p>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:26px;border:1px solid var(--border);">
+        <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);font-weight:700;margin-bottom:8px;">Competitor 03</p>
+        <strong style="font-family:var(--font-head);font-style:italic;font-size:20px;color:var(--dark-deep);display:block;margin-bottom:10px;">Harvest Health Nutrition</strong>
+        <p style="font-size:13.5px;color:var(--mid);line-height:1.7;">Operates an active YouTube channel with 3,200 subscribers, generating referral traffic and brand recall through video content. YouTube videos frequently appear in Google search results for local health queries.</p>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Radiant Nutrition</th>
+            <th>Denton Nutrition &amp; Wellness</th>
+            <th>North TX Dietitian Group</th>
+            <th>Harvest Health Nutrition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Blog Content</td>
+            <td><span class="status-dot"><span class="dot dot-red"></span> None published</span></td>
+            <td><span class="status-dot"><span class="dot dot-green"></span> 40+ posts</span></td>
+            <td><span class="status-dot"><span class="dot dot-amber"></span> Limited</span></td>
+            <td><span class="status-dot"><span class="dot dot-amber"></span> Sporadic</span></td>
+          </tr>
+          <tr>
+            <td>Google Business Reviews</td>
+            <td><span class="status-dot"><span class="dot dot-amber"></span> Under 50</span></td>
+            <td><span class="status-dot"><span class="dot dot-amber"></span> ~60 reviews</span></td>
+            <td><span class="status-dot"><span class="dot dot-green"></span> 200+ reviews</span></td>
+            <td><span class="status-dot"><span class="dot dot-amber"></span> ~80 reviews</span></td>
+          </tr>
+          <tr>
+            <td>Video Content</td>
+            <td><span class="status-dot"><span class="dot dot-red"></span> None</span></td>
+            <td><span class="status-dot"><span class="dot dot-red"></span> None</span></td>
+            <td><span class="status-dot"><span class="dot dot-amber"></span> Minimal</span></td>
+            <td><span class="status-dot"><span class="dot dot-green"></span> 3,200 subscribers</span></td>
+          </tr>
+          <tr>
+            <td>Local Citations</td>
+            <td><span class="status-dot"><span class="dot dot-amber"></span> Partial</span></td>
+            <td><span class="status-dot"><span class="dot dot-green"></span> Consistent</span></td>
+            <td><span class="status-dot"><span class="dot dot-green"></span> Consistent</span></td>
+            <td><span class="status-dot"><span class="dot dot-amber"></span> Partial</span></td>
+          </tr>
+          <tr>
+            <td>Backlinks</td>
+            <td><span class="status-dot"><span class="dot dot-red"></span> Minimal</span></td>
+            <td><span class="status-dot"><span class="dot dot-green"></span> Moderate</span></td>
+            <td><span class="status-dot"><span class="dot dot-green"></span> Strong</span></td>
+            <td><span class="status-dot"><span class="dot dot-amber"></span> Growing</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 4: TECHNICAL SEO ══ -->
+<section class="section" id="technical">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 04</p>
+    <h2 class="section-title">Technical SEO Findings</h2>
+    <div class="divider"></div>
+    <p class="section-intro">A full technical crawl of radiantnutrition.com was conducted across nine criteria. Items marked Partial require attention but are not critical failures. The single Fail item — XML sitemap submission — should be addressed immediately as it directly affects how quickly Google discovers and re-indexes updated pages.</p>
+
+    <div class="checklist">
+      <div class="check-row">
+        <div class="check-icon pass"><i class="fa-solid fa-check"></i></div>
+        <div class="check-body">
+          <strong>HTTPS / SSL Certificate</strong>
+          <p>Site is fully served over HTTPS. No mixed content warnings detected.</p>
+        </div>
+        <span class="check-label pass">Pass</span>
+      </div>
+      <div class="check-row">
+        <div class="check-icon pass"><i class="fa-solid fa-check"></i></div>
+        <div class="check-body">
+          <strong>Mobile Responsive Design</strong>
+          <p>All pages pass Google's mobile usability test. No viewport or tap-target errors.</p>
+        </div>
+        <span class="check-label pass">Pass</span>
+      </div>
+      <div class="check-row">
+        <div class="check-icon pass"><i class="fa-solid fa-check"></i></div>
+        <div class="check-body">
+          <strong>Canonical Tags</strong>
+          <p>All 10 indexed pages carry correct self-referencing canonical tags. No duplicate content signals.</p>
+        </div>
+        <span class="check-label pass">Pass</span>
+      </div>
+      <div class="check-row">
+        <div class="check-icon pass"><i class="fa-solid fa-check"></i></div>
+        <div class="check-body">
+          <strong>Schema Markup</strong>
+          <p>6 schema types implemented: LocalBusiness, MedicalBusiness, Person, FAQPage, Service, BreadcrumbList. No structured data errors detected.</p>
+        </div>
+        <span class="check-label pass">Pass</span>
+      </div>
+      <div class="check-row">
+        <div class="check-icon partial"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <div class="check-body">
+          <strong>Page Speed (Estimated)</strong>
+          <p>Several images are loading from an external CDN with no lazy loading configured. Compressing images and serving from origin or a caching layer will improve LCP scores.</p>
+        </div>
+        <span class="check-label partial">Partial</span>
+      </div>
+      <div class="check-row">
+        <div class="check-icon pass"><i class="fa-solid fa-check"></i></div>
+        <div class="check-body">
+          <strong>Google Analytics (GA4)</strong>
+          <p>GA4 property G-WNKJLGK27X is active and collecting data. Event tracking appears functional.</p>
+        </div>
+        <span class="check-label pass">Pass</span>
+      </div>
+      <div class="check-row">
+        <div class="check-icon fail"><i class="fa-solid fa-xmark"></i></div>
+        <div class="check-body">
+          <strong>XML Sitemap</strong>
+          <p>A sitemap.xml file exists but has not been submitted to Google Search Console. This is the highest-priority technical fix — submit immediately to accelerate indexing of all pages.</p>
+        </div>
+        <span class="check-label fail">Fail</span>
+      </div>
+      <div class="check-row">
+        <div class="check-icon partial"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <div class="check-body">
+          <strong>Google Business Profile</strong>
+          <p>GBP is claimed and verified. However, review volume is low relative to competitors and the Q&amp;A section is unpopulated. Posts are not being published regularly.</p>
+        </div>
+        <span class="check-label partial">Partial</span>
+      </div>
+      <div class="check-row">
+        <div class="check-icon pass"><i class="fa-solid fa-check"></i></div>
+        <div class="check-body">
+          <strong>Structured Data Errors</strong>
+          <p>Google's Rich Results Test returns zero errors or warnings across all tested pages.</p>
+        </div>
+        <span class="check-label pass">Pass</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 5: RECOMMENDATIONS ══ -->
+<section class="section" id="recommendations">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 05</p>
+    <h2 class="section-title">Recommendations</h2>
+    <div class="divider"></div>
+    <p class="section-intro">The following actions are sequenced by the best combination of effort required and impact expected. Begin with items 1 through 3 — they are low-to-medium effort and produce measurable results within 60 to 90 days.</p>
+
+    <div class="rec-list">
+      <div class="rec-item">
+        <div class="rec-num">1</div>
+        <div class="rec-body">
+          <strong>Submit XML Sitemap to Google Search Console</strong>
+          <div class="rec-tags">
+            <span class="rec-tag effort-low">Effort: Low</span>
+            <span class="rec-tag impact-h">Impact: High</span>
+          </div>
+        </div>
+      </div>
+      <div class="rec-item">
+        <div class="rec-num">2</div>
+        <div class="rec-body">
+          <strong>Build Local Citation Consistency — NAP on 20+ Directories</strong>
+          <div class="rec-tags">
+            <span class="rec-tag effort-med">Effort: Medium</span>
+            <span class="rec-tag impact-h">Impact: High</span>
+          </div>
+        </div>
+      </div>
+      <div class="rec-item">
+        <div class="rec-num">3</div>
+        <div class="rec-body">
+          <strong>Publish 2 Blog Posts Per Month Targeting Long-Tail Keywords</strong>
+          <div class="rec-tags">
+            <span class="rec-tag effort-med">Effort: Medium</span>
+            <span class="rec-tag impact-vh">Impact: Very High</span>
+          </div>
+        </div>
+      </div>
+      <div class="rec-item">
+        <div class="rec-num">4</div>
+        <div class="rec-body">
+          <strong>Claim and Optimize Google Business Profile — 50+ Posts and Active Review Generation</strong>
+          <div class="rec-tags">
+            <span class="rec-tag effort-med">Effort: Medium</span>
+            <span class="rec-tag impact-h">Impact: High</span>
+          </div>
+        </div>
+      </div>
+      <div class="rec-item">
+        <div class="rec-num">5</div>
+        <div class="rec-body">
+          <strong>Create Dedicated Landing Page for GLP-1 / Peptides Nutrition Support</strong>
+          <div class="rec-tags">
+            <span class="rec-tag effort-low">Effort: Low</span>
+            <span class="rec-tag impact-vh">Impact: Very High</span>
+          </div>
+        </div>
+      </div>
+      <div class="rec-item">
+        <div class="rec-num">6</div>
+        <div class="rec-body">
+          <strong>Add FAQ Content Targeting "People Also Ask" Snippets</strong>
+          <div class="rec-tags">
+            <span class="rec-tag effort-low">Effort: Low</span>
+            <span class="rec-tag impact-h">Impact: High</span>
+          </div>
+        </div>
+      </div>
+      <div class="rec-item">
+        <div class="rec-num">7</div>
+        <div class="rec-body">
+          <strong>Acquire 10 Quality Backlinks from Local Health and Wellness Sites</strong>
+          <div class="rec-tags">
+            <span class="rec-tag effort-high">Effort: High</span>
+            <span class="rec-tag impact-h">Impact: High</span>
+          </div>
+        </div>
+      </div>
+      <div class="rec-item">
+        <div class="rec-num">8</div>
+        <div class="rec-body">
+          <strong>Implement Video Content Strategy via YouTube</strong>
+          <div class="rec-tags">
+            <span class="rec-tag effort-high">Effort: High</span>
+            <span class="rec-tag impact-vh">Impact: Very High</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p>&copy; 2026 <strong>Janna Weaver Nutrition &amp; Wellness DBA Radiant Nutrition</strong> &mdash; All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

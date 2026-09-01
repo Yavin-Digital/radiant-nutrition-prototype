@@ -1,0 +1,336 @@
+/*
+ * ════════════════════════════════════════════════════════════════════
+ *  RADIANT NUTRITION — GHL Form Custom CSS
+ *  Insurance Verification Form (and all GHL forms)
+ *
+ *  HOW TO USE:
+ *  1. Open the form in GHL Form Builder
+ *  2. Click the "Styles" tab in the right sidebar
+ *  3. Scroll to "Advanced" → "Custom CSS"
+ *  4. Paste the entire contents of this file
+ *
+ *  Brand Colors:
+ *    Gold:  #AF8A3B   Gold Light: #C8A557
+ *    Dark:  #2e2b26   Cream:      #faf8f5
+ * ════════════════════════════════════════════════════════════════════
+ */
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap');
+
+/* ─────────────────────────────────────────
+   1. FORM WRAPPER & BACKGROUND
+───────────────────────────────────────── */
+body,
+.form-container,
+.hl-page-preview--content,
+[data-type="form"] {
+  background-color: #faf8f5 !important;
+  font-family: 'Raleway', sans-serif !important;
+}
+
+/* ─────────────────────────────────────────
+   2. FORM TITLE / PAGE HEADING
+───────────────────────────────────────── */
+h1, h2, h3,
+.form-name,
+.hl-form-title,
+.elHeadline {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 400 !important;
+  font-style: italic !important;
+  color: #2e2b26 !important;
+  letter-spacing: 0.5px;
+}
+
+/* Top accent line above form */
+.hl-page-preview--content::before,
+.form-container::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: #AF8A3B;
+  margin: 0 auto 24px;
+}
+
+/* ─────────────────────────────────────────
+   3. LABELS
+───────────────────────────────────────── */
+label,
+.label-class,
+.hl-field-label {
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 2.5px !important;
+  text-transform: uppercase !important;
+  color: #AF8A3B !important;
+  margin-bottom: 6px !important;
+  display: block;
+}
+
+/* Required asterisk */
+label .required,
+label span[style*="color: rgb(235"],
+.hl-field-label .required {
+  color: #AF8A3B !important;
+  font-size: 12px;
+}
+
+/* ─────────────────────────────────────────
+   4. INPUT FIELDS (text, email, tel, number)
+───────────────────────────────────────── */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+input[type="password"],
+.form-control,
+.hl-input {
+  width: 100% !important;
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #2e2b26 !important;
+  background-color: #ffffff !important;
+  border: 1.5px solid #e0d8cc !important;
+  border-radius: 8px !important;
+  padding: 13px 16px !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  outline: none !important;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="number"]::placeholder,
+input[type="date"]::placeholder,
+.form-control::placeholder {
+  color: #bbb0a0 !important;
+  font-style: italic;
+  font-size: 13px !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+.form-control:focus,
+.hl-input:focus {
+  border-color: #AF8A3B !important;
+  box-shadow: 0 0 0 3px rgba(175, 138, 59, 0.12) !important;
+  background-color: #fffdf7 !important;
+  outline: none !important;
+}
+
+/* ─────────────────────────────────────────
+   5. SELECT / DROPDOWN
+───────────────────────────────────────── */
+select,
+.hl-select,
+.form-select {
+  width: 100% !important;
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 14px !important;
+  color: #2e2b26 !important;
+  background-color: #ffffff !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23AF8A3B' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 14px center !important;
+  border: 1.5px solid #e0d8cc !important;
+  border-radius: 8px !important;
+  padding: 13px 40px 13px 16px !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+select:focus,
+.hl-select:focus {
+  border-color: #AF8A3B !important;
+  box-shadow: 0 0 0 3px rgba(175, 138, 59, 0.12) !important;
+  outline: none !important;
+}
+
+/* ─────────────────────────────────────────
+   6. TEXTAREA
+───────────────────────────────────────── */
+textarea,
+.hl-textarea {
+  width: 100% !important;
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 14px !important;
+  color: #2e2b26 !important;
+  background-color: #ffffff !important;
+  border: 1.5px solid #e0d8cc !important;
+  border-radius: 8px !important;
+  padding: 13px 16px !important;
+  resize: vertical;
+  min-height: 100px;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+textarea:focus {
+  border-color: #AF8A3B !important;
+  box-shadow: 0 0 0 3px rgba(175, 138, 59, 0.12) !important;
+  outline: none !important;
+}
+
+/* ─────────────────────────────────────────
+   7. CHECKBOXES & RADIO BUTTONS
+───────────────────────────────────────── */
+input[type="checkbox"],
+input[type="radio"] {
+  width: 18px !important;
+  height: 18px !important;
+  accent-color: #AF8A3B !important;
+  border: 1.5px solid #e0d8cc !important;
+  border-radius: 4px !important;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-right: 8px !important;
+}
+
+.checkbox-wrapper label,
+.radio-wrapper label,
+.hl-checkbox-label,
+.hl-radio-label {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: none !important;
+  color: #2e2b26 !important;
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* ─────────────────────────────────────────
+   8. FIELD GROUP / FORM ROW SPACING
+───────────────────────────────────────── */
+.form-group,
+.hl-form-group,
+.field-wrapper,
+.fbuilder-elem {
+  margin-bottom: 20px !important;
+}
+
+/* ─────────────────────────────────────────
+   9. SUBMIT BUTTON
+───────────────────────────────────────── */
+button[type="submit"],
+input[type="submit"],
+.btn-submit,
+.hl-btn,
+.elButton,
+.submit-btn {
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 2.5px !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+  background: #AF8A3B !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 16px 48px !important;
+  cursor: pointer !important;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+  display: inline-block !important;
+  width: auto !important;
+  min-width: 200px;
+}
+
+button[type="submit"]:hover,
+input[type="submit"]:hover,
+.elButton:hover,
+.submit-btn:hover {
+  background: #C8A557 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 28px rgba(175, 138, 59, 0.35) !important;
+}
+
+/* ─────────────────────────────────────────
+   10. ERROR MESSAGES
+───────────────────────────────────────── */
+.hl-error,
+.error-message,
+.field-error,
+.invalid-feedback {
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 12px !important;
+  color: #c0392b !important;
+  margin-top: 4px !important;
+  letter-spacing: 0.3px;
+}
+
+input.error,
+input.is-invalid,
+select.error,
+select.is-invalid {
+  border-color: #c0392b !important;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1) !important;
+}
+
+/* ─────────────────────────────────────────
+   11. DATE PICKER ICON TINT
+───────────────────────────────────────── */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(55%) sepia(40%) saturate(600%) hue-rotate(5deg) brightness(90%);
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* ─────────────────────────────────────────
+   12. SECTION DIVIDER (optional fieldset/group headers)
+───────────────────────────────────────── */
+.field-section-title,
+.form-section-header,
+.hl-section-label {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 22px !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  color: #2e2b26 !important;
+  border-bottom: 1px solid #e8e2d8 !important;
+  padding-bottom: 10px !important;
+  margin: 32px 0 20px !important;
+}
+
+/* ─────────────────────────────────────────
+   13. OVERALL PAGE / FORM CARD STYLING
+───────────────────────────────────────── */
+.hl-page-preview--content,
+.form-outer-wrapper,
+.hl-form-wrapper {
+  background: #faf8f5 !important;
+  padding: 40px !important;
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  border-radius: 16px !important;
+}
+
+@media (max-width: 600px) {
+  .hl-page-preview--content,
+  .form-outer-wrapper {
+    padding: 24px 16px !important;
+  }
+
+  button[type="submit"],
+  .elButton,
+  .submit-btn {
+    width: 100% !important;
+    text-align: center !important;
+  }
+}

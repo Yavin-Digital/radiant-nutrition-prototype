@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEO Marketing Plan — Radiant Nutrition</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: #faf8f5;
+      color: #434445;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    /* HEADER */
+    header {
+      background: #1c160b;
+      padding: 48px 40px 40px;
+      text-align: center;
+      border-bottom: 4px solid #AF8A3B;
+    }
+    header img.logo {
+      height: 64px;
+      filter: brightness(0) invert(1);
+      margin-bottom: 20px;
+    }
+    .logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      color: #fff;
+      font-size: 22px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    header h1 {
+      color: #AF8A3B;
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    header p.subtitle {
+      color: #d4c9b4;
+      font-family: 'Raleway', sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    header p.date {
+      color: #AF8A3B;
+      font-family: 'Raleway', sans-serif;
+      font-size: 13px;
+      margin-top: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* LAYOUT */
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 48px 32px 64px;
+    }
+
+    /* INTRO CARD */
+    .intro-card {
+      background: #fff;
+      border-left: 5px solid #AF8A3B;
+      border-radius: 4px;
+      padding: 28px 32px;
+      margin-bottom: 52px;
+      box-shadow: 0 2px 12px rgba(67,68,69,0.07);
+    }
+    .intro-card p {
+      font-size: 15.5px;
+      color: #434445;
+      line-height: 1.8;
+    }
+
+    /* SECTION HEADER */
+    .section-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #AF8A3B;
+      margin-bottom: 6px;
+    }
+    section {
+      margin-bottom: 60px;
+    }
+    section h2 {
+      font-size: 30px;
+      font-weight: 700;
+      color: #1c160b;
+      border-bottom: 2px solid #AF8A3B;
+      padding-bottom: 10px;
+      margin-bottom: 28px;
+    }
+
+    /* TABLES */
+    .table-wrap {
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    thead tr {
+      background: #1c160b;
+      color: #AF8A3B;
+    }
+    thead th {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 14px 16px;
+      text-align: left;
+    }
+    tbody tr:nth-child(odd) { background: #fff; }
+    tbody tr:nth-child(even) { background: #f4f1eb; }
+    tbody td {
+      padding: 13px 16px;
+      border-bottom: 1px solid #e2ddd4;
+      color: #434445;
+    }
+    tbody tr:hover { background: #ede9df; }
+
+    /* QUICK WIN CARDS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .qw-card {
+      background: #fff;
+      border-radius: 6px;
+      border-top: 4px solid #AF8A3B;
+      padding: 22px 24px 20px;
+      box-shadow: 0 2px 10px rgba(67,68,69,0.08);
+    }
+    .qw-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1c160b;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .qw-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-size: 13px;
+    }
+    .qw-meta span { color: #6b6560; }
+    .qw-meta strong { color: #434445; }
+    .impact-badge {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .impact-vh { background: #2d5a27; color: #fff; }
+    .impact-h  { background: #AF8A3B; color: #fff; }
+    .impact-m  { background: #7a6e5f; color: #fff; }
+
+    /* LINK BUILDING */
+    .lb-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .lb-card {
+      background: #fff;
+      border-radius: 6px;
+      padding: 22px 24px;
+      box-shadow: 0 2px 10px rgba(67,68,69,0.07);
+      border-left: 4px solid #AF8A3B;
+    }
+    .lb-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1c160b;
+      margin-bottom: 10px;
+    }
+    .lb-card ul {
+      padding-left: 18px;
+      font-size: 14px;
+      color: #434445;
+    }
+    .lb-card ul li { margin-bottom: 5px; }
+
+    /* LOCAL SEO */
+    .local-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .local-card {
+      background: #fff;
+      border-radius: 6px;
+      padding: 24px 26px;
+      box-shadow: 0 2px 10px rgba(67,68,69,0.07);
+    }
+    .local-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1c160b;
+      margin-bottom: 14px;
+      border-bottom: 1px solid #e2ddd4;
+      padding-bottom: 8px;
+    }
+    .gbp-checklist {
+      columns: 2;
+      column-gap: 16px;
+      padding-left: 18px;
+      font-size: 13.5px;
+      color: #434445;
+    }
+    .gbp-checklist li { margin-bottom: 5px; break-inside: avoid; }
+    .local-card p { font-size: 14px; color: #434445; line-height: 1.75; }
+    .local-card ul.review-list {
+      padding-left: 18px;
+      font-size: 14px;
+      color: #434445;
+    }
+    .local-card ul.review-list li { margin-bottom: 6px; }
+    .near-me-box {
+      background: #f4f1eb;
+      border-radius: 4px;
+      padding: 16px 18px;
+      font-size: 13.5px;
+      color: #434445;
+    }
+    .near-me-box ul { padding-left: 18px; margin-top: 8px; }
+    .near-me-box ul li { margin-bottom: 5px; }
+
+    /* KPI TABLE */
+    .kpi-note {
+      font-size: 13px;
+      color: #7a6e5f;
+      margin-top: 16px;
+      font-style: italic;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1c160b;
+      color: #a09680;
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 12.5px;
+      letter-spacing: 0.05em;
+      border-top: 3px solid #AF8A3B;
+    }
+    footer span { color: #AF8A3B; }
+
+    @media (max-width: 680px) {
+      header h1 { font-size: 28px; }
+      .local-grid { grid-template-columns: 1fr; }
+      .gbp-checklist { columns: 1; }
+      main { padding: 32px 16px 48px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-text">Radiant Nutrition</div>
+  <h1>SEO Marketing Plan</h1>
+  <p class="subtitle">Radiant Nutrition &mdash; 12-Month Roadmap to Search Dominance</p>
+  <p class="date">September 2026</p>
+</header>
+
+<main>
+
+  <!-- INTRO -->
+  <div class="intro-card">
+    <p>This plan is built directly from the SEO audit findings. Every action item ties to a specific gap or opportunity identified in the audit. Estimated timeline: 12 months to achieve page 1 rankings for primary local keywords.</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <section>
+    <div class="section-label">Section 1</div>
+    <h2>Priority Keyword Targets &mdash; Phase 1</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th>Current Est. Position</th>
+            <th>Target (6 Months)</th>
+            <th>Target (12 Months)</th>
+            <th>Monthly Search Volume</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>dietitian Argyle TX</td>
+            <td>Not ranked</td>
+            <td>Top 10</td>
+            <td>Top 3</td>
+            <td>90&ndash;200</td>
+          </tr>
+          <tr>
+            <td>registered dietitian Denton TX</td>
+            <td>Not ranked</td>
+            <td>Top 15</td>
+            <td>Top 5</td>
+            <td>300&ndash;500</td>
+          </tr>
+          <tr>
+            <td>insurance accepted dietitian Texas</td>
+            <td>Not ranked</td>
+            <td>Top 20</td>
+            <td>Top 10</td>
+            <td>200&ndash;400</td>
+          </tr>
+          <tr>
+            <td>telehealth dietitian Texas</td>
+            <td>Not ranked</td>
+            <td>Top 15</td>
+            <td>Top 5</td>
+            <td>400&ndash;700</td>
+          </tr>
+          <tr>
+            <td>weight management dietitian near me</td>
+            <td>Not ranked</td>
+            <td>Top 20</td>
+            <td>Top 10</td>
+            <td>500&ndash;900</td>
+          </tr>
+          <tr>
+            <td>GLP-1 nutrition support Texas</td>
+            <td>Not ranked</td>
+            <td>Top 10</td>
+            <td>Top 3</td>
+            <td>150&ndash;350</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section>
+    <div class="section-label">Section 2</div>
+    <h2>90-Day Quick Wins</h2>
+    <div class="cards-grid">
+
+      <div class="qw-card">
+        <h3>Submit Sitemap to Google Search Console</h3>
+        <div class="qw-meta">
+          <span><strong>Timeline:</strong> Week 1</span>
+          <span><strong>Owner:</strong> Web Team</span>
+        </div>
+        <span class="impact-badge impact-h">Impact: High</span>
+      </div>
+
+      <div class="qw-card">
+        <h3>Create Google Business Profile with 20+ Photos and Full Info</h3>
+        <div class="qw-meta">
+          <span><strong>Timeline:</strong> Week 1&ndash;2</span>
+          <span><strong>Owner:</strong> Marketing</span>
+        </div>
+        <span class="impact-badge impact-vh">Impact: Very High</span>
+      </div>
+
+      <div class="qw-card">
+        <h3>Create a Dedicated GLP-1/Peptides Nutrition Landing Page</h3>
+        <div class="qw-meta">
+          <span><strong>Timeline:</strong> Week 2&ndash;3</span>
+          <span><strong>Owner:</strong> Web Team + Janna</span>
+        </div>
+        <span class="impact-badge impact-vh">Impact: Very High</span>
+      </div>
+
+      <div class="qw-card">
+        <h3>Build 25 Local Directory Citations (NAP Consistency)</h3>
+        <div class="qw-meta">
+          <span><strong>Timeline:</strong> Month 1</span>
+          <span><strong>Owner:</strong> Marketing</span>
+        </div>
+        <span class="impact-badge impact-h">Impact: High</span>
+      </div>
+
+      <div class="qw-card">
+        <h3>Launch Blog with 2 Posts Targeting High-Value Keywords</h3>
+        <div class="qw-meta">
+          <span><strong>Timeline:</strong> Month 1</span>
+          <span><strong>Owner:</strong> Content Team + Janna</span>
+        </div>
+        <span class="impact-badge impact-h">Impact: High</span>
+      </div>
+
+      <div class="qw-card">
+        <h3>Add Structured Data to Every Blog Post (Article Schema)</h3>
+        <div class="qw-meta">
+          <span><strong>Timeline:</strong> Week 2</span>
+          <span><strong>Owner:</strong> Web Team</span>
+        </div>
+        <span class="impact-badge impact-m">Impact: Medium</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section>
+    <div class="section-label">Section 3</div>
+    <h2>Content Calendar &mdash; Months 1&ndash;6</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Post 1</th>
+            <th>Post 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Month 1</strong></td>
+            <td>What Does a Registered Dietitian Do?</td>
+            <td>GLP-1 Medications: Why Nutrition Matters</td>
+          </tr>
+          <tr>
+            <td><strong>Month 2</strong></td>
+            <td>How to Use Insurance for Nutrition Counseling in Texas</td>
+            <td>Pediatric Nutrition Guide for Argyle Families</td>
+          </tr>
+          <tr>
+            <td><strong>Month 3</strong></td>
+            <td>Weight Management vs. Dieting: The RD Perspective</td>
+            <td>Diabetes-Friendly Meal Planning 101</td>
+          </tr>
+          <tr>
+            <td><strong>Month 4</strong></td>
+            <td>Sports Nutrition for North Texas Athletes</td>
+            <td>Heart-Healthy Eating: What the Research Says</td>
+          </tr>
+          <tr>
+            <td><strong>Month 5</strong></td>
+            <td>What to Expect at Your First Dietitian Appointment</td>
+            <td>Telehealth Nutrition: Everything You Need to Know</td>
+          </tr>
+          <tr>
+            <td><strong>Month 6</strong></td>
+            <td>Top 10 Nutrition Myths Debunked by a Dietitian</td>
+            <td>Peptide Protocols and Nutrition</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section>
+    <div class="section-label">Section 4</div>
+    <h2>Link Building Strategy</h2>
+    <div class="lb-grid">
+
+      <div class="lb-card">
+        <h3>Local Partnerships</h3>
+        <p style="font-size:13.5px;margin-bottom:10px;color:#6b6560;">Request backlinks from:</p>
+        <ul>
+          <li>Argyle ISD</li>
+          <li>Local gyms and fitness centers</li>
+          <li>Denton County medical practices</li>
+        </ul>
+      </div>
+
+      <div class="lb-card">
+        <h3>Guest Posting</h3>
+        <p style="font-size:13.5px;margin-bottom:10px;color:#6b6560;">Pitch articles to:</p>
+        <ul>
+          <li>Texas health blogs</li>
+          <li>North Texas parenting sites</li>
+          <li>Local news outlets</li>
+        </ul>
+      </div>
+
+      <div class="lb-card">
+        <h3>Resource Page Outreach</h3>
+        <p style="font-size:13.5px;margin-bottom:10px;color:#6b6560;">Target dietitian resource pages on:</p>
+        <ul>
+          <li>Hospital nutrition departments</li>
+          <li>University nutrition programs</li>
+          <li>Texas health authority pages</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section>
+    <div class="section-label">Section 5</div>
+    <h2>Local SEO Dominance Plan</h2>
+    <div class="local-grid">
+
+      <div class="local-card" style="grid-column: 1 / -1;">
+        <h3>Google Business Profile Optimization Checklist</h3>
+        <ul class="gbp-checklist">
+          <li>Claim and verify the listing</li>
+          <li>Add primary and secondary categories</li>
+          <li>Write a keyword-rich business description</li>
+          <li>Upload 20+ high-quality photos</li>
+          <li>Add office interior and exterior photos</li>
+          <li>Add team/headshot photos</li>
+          <li>List all services with descriptions</li>
+          <li>Set accurate business hours</li>
+          <li>Add holiday hours</li>
+          <li>Enable appointment booking link</li>
+          <li>Add telehealth service area</li>
+          <li>List accepted insurance plans</li>
+          <li>Add Q&amp;A section with common questions</li>
+          <li>Post weekly GBP updates</li>
+          <li>Respond to all reviews within 48 hours</li>
+          <li>Enable messaging feature</li>
+          <li>Add products/services with pricing where applicable</li>
+          <li>Ensure NAP matches all directory listings</li>
+          <li>Add website and social links</li>
+          <li>Monitor and resolve duplicate listings</li>
+        </ul>
+      </div>
+
+      <div class="local-card">
+        <h3>Review Generation Strategy</h3>
+        <p style="margin-bottom:12px;">Goal: <strong>50 Google reviews within 6 months.</strong></p>
+        <ul class="review-list">
+          <li>Send follow-up email after every session with a direct Google review link</li>
+          <li>Place a QR code card in the office directing clients to leave a review</li>
+          <li>Include a review request in the post-appointment SMS or email</li>
+          <li>Thank every reviewer publicly with a personalized response</li>
+          <li>Track monthly review count against the 50-review goal</li>
+        </ul>
+      </div>
+
+      <div class="local-card">
+        <h3>Local Schema and "Near Me" Optimization</h3>
+        <p style="margin-bottom:14px;">Local schema markup (LocalBusiness, MedicalBusiness) is already implemented across all pages. Maintain and expand as new pages are added.</p>
+        <div class="near-me-box">
+          <strong>"Near Me" Keyword Optimization Guide</strong>
+          <ul>
+            <li>Include "near Argyle," "near Denton," and "North Texas" in page copy naturally</li>
+            <li>Create a dedicated service area page listing all served cities</li>
+            <li>Use city-specific landing pages for Argyle, Denton, Flower Mound, and Southlake</li>
+            <li>Embed a Google Map on the Contact page</li>
+            <li>Add geo-coordinates to LocalBusiness schema</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 6 -->
+  <section>
+    <div class="section-label">Section 6</div>
+    <h2>12-Month KPIs</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Baseline</th>
+            <th>6-Month Target</th>
+            <th>12-Month Target</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Organic search traffic</td>
+            <td>Current baseline</td>
+            <td>+75%</td>
+            <td>+150%</td>
+          </tr>
+          <tr>
+            <td>Keyword rankings on page 1</td>
+            <td>0</td>
+            <td>2 target keywords</td>
+            <td>5 target keywords</td>
+          </tr>
+          <tr>
+            <td>Google Business Profile views</td>
+            <td>Not established</td>
+            <td>200/month</td>
+            <td>500/month</td>
+          </tr>
+          <tr>
+            <td>Blog posts published</td>
+            <td>0</td>
+            <td>12</td>
+            <td>24</td>
+          </tr>
+          <tr>
+            <td>Backlinks acquired</td>
+            <td>Minimal</td>
+            <td>15+</td>
+            <td>30+</td>
+          </tr>
+          <tr>
+            <td>Reviews on Google</td>
+            <td>Not established</td>
+            <td>25+</td>
+            <td>50+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="kpi-note">All targets are tied to audit findings and represent realistic benchmarks for a new local practice building search presence from zero.</p>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Janna Weaver Nutrition &amp; Wellness DBA Radiant Nutrition &mdash; All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

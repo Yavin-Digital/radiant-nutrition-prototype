@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radiant Nutrition — Find Your Path</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --gold: #AF8A3B; --gold-lt: #C8A557; --dark: #2e2b26; --cream: #faf8f5;
+      --ins: #AF8A3B; --pay: #7a5c9e; --pep: #4a8872; --res: #2e6e8e;
+      --fh: 'Cormorant Garamond', Georgia, serif; --fb: 'Raleway', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body { font-family: var(--fb); background: var(--cream); color: var(--dark); min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* ── HEADER ── */
+    .sf-header { background: var(--dark); padding: 20px 32px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+    .sf-header img { height: 56px; width: auto; }
+    .sf-header__label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.4); font-weight: 600; }
+
+    /* ── PROGRESS ── */
+    .sf-progress { background: #e8e2d8; height: 3px; flex-shrink: 0; }
+    .sf-progress__bar { height: 100%; background: var(--gold); transition: width .5s ease; }
+
+    /* ── SHELL ── */
+    .sf-shell { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
+    .sf-card { width: 100%; max-width: 660px; position: relative; }
+
+    /* ── STEP ── */
+    .sf-step { display: none; animation: fadeUp .4s ease; }
+    .sf-step.active { display: block; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .sf-step__eyebrow { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+    .sf-step__q { font-family: var(--fh); font-size: clamp(26px, 5vw, 42px); font-style: italic; font-weight: 400; line-height: 1.15; margin-bottom: 10px; }
+    .sf-step__sub { font-size: 14px; color: #888; margin-bottom: 32px; font-weight: 400; line-height: 1.7; }
+
+    /* ── OPTIONS ── */
+    .sf-options { display: grid; gap: 12px; margin-bottom: 28px; }
+    .sf-options--2 { grid-template-columns: 1fr 1fr; }
+    .sf-options--3 { grid-template-columns: 1fr 1fr 1fr; }
+    @media (max-width: 560px) { .sf-options--2, .sf-options--3 { grid-template-columns: 1fr; } }
+
+    .sf-opt { border: 1.5px solid #e0d8cc; border-radius: 14px; padding: 20px 18px; cursor: pointer; background: #fff; transition: all .2s; display: flex; align-items: flex-start; gap: 14px; text-align: left; }
+    .sf-opt:hover { border-color: var(--gold); background: #fffdf7; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(175,138,59,.12); }
+    .sf-opt.selected { border-color: var(--gold); background: #fffbf0; box-shadow: 0 6px 24px rgba(175,138,59,.18); }
+    .sf-opt__icon { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; background: #f5f0e8; color: var(--gold); transition: all .2s; }
+    .sf-opt.selected .sf-opt__icon { background: var(--gold); color: #fff; }
+    .sf-opt__label { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 3px; letter-spacing: .3px; }
+    .sf-opt__desc { font-size: 12px; color: #999; line-height: 1.5; font-weight: 400; }
+
+    /* ── BUTTONS ── */
+    .sf-actions { display: flex; align-items: center; gap: 12px; }
+    .sf-btn { font-family: var(--fb); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; padding: 13px 32px; border-radius: 40px; cursor: pointer; transition: all .2s; border: none; }
+    .sf-btn--gold { background: var(--gold); color: #fff; }
+    .sf-btn--gold:hover { background: var(--gold-lt); }
+    .sf-btn--ghost { background: transparent; color: #aaa; border: 1.5px solid #ddd; }
+    .sf-btn--ghost:hover { border-color: #bbb; color: var(--dark); }
+    .sf-btn:disabled { opacity: .35; cursor: not-allowed; }
+
+    /* ── RESULT ── */
+    .sf-result { display: none; animation: fadeUp .5s ease; }
+    .sf-result.active { display: block; }
+    .sf-result__hero { border-radius: 20px; padding: 44px 40px; text-align: center; margin-bottom: 28px; color: #fff; }
+    .sf-result__hero--ins { background: linear-gradient(135deg, #9e7830, var(--gold)); }
+    .sf-result__hero--pay { background: linear-gradient(135deg, #5c3d8a, var(--pay)); }
+    .sf-result__hero--pep { background: linear-gradient(135deg, #2d6b56, var(--pep)); }
+    .sf-result__hero--res { background: linear-gradient(135deg, #1a4f68, var(--res)); }
+    .sf-result__icon { width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 20px; }
+    .sf-result__tag { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; opacity: .7; margin-bottom: 10px; }
+    .sf-result__title { font-family: var(--fh); font-size: clamp(24px,4vw,38px); font-style: italic; font-weight: 400; margin-bottom: 12px; }
+    .sf-result__body { font-size: 14px; opacity: .85; line-height: 1.75; max-width: 460px; margin: 0 auto; font-weight: 300; }
+
+    /* ── LEAD CAPTURE ── */
+    .sf-lead { background: #fff; border: 1px solid #e8e2d8; border-radius: 20px; padding: 36px 36px 32px; margin-bottom: 20px; }
+    .sf-lead h3 { font-family: var(--fh); font-size: 24px; font-style: italic; font-weight: 400; margin-bottom: 6px; }
+    .sf-lead p { font-size: 13px; color: #888; margin-bottom: 24px; }
+    .sf-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+    @media (max-width: 480px) { .sf-fields { grid-template-columns: 1fr; } }
+    .sf-field { display: flex; flex-direction: column; gap: 6px; }
+    .sf-field label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; color: #aaa; }
+    .sf-field input { border: none; border-bottom: 1.5px solid #ddd; padding: 10px 0; font-family: var(--fb); font-size: 15px; color: var(--dark); outline: none; background: transparent; transition: border-color .2s; }
+    .sf-field input:focus { border-color: var(--gold); }
+    .sf-field--full { grid-column: 1 / -1; }
+    .sf-cta-group { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .sf-cta { font-family: var(--fb); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; padding: 13px 28px; border-radius: 40px; cursor: pointer; border: none; transition: all .2s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+    .sf-cta--ins { background: var(--ins); color: #fff; }
+    .sf-cta--pay { background: var(--pay); color: #fff; }
+    .sf-cta--pep { background: var(--pep); color: #fff; }
+    .sf-cta--res { background: var(--res); color: #fff; }
+    .sf-cta--ghost { background: transparent; color: #aaa; border: 1.5px solid #ddd; font-size: 11px; }
+    .sf-cta:hover { opacity: .88; transform: translateY(-1px); }
+    .sf-restart { font-size: 12px; color: #bbb; cursor: pointer; text-align: center; margin-top: 16px; letter-spacing: 1px; }
+    .sf-restart:hover { color: var(--gold); }
+
+    /* ── NEXT STEPS LIST ── */
+    .sf-next { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .sf-next li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #666; line-height: 1.6; }
+    .sf-next li i { color: var(--gold); margin-top: 3px; font-size: 13px; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="sf-header">
+  <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/Q4i3VdMSLVwO3MoF3Imn/media/677dace365b87ebf5717efcd.png" alt="Radiant Nutrition" />
+  <span class="sf-header__label">Find Your Path</span>
+</header>
+<div class="sf-progress"><div class="sf-progress__bar" id="progressBar" style="width:0%"></div></div>
+
+<!-- ── FORM SHELL ── -->
+<main class="sf-shell">
+  <div class="sf-card">
+
+    <!-- STEP 1: Goal -->
+    <div class="sf-step active" id="step1">
+      <p class="sf-step__eyebrow">Step 1 of 3</p>
+      <h2 class="sf-step__q">What brings you to Radiant Nutrition?</h2>
+      <p class="sf-step__sub">Choose the option that best describes your primary goal. This helps us recommend the right path for you.</p>
+      <div class="sf-options">
+        <div class="sf-opt" onclick="pick(this,'goal','weight')">
+          <div class="sf-opt__icon"><i class="fa-solid fa-scale-balanced"></i></div>
+          <div><div class="sf-opt__label">Weight Management</div><div class="sf-opt__desc">Lose, gain, or maintain weight sustainably</div></div>
+        </div>
+        <div class="sf-opt" onclick="pick(this,'goal','diabetes')">
+          <div class="sf-opt__icon"><i class="fa-solid fa-stethoscope"></i></div>
+          <div><div class="sf-opt__label">Medical Nutrition</div><div class="sf-opt__desc">Diabetes, heart health, GI issues, or other conditions</div></div>
+        </div>
+        <div class="sf-opt" onclick="pick(this,'goal','sports')">
+          <div class="sf-opt__icon"><i class="fa-solid fa-person-running"></i></div>
+          <div><div class="sf-opt__label">Sports Performance</div><div class="sf-opt__desc">Fuel training, optimize recovery, and peak results</div></div>
+        </div>
+        <div class="sf-opt" onclick="pick(this,'goal','family')">
+          <div class="sf-opt__icon"><i class="fa-solid fa-baby"></i></div>
+          <div><div class="sf-opt__label">Family & Pediatric</div><div class="sf-opt__desc">Healthy habits for kids, teens, or the whole family</div></div>
+        </div>
+        <div class="sf-opt" onclick="pick(this,'goal','wellness')">
+          <div class="sf-opt__icon"><i class="fa-solid fa-heart-pulse"></i></div>
+          <div><div class="sf-opt__label">General Wellness</div><div class="sf-opt__desc">Build healthier habits, energy, and overall vitality</div></div>
+        </div>
+        <div class="sf-opt" onclick="pick(this,'goal','peptides')">
+          <div class="sf-opt__icon"><i class="fa-solid fa-flask"></i></div>
+          <div><div class="sf-opt__label">Compounded Peptides</div><div class="sf-opt__desc">GLP-1s &amp; compounded peptide therapy with dietitian support</div></div>
+        </div>
+        <div class="sf-opt" onclick="pick(this,'goal','research')">
+          <div class="sf-opt__icon"><i class="fa-solid fa-microscope"></i></div>
+          <div><div class="sf-opt__label">Research Peptides</div><div class="sf-opt__desc">BPC-157, TB-500, PT-141 &amp; other research-grade peptides</div></div>
+        </div>
+      </div>
+      <div class="sf-actions">
+        <button class="sf-btn sf-btn--gold" id="next1" onclick="goNext(2)" disabled>Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Insurance -->
+    <div class="sf-step" id="step2">
+      <p class="sf-step__eyebrow">Step 2 of 3</p>
+      <h2 class="sf-step__q">Do you have health insurance?</h2>
+      <p class="sf-step__sub">We're in-network with many major plans. Many clients pay little or nothing out of pocket. We'll verify your benefits before your first visit.</p>
+      <div class="sf-options sf-options--2">
+        <div class="sf-opt" onclick="pick(this,'insurance','yes')">
+          <div class="sf-opt__icon"><i class="fa-solid fa-shield-heart"></i></div>
+          <div><div class="sf-opt__label">Yes, I have insurance</div><div class="sf-opt__desc">I'd like you to verify my benefits</div></div>
+        </div>
+        <div class="sf-opt" onclick="pick(this,'insurance','no')">
+          <div class="sf-opt__icon"><i class="fa-solid fa-credit-card"></i></div>
+          <div><div class="sf-opt__label">No / Self-Pay</div><div class="sf-opt__desc">I'll pay out of pocket or explore package options</div></div>
+        </div>
+        <div class="sf-opt" onclick="pick(this,'insurance','unsure')">
+          <div class="sf-opt__icon"><i class="fa-solid fa-circle-question"></i></div>
+          <div><div class="sf-opt__label">I'm not sure</div><div class="sf-opt__desc">Help me figure out if nutrition is covered</div></div>
+        </div>
+      </div>
+      <div class="sf-actions">
+        <button class="sf-btn sf-btn--gold" id="next2" onclick="goNext(3)" disabled>Next &rarr;</button>
+        <button class="sf-btn sf-btn--ghost" onclick="goBack(1)">&#8592; Back</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Telehealth -->
+    <div class="sf-step" id="step3">
+      <p class="sf-step__eyebrow">Step 3 of 3</p>
+      <h2 class="sf-step__q">How would you prefer to meet?</h2>
+      <p class="sf-step__sub">We offer both in-office visits in Argyle, TX and secure telehealth video appointments — whichever works best for your schedule.</p>
+      <div class="sf-options sf-options--2">
+        <div class="sf-opt" onclick="pick(this,'visit','inperson')">
+          <div class="sf-opt__icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div><div class="sf-opt__label">In-Person</div><div class="sf-opt__desc">Visit our office at 306 Hwy 377, Argyle, TX</div></div>
+        </div>
+        <div class="sf-opt" onclick="pick(this,'visit','telehealth')">
+          <div class="sf-opt__icon"><i class="fa-solid fa-video"></i></div>
+          <div><div class="sf-opt__label">Telehealth</div><div class="sf-opt__desc">Secure video from the comfort of your home</div></div>
+        </div>
+        <div class="sf-opt" onclick="pick(this,'visit','either')">
+          <div class="sf-opt__icon"><i class="fa-solid fa-arrows-left-right"></i></div>
+          <div><div class="sf-opt__label">Either Works</div><div class="sf-opt__desc">I'm flexible — whatever is available soonest</div></div>
+        </div>
+      </div>
+      <div class="sf-actions">
+        <button class="sf-btn sf-btn--gold" id="next3" onclick="showResult()" disabled>See My Path &rarr;</button>
+        <button class="sf-btn sf-btn--ghost" onclick="goBack(2)">&#8592; Back</button>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="sf-result" id="result"></div>
+
+  </div>
+</main>
+
+<script>
+  const answers = { goal: null, insurance: null, visit: null };
+  const steps = 3;
+
+  function pick(el, key, val) {
+    answers[key] = val;
+    el.closest('.sf-options').querySelectorAll('.sf-opt').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    const btn = document.getElementById('next' + { goal:'1', insurance:'2', visit:'3' }[key]);
+    if (btn) btn.disabled = false;
+    // auto-advance on step3
+    if (key === 'visit') document.getElementById('next3').disabled = false;
+  }
+
+  function setProgress(step) {
+    document.getElementById('progressBar').style.width = ((step - 1) / steps * 100) + '%';
+  }
+
+  function goNext(step) {
+    // skip insurance step for peptide paths
+    if (step === 2 && (answers.goal === 'peptides' || answers.goal === 'research')) { goNext(3); return; }
+    document.querySelectorAll('.sf-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('step' + step).classList.add('active');
+    setProgress(step);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function goBack(step) {
+    document.querySelectorAll('.sf-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('step' + step).classList.add('active');
+    setProgress(step);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showResult() {
+    // Determine path
+    let path = 'ins';
+    if (answers.goal === 'peptides') path = 'pep';
+    else if (answers.goal === 'research') path = 'res';
+    else if (answers.insurance === 'no') path = 'pay';
+    else if (answers.insurance === 'yes' || answers.insurance === 'unsure') path = 'ins';
+
+    const visitLabel = answers.visit === 'telehealth' ? 'Telehealth' : answers.visit === 'inperson' ? 'In-Person' : 'In-Person or Telehealth';
+
+    const configs = {
+      ins: {
+        icon: 'fa-shield-heart', tag: 'Your Recommended Path', color: 'ins',
+        title: 'Insurance — Covered Nutrition Care',
+        body: `Great news — your insurance may cover nutrition counseling at little or no cost. We'll verify your benefits within 2 business days before scheduling your first appointment (${visitLabel}).`,
+        steps: ['Complete our quick Insurance Verification Form', 'We verify your benefits within 2 business days', 'We contact you to confirm coverage &amp; schedule', 'Your first visit: a full 2-hour personalized intake'],
+        cta: 'Insurance, Book Now', ctaHref: 'https://radiantnutrition6917.practicebetter.io/#/66d03bf5dc3d7d1bd2123b99/bookings?r=67906e1847185ab5c9ec763b', ctaClass: 'sf-cta--ins',
+        phone: false
+      },
+      pay: {
+        icon: 'fa-credit-card', tag: 'Your Recommended Path', color: 'pay',
+        title: 'Self-Pay — Flexible &amp; Transparent',
+        body: `No insurance? No problem. Our self-pay options are transparent and flexible. Call or email us to discuss session rates and packages that fit your budget (${visitLabel}).`,
+        steps: ['Call us to discuss self-pay rates &amp; packages', 'We schedule your first available appointment', 'Your first visit: a full 2-hour personalized intake', 'Flexible follow-up scheduling based on your goals'],
+        cta: 'Self-Pay, Book Now', ctaHref: 'https://radiantnutrition6917.practicebetter.io/#/66d03bf5dc3d7d1bd2123b99/bookings?r=6793ad9eaf30d22921c1c6a3&step=services', ctaClass: 'sf-cta--pay',
+        phone: false
+      },
+      pep: {
+        icon: 'fa-flask', tag: 'Your Recommended Path', color: 'pep',
+        title: 'Compounded Peptides — Guided by a Dietitian',
+        body: `We'll pair a personalized compounded peptide protocol (GLP-1s and more) with a complementary nutrition plan for maximum, sustainable results (${visitLabel}).`,
+        steps: ['Contact us to begin the peptide inquiry process', 'Brief intake questionnaire to assess candidacy', 'Peptide consultation + InBody body composition scan', 'Personalized compounded protocol + nutrition plan delivered'],
+        cta: 'Book Peptide Consultation', ctaHref: 'https://radiantnutrition6917.practicebetter.io/#/66d03bf5dc3d7d1bd2123b99/bookings?r=67906e1847185ab5c9ec763b', ctaClass: 'sf-cta--pep',
+        phone: false
+      },
+      res: {
+        icon: 'fa-microscope', tag: 'Your Recommended Path', color: 'res',
+        title: 'Research Peptides — Advanced Performance',
+        body: `Interested in BPC-157, TB-500, PT-141, or other research-grade peptides? Our team will walk you through candidacy, protocols, and how to pair them with a targeted nutrition strategy (${visitLabel}).`,
+        steps: ['Contact us to begin your research peptide inquiry', 'Complete a health &amp; goals intake questionnaire', 'Consultation to review your protocol options', 'Research peptide plan paired with nutrition support'],
+        cta: 'Book Research Peptide Consult', ctaHref: 'https://radiantnutrition6917.practicebetter.io/#/66d03bf5dc3d7d1bd2123b99/bookings?r=67906e1847185ab5c9ec763b', ctaClass: 'sf-cta--res',
+        phone: false
+      }
+    };
+
+    const c = configs[path];
+    const stepsHtml = c.steps.map(s => `<li><i class="fa-solid fa-check"></i>${s}</li>`).join('');
+    const phoneHtml = `<a href="tel:9404649800" class="sf-cta sf-cta--ghost"><i class="fa-solid fa-phone"></i>(940) 464-9800</a>`;
+
+    document.getElementById('result').innerHTML = `
+      <div class="sf-result__hero sf-result__hero--${c.color}">
+        <div class="sf-result__icon"><i class="fa-solid ${c.icon}"></i></div>
+        <p class="sf-result__tag">${c.tag}</p>
+        <h2 class="sf-result__title">${c.title}</h2>
+        <p class="sf-result__body">${c.body}</p>
+      </div>
+      <div class="sf-lead">
+        <h3>Your Next Steps</h3>
+        <p>Here's exactly what happens after you click the button below.</p>
+        <ul class="sf-next">${stepsHtml}</ul>
+        <div class="sf-cta-group">
+          ${path === 'ins'
+            ? `<button onclick="openInsuranceModal()" class="sf-cta sf-cta--ins" style="border:none;cursor:pointer;font-family:inherit;"><i class="fa-solid fa-shield-heart"></i>${c.cta}</button>`
+            : `<a href="${c.ctaHref}" class="sf-cta ${c.ctaClass}" target="_blank"><i class="fa-solid ${c.icon}"></i>${c.cta}</a>`
+          }
+          ${phoneHtml}
+        </div>
+      </div>
+      <p class="sf-restart" onclick="restart()">&#8592; Start over</p>`;
+
+    document.querySelectorAll('.sf-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('result').classList.add('active');
+    document.getElementById('progressBar').style.width = '100%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── Insurance Modal ──
+  function openInsuranceModal() {
+    document.getElementById('insuranceModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeInsuranceModal() {
+    document.getElementById('insuranceModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function restart() {
+    answers.goal = answers.insurance = answers.visit = null;
+    document.getElementById('result').classList.remove('active');
+    document.getElementById('result').innerHTML = '';
+    document.querySelectorAll('.sf-opt').forEach(o => o.classList.remove('selected'));
+    ['next1','next2','next3'].forEach(id => { const b = document.getElementById(id); if(b) b.disabled = true; });
+    document.getElementById('step1').classList.add('active');
+    setProgress(1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+<!-- ══ INSURANCE VERIFICATION MODAL ══ -->
+<style>
+  .ins-overlay{display:none;position:fixed;inset:0;background:rgba(30,24,14,.72);z-index:9999;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
+  .ins-overlay.open{display:flex;}
+  .ins-modal{background:#faf8f5;border-radius:20px;max-width:720px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 32px 80px rgba(0,0,0,.35);animation:modalIn .28s cubic-bezier(.22,.68,0,1.2);}
+  @keyframes modalIn{from{transform:translateY(32px) scale(.97);opacity:0;}to{transform:none;opacity:1;}}
+  .ins-modal__header{background:#AF8A3B;padding:28px 36px 24px;border-radius:20px 20px 0 0;position:relative;}
+  .ins-modal__header h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:28px;font-style:italic;font-weight:400;color:#fff;margin-bottom:4px;}
+  .ins-modal__header p{font-size:13px;color:rgba(255,255,255,.82);}
+  .ins-modal__close{position:absolute;top:18px;right:20px;background:rgba(255,255,255,.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+  .ins-modal__close:hover{background:rgba(255,255,255,.35);}
+  .ins-modal__body{padding:32px 36px 0;}
+  .ins-form{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;}
+  .ins-form .full{grid-column:1/-1;}
+  .ins-field label{display:block;font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#AF8A3B;margin-bottom:6px;}
+  .ins-field input,.ins-field select,.ins-field textarea{width:100%;font-family:'Raleway',sans-serif;font-size:14px;color:#2e2b26;background:#fff;border:1.5px solid #e0d8cc;border-radius:8px;padding:11px 14px;transition:border-color .2s;outline:none;}
+  .ins-field select{appearance:none;padding-right:34px;}
+  .ins-field textarea{resize:vertical;min-height:80px;}
+  .ins-field input:focus,.ins-field select:focus,.ins-field textarea:focus{border-color:#AF8A3B;box-shadow:0 0 0 3px rgba(175,138,59,.12);}
+  .ins-section-head{grid-column:1/-1;font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;font-style:italic;color:#2e2b26;border-bottom:1px solid #e8e2d8;padding-bottom:8px;margin-top:8px;}
+  .ins-checkbox-group{grid-column:1/-1;}
+  .ins-checkbox-group>label:first-child{display:block;font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#AF8A3B;margin-bottom:10px;}
+  .ins-checkboxes{display:flex;flex-wrap:wrap;gap:12px 24px;}
+  .ins-checkboxes label{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:#2e2b26;cursor:pointer;}
+  .ins-checkboxes input[type="radio"]{width:17px;height:17px;accent-color:#AF8A3B;flex-shrink:0;}
+  .ins-modal__footer{padding:24px 36px 36px;}
+  .ins-submit{width:100%;font-family:'Raleway',sans-serif;font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#fff;background:#AF8A3B;border:none;border-radius:50px;padding:17px 48px;cursor:pointer;transition:background .2s,transform .2s;}
+  .ins-submit:hover{background:#C8A557;transform:translateY(-2px);}
+  .ins-note{font-size:12px;color:#999;text-align:center;margin-top:14px;line-height:1.7;}
+  @media(max-width:600px){.ins-form{grid-template-columns:1fr;}.ins-modal__body,.ins-modal__footer{padding-left:20px;padding-right:20px;}}
+</style>
+
+<div class="ins-overlay" id="insuranceModal" role="dialog" aria-modal="true">
+  <div class="ins-modal">
+    <div class="ins-modal__header">
+      <button class="ins-modal__close" onclick="closeInsuranceModal()" aria-label="Close">&times;</button>
+      <h2><i class="fa-solid fa-shield-heart" style="font-size:22px;margin-right:10px;"></i>Insurance Verification Form</h2>
+      <p>Fill out the form below and we'll verify your benefits within 2 business days.</p>
+    </div>
+    <div class="ins-modal__body" style="padding:0;">
+      <iframe
+        src="https://agency.jannaweaver.com/widget/form/RnKc1MAYa5wE7SWJLgVD"
+        style="width:100%;height:680px;border:none;display:block;border-radius:0 0 20px 20px;"
+        title="Insurance Verification Form"
+        loading="lazy"
+      ></iframe>
+    </div>
+  </div>
+</div>
+<script>
+  document.getElementById('insuranceModal').addEventListener('click', function(e) {
+    if (e.target === this) closeInsuranceModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeInsuranceModal();
+  });
+</script>
+</body>
+</html>

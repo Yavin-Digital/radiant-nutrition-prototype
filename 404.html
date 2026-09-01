@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found | Radiant Nutrition</title>
+  <meta name="description" content="The page you are looking for doesn't exist or has been moved. Return to Radiant Nutrition." />
+  <meta name="robots" content="noindex, nofollow" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WNKJLGK27X"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WNKJLGK27X');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root{--gold:#AF8A3B;--gold-light:#C8A557;--dark:#434445;--cream:#faf8f5;--white:#ffffff;--font-head:'Cormorant Garamond',Georgia,serif;--font-body:'Raleway',sans-serif;--radius:50px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--font-body);color:var(--white);background:#1c160b;line-height:1.7;padding-top:42px;}
+    img{max-width:100%;display:block;}
+    a{color:inherit;text-decoration:none;}
+
+    /* ── Prototype Banner ── */
+    .proto-bar{position:fixed;top:0;left:0;right:0;z-index:9999;height:42px;background:#1a1a1a;border-bottom:2px solid #d97706;display:flex;align-items:center;justify-content:center;gap:16px;padding:0 16px;}
+    .proto-bar__text{font-family:var(--font-body);font-size:11px;font-weight:500;letter-spacing:.5px;color:rgba(255,255,255,.8);text-align:center;}
+    .proto-bar__btn{font-family:var(--font-body);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#d97706;background:transparent;border:1px solid #d97706;border-radius:4px;padding:3px 10px;cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0;}
+    .proto-bar__btn:hover{background:#d97706;color:#1a1a1a;}
+
+    /* ── Performance Modal ── */
+    .perf-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:10000;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
+    .perf-overlay.open{display:flex;}
+    .perf-modal{background:#1e1e1e;border:1px solid #333;border-radius:16px;max-width:480px;width:100%;padding:36px;box-shadow:0 32px 80px rgba(0,0,0,.6);animation:modalIn .25s ease;}
+    @keyframes modalIn{from{transform:translateY(20px) scale(.97);opacity:0;}to{transform:none;opacity:1;}}
+    .perf-modal__header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
+    .perf-modal__title{font-family:var(--font-head);font-size:22px;font-weight:400;font-style:italic;color:var(--white);}
+    .perf-modal__close{background:rgba(255,255,255,.1);border:none;color:var(--white);width:30px;height:30px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+    .perf-modal__close:hover{background:rgba(255,255,255,.22);}
+    .perf-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #2e2e2e;}
+    .perf-row:last-of-type{border-bottom:none;}
+    .perf-label{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.55);}
+    .perf-value{font-family:var(--font-head);font-size:22px;color:var(--gold-light);}
+    .perf-note{margin-top:20px;background:#2a2000;border-left:3px solid #d97706;padding:12px 14px;border-radius:0 6px 6px 0;font-size:12px;color:rgba(255,255,255,.7);line-height:1.6;}
+    .perf-note strong{color:#d97706;}
+
+    /* ── 404 Page Layout ── */
+    .page-404{position:relative;min-height:calc(100vh - 42px);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;text-align:center;padding:60px 24px 40px;}
+    .page-404::before{content:'';position:absolute;inset:0;background:url('https://storage.googleapis.com/msgsndr/Q4i3VdMSLVwO3MoF3Imn/media/6793a8a54f0aebdc3b532b06.jpeg') center/cover no-repeat;opacity:.18;}
+    .page-404::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(28,22,11,.55) 0%,rgba(28,22,11,.95) 100%);}
+    .page-404__inner{position:relative;z-index:1;max-width:680px;margin:0 auto;display:flex;flex-direction:column;align-items:center;}
+
+    .logo-wrap{margin-bottom:48px;}
+    .logo-wrap img{height:72px;width:auto;margin:0 auto;filter:brightness(0) invert(1);opacity:.9;}
+
+    .error-code{font-family:var(--font-head);font-size:clamp(100px,18vw,180px);font-weight:300;font-style:italic;color:var(--gold);line-height:1;opacity:.65;margin-bottom:8px;}
+
+    .divider-line{width:48px;height:1.5px;background:var(--gold);margin:0 auto 28px;}
+
+    .headline{font-family:var(--font-head);font-size:clamp(24px,4vw,40px);font-weight:400;font-style:italic;color:var(--white);line-height:1.2;margin-bottom:16px;}
+
+    .tagline{font-size:15px;font-weight:300;color:rgba(255,255,255,.72);margin-bottom:10px;max-width:460px;}
+
+    .clever-line{font-family:var(--font-head);font-size:17px;font-style:italic;font-weight:300;color:var(--gold-light);margin-bottom:40px;opacity:.9;}
+
+    /* ── Quick Links ── */
+    .quick-links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:28px;}
+    .btn-outline{display:inline-block;padding:10px 28px;border-radius:var(--radius);font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border:1.5px solid rgba(175,138,59,.55);color:rgba(255,255,255,.82);transition:all .25s;}
+    .btn-outline:hover{border-color:var(--gold-light);color:var(--white);background:rgba(175,138,59,.12);}
+
+    .btn-gold{display:inline-block;padding:14px 40px;border-radius:var(--radius);font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(--gold);color:var(--white);border:1.5px solid var(--gold);transition:all .25s;}
+    .btn-gold:hover{background:var(--gold-light);border-color:var(--gold-light);}
+
+    /* ── Footer ── */
+    .footer-404{position:relative;z-index:1;margin-top:56px;text-align:center;font-size:11px;font-weight:400;letter-spacing:.5px;color:rgba(255,255,255,.32);}
+
+    /* ── Mobile ── */
+    @media(max-width:600px){
+      .proto-bar{gap:8px;}
+      .proto-bar__text{font-size:10px;}
+      .logo-wrap img{height:56px;}
+      .error-code{opacity:.5;}
+      .quick-links{gap:8px;}
+      .btn-outline{padding:9px 20px;font-size:10px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Prototype Banner ── -->
+<div class="proto-bar" role="banner">
+  <span class="proto-bar__text">For prototype purposes only. All content and images are not final and are only here to show what is possible.</span>
+  <button class="proto-bar__btn" onclick="openPerfModal()">View Performance Report</button>
+</div>
+
+<!-- ── Performance Modal ── -->
+<div class="perf-overlay" id="perfModal" role="dialog" aria-modal="true" aria-labelledby="perfModalTitle">
+  <div class="perf-modal">
+    <div class="perf-modal__header">
+      <span class="perf-modal__title" id="perfModalTitle">Page Performance Report</span>
+      <button class="perf-modal__close" onclick="closePerfModal()" aria-label="Close">&times;</button>
+    </div>
+    <div class="perf-row">
+      <span class="perf-label">Actual Page Load</span>
+      <span class="perf-value" id="perfLoadTime">—</span>
+    </div>
+    <div class="perf-row">
+      <span class="perf-label">Estimated React Load</span>
+      <span class="perf-value" id="perfReactTime">—</span>
+    </div>
+    <div class="perf-note">
+      <strong>Developer note:</strong> Remove this banner and modal entirely from the React production build.
+    </div>
+  </div>
+</div>
+
+<!-- ── 404 Page ── -->
+<main class="page-404">
+  <div class="page-404__inner">
+
+    <div class="logo-wrap">
+      <a href="index.html" aria-label="Radiant Nutrition — Home">
+        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/Q4i3VdMSLVwO3MoF3Imn/media/677dace365b87ebf5717efcd.png" alt="Radiant Nutrition logo" />
+      </a>
+    </div>
+
+    <p class="error-code">404</p>
+    <div class="divider-line"></div>
+
+    <h1 class="headline">Looks like this page didn't make the meal plan.</h1>
+    <p class="tagline">The page you're looking for doesn't exist or has been moved.</p>
+    <p class="clever-line">Even the best nutritionist can't fix a broken link.</p>
+
+    <div class="quick-links">
+      <a href="services.html" class="btn-outline"><i class="fa-solid fa-list-check" style="margin-right:7px;"></i>Services</a>
+      <a href="booking.html" class="btn-outline"><i class="fa-solid fa-calendar-check" style="margin-right:7px;"></i>Book Now</a>
+      <a href="contact.html" class="btn-outline"><i class="fa-solid fa-envelope" style="margin-right:7px;"></i>Contact</a>
+    </div>
+
+    <a href="index.html" class="btn-gold"><i class="fa-solid fa-house" style="margin-right:9px;"></i>Take Me Home</a>
+
+    <footer class="footer-404">
+      <p>&copy; 2026 Janna Weaver Nutrition &amp; Wellness DBA Radiant Nutrition All Rights Reserved.</p>
+    </footer>
+
+  </div>
+</main>
+
+<script>
+  function openPerfModal() {
+    var nav = performance.getEntriesByType('navigation')[0];
+    var loadMs = nav ? Math.round(nav.loadEventEnd) : null;
+    var loadText = loadMs !== null ? (loadMs / 1000).toFixed(2) + 's' : 'N/A';
+    var reactMs = loadMs !== null ? Math.round(loadMs * 0.58) : null;
+    var reactText = reactMs !== null ? (reactMs / 1000).toFixed(2) + 's' : 'N/A';
+    document.getElementById('perfLoadTime').textContent = loadText;
+    document.getElementById('perfReactTime').textContent = reactText + ' (est.)';
+    document.getElementById('perfModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePerfModal() {
+    document.getElementById('perfModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('perfModal').addEventListener('click', function(e) {
+    if (e.target === this) closePerfModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closePerfModal();
+  });
+</script>
+</body>
+</html>

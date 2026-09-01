@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Presence Report — Radiant Nutrition</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #AF8A3B;
+    --gold-light: #c9a55a;
+    --gold-pale: #f0e8d4;
+    --dark: #434445;
+    --deep: #1c160b;
+    --cream: #faf8f5;
+    --white: #ffffff;
+    --green: #2e7d4f;
+    --green-light: #e8f5ee;
+    --yellow: #8a6d00;
+    --yellow-light: #fdf6e0;
+    --red: #b03030;
+    --red-light: #fceaea;
+    --border: #e5e0d8;
+    --text-muted: #7a7672;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Raleway', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* ── HEADER ─────────────────────────────────────────── */
+  .report-header {
+    background: var(--deep);
+    padding: 56px 64px 48px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 32px;
+    border-bottom: 3px solid var(--gold);
+  }
+
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+
+  .logo-mark {
+    width: 52px;
+    height: 52px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .logo-mark svg { width: 30px; height: 30px; }
+
+  .logo-name {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--white);
+    line-height: 1.15;
+  }
+
+  .logo-name .primary { font-size: 22px; font-weight: 600; letter-spacing: 0.04em; }
+  .logo-name .secondary { font-size: 12px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-light); }
+
+  .header-center { flex: 1; text-align: center; padding-top: 4px; }
+
+  .header-label {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+
+  .header-subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .header-badge {
+    flex-shrink: 0;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .badge-date {
+    border: 1px solid rgba(175,138,59,0.45);
+    background: rgba(175,138,59,0.08);
+    padding: 8px 18px;
+    border-radius: 4px;
+  }
+
+  .badge-date .month {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+  }
+
+  .badge-date .year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1;
+    display: block;
+  }
+
+  .badge-doc {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+  }
+
+  /* ── GOLD RULE ───────────────────────────────────────── */
+  .gold-rule {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0;
+  }
+
+  /* ── MAIN CONTENT ────────────────────────────────────── */
+  .report-body { max-width: 1100px; margin: 0 auto; padding: 64px 40px 80px; }
+
+  /* ── HERO SCORE CARD ─────────────────────────────────── */
+  .hero-card {
+    background: var(--deep);
+    border-radius: 8px;
+    padding: 60px 40px 52px;
+    text-align: center;
+    margin-bottom: 72px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(28,22,11,0.18);
+  }
+
+  .hero-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .hero-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  .hero-score-display {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  .score-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 128px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .score-denom {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.35);
+    align-self: flex-end;
+    padding-bottom: 16px;
+  }
+
+  .score-gauge {
+    width: 320px;
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+    margin: 20px auto 28px;
+    overflow: hidden;
+  }
+
+  .score-gauge-fill {
+    height: 100%;
+    width: 61%;
+    background: linear-gradient(to right, var(--gold), var(--gold-light));
+    border-radius: 3px;
+  }
+
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 14px;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-subtext {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.45);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── SECTION HEADERS ─────────────────────────────────── */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--deep);
+    line-height: 1.1;
+  }
+
+  .section-block { margin-bottom: 64px; }
+
+  /* ── CHANNEL GRID ────────────────────────────────────── */
+  .channel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  .channel-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px 20px 22px;
+    text-align: center;
+    transition: box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .channel-card:hover { box-shadow: 0 6px 24px rgba(28,22,11,0.09); }
+
+  .channel-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .channel-card.status-green::before { background: var(--green); }
+  .channel-card.status-yellow::before { background: #d4aa00; }
+  .channel-card.status-red::before { background: var(--red); }
+
+  .channel-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+  }
+
+  .channel-icon svg { width: 22px; height: 22px; stroke: var(--gold); fill: none; stroke-width: 1.8; }
+
+  .channel-name {
+    font-family: 'Raleway', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .channel-score {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--deep);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .channel-score-denom {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .channel-bar {
+    width: 100%;
+    height: 4px;
+    background: var(--cream);
+    border-radius: 2px;
+    margin: 12px 0 14px;
+    overflow: hidden;
+  }
+
+  .channel-bar-fill { height: 100%; border-radius: 2px; }
+  .status-green .channel-bar-fill { background: var(--green); }
+  .status-yellow .channel-bar-fill { background: #d4aa00; }
+  .status-red .channel-bar-fill { background: var(--red); }
+
+  .status-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .status-badge.green { background: var(--green-light); color: var(--green); }
+  .status-badge.yellow { background: var(--yellow-light); color: var(--yellow); }
+  .status-badge.red { background: var(--red-light); color: var(--red); }
+
+  /* ── STRENGTH / GAP CARDS ────────────────────────────── */
+  .card-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+  .accent-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 28px 24px;
+    border-left-width: 4px;
+  }
+
+  .accent-card.strength { border-left-color: var(--green); }
+  .accent-card.gap { border-left-color: var(--red); }
+
+  .accent-card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .accent-card.strength .accent-card-icon { background: var(--green-light); }
+  .accent-card.gap .accent-card-icon { background: var(--red-light); }
+
+  .accent-card-icon svg { width: 18px; height: 18px; stroke-width: 2; fill: none; }
+  .accent-card.strength .accent-card-icon svg { stroke: var(--green); }
+  .accent-card.gap .accent-card-icon svg { stroke: var(--red); }
+
+  .accent-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--deep);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .accent-card-text {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* ── OPPORTUNITY PANEL ───────────────────────────────── */
+  .opportunity-panel {
+    background: var(--deep);
+    border-radius: 8px;
+    padding: 48px 48px 44px;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .opportunity-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .opportunity-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  .opportunity-left .eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .opportunity-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .reach-callout {
+    display: inline-block;
+    background: rgba(175,138,59,0.12);
+    border: 1px solid rgba(175,138,59,0.35);
+    border-radius: 4px;
+    padding: 14px 22px;
+    margin-top: 4px;
+  }
+
+  .reach-callout .reach-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .reach-callout .reach-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .reach-callout .reach-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* Bar chart */
+  .bar-chart { width: 100%; }
+
+  .bar-chart-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 24px;
+  }
+
+  .bar-row { margin-bottom: 18px; }
+
+  .bar-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  .bar-label .channel-lbl {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .bar-label .bar-pct {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .bar-track {
+    height: 8px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .bar-current {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    border-radius: 4px;
+    background: rgba(175,138,59,0.55);
+  }
+
+  .bar-potential {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    border-radius: 4px;
+    background: rgba(175,138,59,0.18);
+  }
+
+  /* ── NEXT STEPS ──────────────────────────────────────── */
+  .steps-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+
+  .step-item {
+    display: grid;
+    grid-template-columns: 44px 1fr auto;
+    align-items: center;
+    gap: 20px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 24px;
+    transition: box-shadow 0.2s;
+  }
+
+  .step-item:hover { box-shadow: 0 4px 16px rgba(28,22,11,0.07); }
+
+  .step-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .step-num span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .step-content { flex: 1; }
+
+  .step-action {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--deep);
+    margin-bottom: 3px;
+    letter-spacing: 0.01em;
+  }
+
+  .step-detail {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .step-timeline {
+    background: var(--gold-pale);
+    border: 1px solid rgba(175,138,59,0.25);
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+
+  /* ── WHY ACT NOW ─────────────────────────────────────── */
+  .urgency-panel {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 44px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .urgency-left .section-header { border-bottom: none; padding-bottom: 0; margin-bottom: 20px; }
+
+  .urgency-body {
+    font-size: 14px;
+    color: var(--dark);
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+
+  .urgency-highlight {
+    background: linear-gradient(to right, var(--gold-pale), transparent);
+    border-left: 3px solid var(--gold);
+    padding: 14px 20px;
+    border-radius: 0 4px 4px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--deep);
+    line-height: 1.5;
+  }
+
+  .urgency-stats { display: flex; flex-direction: column; gap: 16px; }
+
+  .urgency-stat {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .urgency-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 72px;
+  }
+
+  .urgency-stat-text strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--deep);
+    margin-bottom: 3px;
+    letter-spacing: 0.01em;
+  }
+
+  .urgency-stat-text span {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ── FOOTER ──────────────────────────────────────────── */
+  .report-footer {
+    background: var(--deep);
+    border-top: 3px solid var(--gold);
+    padding: 40px 64px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .footer-logo { display: flex; align-items: center; gap: 14px; }
+
+  .footer-logo .logo-mark { width: 40px; height: 40px; }
+  .footer-logo .logo-mark svg { width: 22px; height: 22px; }
+  .footer-logo .logo-name .primary { font-size: 18px; }
+
+  .footer-center { text-align: center; flex: 1; }
+
+  .footer-center p {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.06em;
+    line-height: 1.7;
+  }
+
+  .footer-right {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .footer-right .doc-ref {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .report-header { padding: 36px 24px 32px; flex-direction: column; text-align: center; }
+    .header-badge { align-items: center; }
+    .report-body { padding: 40px 20px 60px; }
+    .channel-grid { grid-template-columns: repeat(2, 1fr); }
+    .card-row { grid-template-columns: 1fr; }
+    .opportunity-inner { grid-template-columns: 1fr; gap: 32px; }
+    .urgency-panel { grid-template-columns: 1fr; gap: 32px; }
+    .step-item { grid-template-columns: 44px 1fr; }
+    .step-timeline { display: none; }
+    .report-footer { flex-direction: column; text-align: center; padding: 32px 24px; }
+    .header-title { font-size: 34px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ HEADER ═══════════════════════ -->
+<header class="report-header">
+  <div class="header-logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#AF8A3B" stroke-width="1.5">
+        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/>
+        <path d="M8 12c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4"/>
+        <path d="M12 8v1M12 15v1"/>
+      </svg>
+    </div>
+    <div class="logo-name">
+      <div class="primary">Radiant Nutrition</div>
+      <div class="secondary">Registered Dietitian Nutritionists</div>
+    </div>
+  </div>
+
+  <div class="header-center">
+    <div class="header-label">Prepared by TheTribeMaker</div>
+    <h1 class="header-title">Digital Presence Report</h1>
+    <div class="header-subtitle">Radiant Nutrition &mdash; Complete Channel Assessment</div>
+  </div>
+
+  <div class="header-badge">
+    <div class="badge-date">
+      <span class="month">September</span>
+      <span class="year">2026</span>
+    </div>
+    <div class="badge-doc">Confidential &nbsp;|&nbsp; Assessment Report</div>
+  </div>
+</header>
+<div class="gold-rule"></div>
+
+<!-- ═══════════════════════ BODY ═══════════════════════ -->
+<main class="report-body">
+
+  <!-- HERO SCORE CARD -->
+  <section class="hero-card">
+    <div class="hero-eyebrow">Overall Digital Presence Score</div>
+    <div class="hero-score-display">
+      <div class="score-number">61</div>
+      <div class="score-denom">&thinsp;/100</div>
+    </div>
+    <div class="score-gauge"><div class="score-gauge-fill"></div></div>
+    <div class="hero-tagline">Strong clinical foundation. Significant digital growth opportunity.</div>
+    <div class="hero-subtext">This report evaluates Radiant Nutrition across 8 digital channels — from website performance and search visibility to social media presence and email marketing. Each channel is scored independently and aggregated into the composite score above.</div>
+  </section>
+
+  <!-- SECTION 1 — CHANNEL OVERVIEW -->
+  <section class="section-block">
+    <div class="section-header">
+      <span class="section-number">Section 01</span>
+      <h2 class="section-title">Channel Overview Dashboard</h2>
+    </div>
+
+    <div class="channel-grid">
+
+      <!-- Website -->
+      <div class="channel-card status-green">
+        <div class="channel-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="channel-name">Website</div>
+        <div class="channel-score">82<span class="channel-score-denom">/100</span></div>
+        <div class="channel-bar"><div class="channel-bar-fill" style="width:82%"></div></div>
+        <span class="status-badge green">Good</span>
+      </div>
+
+      <!-- SEO -->
+      <div class="channel-card status-yellow">
+        <div class="channel-icon">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <div class="channel-name">SEO</div>
+        <div class="channel-score">74<span class="channel-score-denom">/100</span></div>
+        <div class="channel-bar"><div class="channel-bar-fill" style="width:74%"></div></div>
+        <span class="status-badge yellow">Needs Improvement</span>
+      </div>
+
+      <!-- Google Business -->
+      <div class="channel-card status-yellow">
+        <div class="channel-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="channel-name">Google Business</div>
+        <div class="channel-score">55<span class="channel-score-denom">/100</span></div>
+        <div class="channel-bar"><div class="channel-bar-fill" style="width:55%"></div></div>
+        <span class="status-badge yellow">Needs Improvement</span>
+      </div>
+
+      <!-- Facebook -->
+      <div class="channel-card status-yellow">
+        <div class="channel-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </div>
+        <div class="channel-name">Facebook</div>
+        <div class="channel-score">68<span class="channel-score-denom">/100</span></div>
+        <div class="channel-bar"><div class="channel-bar-fill" style="width:68%"></div></div>
+        <span class="status-badge yellow">Needs Improvement</span>
+      </div>
+
+      <!-- Instagram -->
+      <div class="channel-card status-yellow">
+        <div class="channel-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <div class="channel-name">Instagram</div>
+        <div class="channel-score">62<span class="channel-score-denom">/100</span></div>
+        <div class="channel-bar"><div class="channel-bar-fill" style="width:62%"></div></div>
+        <span class="status-badge yellow">Needs Improvement</span>
+      </div>
+
+      <!-- YouTube -->
+      <div class="channel-card status-red">
+        <div class="channel-icon">
+          <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+        </div>
+        <div class="channel-name">YouTube</div>
+        <div class="channel-score">0<span class="channel-score-denom">/100</span></div>
+        <div class="channel-bar"><div class="channel-bar-fill" style="width:0%"></div></div>
+        <span class="status-badge red">Not Present</span>
+      </div>
+
+      <!-- TikTok -->
+      <div class="channel-card status-red">
+        <div class="channel-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+        </div>
+        <div class="channel-name">TikTok</div>
+        <div class="channel-score">0<span class="channel-score-denom">/100</span></div>
+        <div class="channel-bar"><div class="channel-bar-fill" style="width:0%"></div></div>
+        <span class="status-badge red">Not Present</span>
+      </div>
+
+      <!-- Email -->
+      <div class="channel-card status-red">
+        <div class="channel-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="channel-name">Email Marketing</div>
+        <div class="channel-score">30<span class="channel-score-denom">/100</span></div>
+        <div class="channel-bar"><div class="channel-bar-fill" style="width:30%"></div></div>
+        <span class="status-badge red">Needs Attention</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 2 — STRENGTHS -->
+  <section class="section-block">
+    <div class="section-header">
+      <span class="section-number">Section 02</span>
+      <h2 class="section-title">Key Strengths</h2>
+    </div>
+
+    <div class="card-row">
+      <div class="accent-card strength">
+        <div class="accent-card-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="accent-card-title">Modern, Conversion-Optimized Website</div>
+        <div class="accent-card-text">The website includes all essential pages — services, team bios, insurance information, and clear calls to action. Site architecture supports both user experience and search engine indexing, scoring among the top assets in the digital profile.</div>
+      </div>
+
+      <div class="accent-card strength">
+        <div class="accent-card-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="accent-card-title">Insurance-Friendly Positioning</div>
+        <div class="accent-card-text">Acceptance of insurance coverage is a major competitive differentiator in the Denton County market. Few competing practices communicate this clearly online. Radiant Nutrition's positioning on this point is a meaningful driver of patient acquisition.</div>
+      </div>
+
+      <div class="accent-card strength">
+        <div class="accent-card-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="accent-card-title">Credentialed, Experienced Team</div>
+        <div class="accent-card-text">Three Registered Dietitian Nutritionists with documented credentials establishes deep clinical authority. This expertise is reflected across the website and social profiles, creating a foundation of trust that many competitors lack entirely.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 — CRITICAL GAPS -->
+  <section class="section-block">
+    <div class="section-header">
+      <span class="section-number">Section 03</span>
+      <h2 class="section-title">Critical Gaps</h2>
+    </div>
+
+    <div class="card-row">
+      <div class="accent-card gap">
+        <div class="accent-card-icon">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+        <div class="accent-card-title">No Video Presence</div>
+        <div class="accent-card-text">YouTube and TikTok score zero — no active channels exist. Nutrition, dietetics, and wellness content rank among the most-watched health categories online. Video is where trust is built at scale, and the absence here represents the largest untapped opportunity in the profile.</div>
+      </div>
+
+      <div class="accent-card gap">
+        <div class="accent-card-icon">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+        <div class="accent-card-title">Google Business Profile Underperforming</div>
+        <div class="accent-card-text">The Google Business Profile is present but lacks sufficient reviews and regular post activity. Prospective patients rely heavily on review volume and recency before booking a first appointment — this gap directly affects patient acquisition and local search ranking.</div>
+      </div>
+
+      <div class="accent-card gap">
+        <div class="accent-card-icon">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+        <div class="accent-card-title">Email Marketing Not Active</div>
+        <div class="accent-card-text">Email consistently delivers the highest ROI of any digital marketing channel in healthcare — yet no active program exists. A monthly newsletter would nurture existing patients, generate referrals, and reactivate lapsed relationships with minimal ongoing effort.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 — OPPORTUNITY SCORE -->
+  <section class="section-block">
+    <div class="section-header">
+      <span class="section-number">Section 04</span>
+      <h2 class="section-title">Reach Opportunity</h2>
+    </div>
+
+    <div class="opportunity-panel">
+      <div class="opportunity-inner">
+        <div class="opportunity-left">
+          <div class="eyebrow">Projected Impact</div>
+          <div class="opportunity-headline">Address the gaps. Multiply the reach.</div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.75;margin-bottom:24px;">
+            Based on comparable dietitian practices that activated video, email, and local SEO simultaneously, the data supports a meaningful reach expansion within the first 12 months of consistent execution.
+          </p>
+          <div class="reach-callout">
+            <div class="reach-label">Estimated Reach Increase</div>
+            <div class="reach-value">3x &ndash; 5x</div>
+            <div class="reach-sub">within 12 months of gap remediation</div>
+          </div>
+        </div>
+
+        <div class="bar-chart">
+          <div class="bar-chart-title">Current vs. Potential Reach by Channel</div>
+
+          <div class="bar-row">
+            <div class="bar-label">
+              <span class="channel-lbl">Website</span>
+              <span class="bar-pct">82% &rarr; 95%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-potential" style="width:95%"></div>
+              <div class="bar-current" style="width:82%"></div>
+            </div>
+          </div>
+
+          <div class="bar-row">
+            <div class="bar-label">
+              <span class="channel-lbl">SEO</span>
+              <span class="bar-pct">74% &rarr; 92%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-potential" style="width:92%"></div>
+              <div class="bar-current" style="width:74%"></div>
+            </div>
+          </div>
+
+          <div class="bar-row">
+            <div class="bar-label">
+              <span class="channel-lbl">Google Business</span>
+              <span class="bar-pct">55% &rarr; 88%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-potential" style="width:88%"></div>
+              <div class="bar-current" style="width:55%"></div>
+            </div>
+          </div>
+
+          <div class="bar-row">
+            <div class="bar-label">
+              <span class="channel-lbl">Social Media</span>
+              <span class="bar-pct">65% &rarr; 85%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-potential" style="width:85%"></div>
+              <div class="bar-current" style="width:65%"></div>
+            </div>
+          </div>
+
+          <div class="bar-row">
+            <div class="bar-label">
+              <span class="channel-lbl">Video (YouTube / TikTok)</span>
+              <span class="bar-pct">0% &rarr; 80%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-potential" style="width:80%"></div>
+              <div class="bar-current" style="width:0%"></div>
+            </div>
+          </div>
+
+          <div class="bar-row">
+            <div class="bar-label">
+              <span class="channel-lbl">Email Marketing</span>
+              <span class="bar-pct">30% &rarr; 85%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-potential" style="width:85%"></div>
+              <div class="bar-current" style="width:30%"></div>
+            </div>
+          </div>
+
+          <div style="margin-top:22px;display:flex;gap:20px;align-items:center;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:28px;height:6px;background:rgba(175,138,59,0.55);border-radius:3px;"></div>
+              <span style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);">Current</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:28px;height:6px;background:rgba(175,138,59,0.18);border-radius:3px;"></div>
+              <span style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);">Potential</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 — NEXT STEPS -->
+  <section class="section-block">
+    <div class="section-header">
+      <span class="section-number">Section 05</span>
+      <h2 class="section-title">Recommended Next Steps</h2>
+    </div>
+
+    <ul class="steps-list">
+      <li class="step-item">
+        <div class="step-num"><span>1</span></div>
+        <div class="step-content">
+          <div class="step-action">Submit XML sitemap and verify Google Search Console</div>
+          <div class="step-detail">Ensures Google can index all pages efficiently. Unlocks search performance data critical to ongoing SEO decisions.</div>
+        </div>
+        <div class="step-timeline">Week 1</div>
+      </li>
+
+      <li class="step-item">
+        <div class="step-num"><span>2</span></div>
+        <div class="step-content">
+          <div class="step-action">Optimize Google Business Profile</div>
+          <div class="step-detail">Complete all profile fields, add service photos, begin a review generation process, and schedule weekly posts. Direct impact on local search visibility.</div>
+        </div>
+        <div class="step-timeline">Week 1&ndash;2</div>
+      </li>
+
+      <li class="step-item">
+        <div class="step-num"><span>3</span></div>
+        <div class="step-content">
+          <div class="step-action">Launch email marketing with monthly newsletter</div>
+          <div class="step-detail">Set up an email platform, import the existing patient list, and deploy the first issue. Highest-ROI channel for health practices — foundational to long-term retention.</div>
+        </div>
+        <div class="step-timeline">Month 1</div>
+      </li>
+
+      <li class="step-item">
+        <div class="step-num"><span>4</span></div>
+        <div class="step-content">
+          <div class="step-action">Create YouTube channel with 4 launch videos</div>
+          <div class="step-detail">Four cornerstone videos — one per primary service area — establish search authority on YouTube (the second-largest search engine) and provide long-form trust content for prospective patients.</div>
+        </div>
+        <div class="step-timeline">Month 1&ndash;2</div>
+      </li>
+
+      <li class="step-item">
+        <div class="step-num"><span>5</span></div>
+        <div class="step-content">
+          <div class="step-action">Establish TikTok presence with 3 posts per week</div>
+          <div class="step-detail">Short-form nutrition content drives top-of-funnel awareness among a 25&ndash;45 demographic actively searching for dietitian services. Consistency over 60 days builds compounding reach.</div>
+        </div>
+        <div class="step-timeline">Month 2</div>
+      </li>
+
+      <li class="step-item">
+        <div class="step-num"><span>6</span></div>
+        <div class="step-content">
+          <div class="step-action">Build local citation network across 50 directories</div>
+          <div class="step-detail">Consistent NAP (name, address, phone) listings across health, local, and nutrition directories strengthen local SEO signals and surface Radiant Nutrition in more discovery touchpoints.</div>
+        </div>
+        <div class="step-timeline">Month 1&ndash;3</div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- SECTION 6 — WHY ACT NOW -->
+  <section class="section-block">
+    <div class="section-header">
+      <span class="section-number">Section 06</span>
+      <h2 class="section-title">Why Act Now</h2>
+    </div>
+
+    <div class="urgency-panel">
+      <div class="urgency-left">
+        <p class="urgency-body">
+          Competitor analysis of the Denton County market identifies two nutrition practices that have accelerated their digital investment over the past 12 months — increasing Google Business review counts, launching video content, and expanding social posting frequency. Neither has yet established the kind of authoritative, multi-channel presence that Radiant Nutrition is positioned to build.
+          <br><br>
+          The window to claim digital leadership in the Argyle and Denton market is estimated at <strong>6 to 12 months</strong>. After that period, established competitors with consistent content libraries and strong review profiles become significantly harder to displace in search results.
+        </p>
+        <div class="urgency-highlight">
+          Acting now positions Radiant Nutrition as the recognized digital authority for dietitian services in Denton County — before competitors close the gap.
+        </div>
+      </div>
+
+      <div class="urgency-stats">
+        <div class="urgency-stat">
+          <div class="urgency-stat-num">2</div>
+          <div class="urgency-stat-text">
+            <strong>Competing practices gaining ground</strong>
+            <span>Denton County competitors accelerating digital investment in the last 12 months</span>
+          </div>
+        </div>
+
+        <div class="urgency-stat">
+          <div class="urgency-stat-num">6&ndash;12</div>
+          <div class="urgency-stat-text">
+            <strong>Month window of opportunity</strong>
+            <span>Estimated time before competitors entrench positions in local search and video</span>
+          </div>
+        </div>
+
+        <div class="urgency-stat">
+          <div class="urgency-stat-num">3x</div>
+          <div class="urgency-stat-text">
+            <strong>Minimum projected reach increase</strong>
+            <span>Conservative estimate based on full gap remediation over 12 months</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<div class="gold-rule"></div>
+<footer class="report-footer">
+  <div class="footer-logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#AF8A3B" stroke-width="1.5">
+        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/>
+        <path d="M8 12c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4"/>
+        <path d="M12 8v1M12 15v1"/>
+      </svg>
+    </div>
+    <div class="logo-name">
+      <div class="primary">Radiant Nutrition</div>
+      <div class="secondary" style="color:rgba(255,255,255,0.35);">Registered Dietitian Nutritionists</div>
+    </div>
+  </div>
+
+  <div class="footer-center">
+    <p>&copy; 2026 Radiant Nutrition. All rights reserved.</p>
+    <p>Digital Presence Report prepared by TheTribeMaker &nbsp;&bull;&nbsp; Confidential &nbsp;&bull;&nbsp; September 2026</p>
+    <p style="margin-top:6px;">This report is intended exclusively for Radiant Nutrition leadership and is not for distribution.</p>
+  </div>
+
+  <div class="footer-right">
+    <div class="doc-ref">Document&nbsp;1&nbsp;of&nbsp;8</div>
+  </div>
+</footer>
+
+</body>
+</html>

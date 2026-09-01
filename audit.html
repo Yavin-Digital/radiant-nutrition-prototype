@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radiant Nutrition — Website Audit & Social Media Game Plan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --gold: #AF8A3B; --gold-light: #C8A557; --coral: #ec606a;
+      --dark: #2e2b26; --mid: #6b6560; --light-bg: #faf8f5;
+      --white: #ffffff; --border: #ede8e0;
+      --green: #4a7c59; --amber: #d97706; --red: #c0392b;
+      --font-head: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Raleway', sans-serif;
+      --max-w: 1000px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--dark); background: var(--light-bg); line-height: 1.75; font-size: 15px; }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ── */
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 28px; }
+    .section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+    .section:last-child { border-bottom: none; }
+
+    /* ── Cover ── */
+    .cover { background: linear-gradient(135deg, #1c160b 0%, #3a2b0e 60%, #1c160b 100%); color: var(--white); padding: 80px 0 72px; text-align: center; position: relative; overflow: hidden; }
+    .cover::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1400&auto=format&fit=crop') center/cover no-repeat; opacity: .08; }
+    .cover-inner { position: relative; z-index: 1; }
+    .cover-eyebrow { font-family: var(--font-body); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 18px; font-weight: 600; }
+    .cover-title { font-family: var(--font-head); font-size: clamp(38px, 5vw, 62px); font-weight: 400; font-style: italic; color: var(--white); line-height: 1.1; margin-bottom: 14px; }
+    .cover-title span { color: var(--gold-light); }
+    .cover-sub { font-size: 15px; color: rgba(255,255,255,.7); font-weight: 300; margin-bottom: 36px; }
+    .cover-meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 28px; font-size: 12px; color: rgba(255,255,255,.5); letter-spacing: 1px; text-transform: uppercase; }
+    .cover-meta span { display: flex; align-items: center; gap: 6px; }
+    .cover-meta i { color: var(--gold-light); }
+
+    /* ── Table of Contents ── */
+    .toc { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 36px 40px; margin: 48px 0; }
+    .toc h2 { font-family: var(--font-head); font-size: 26px; font-style: italic; margin-bottom: 20px; color: var(--dark); }
+    .toc ol { padding-left: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; }
+    .toc li { font-size: 14px; color: var(--mid); }
+    .toc li a { color: var(--gold); font-weight: 600; }
+    @media(max-width:600px){ .toc ol { grid-template-columns: 1fr; } }
+
+    /* ── Section headers ── */
+    .section-eyebrow { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 10px; }
+    .section-title { font-family: var(--font-head); font-size: clamp(28px,3.5vw,42px); font-style: italic; font-weight: 400; color: var(--dark); margin-bottom: 10px; line-height: 1.15; }
+    .section-intro { color: var(--mid); max-width: 680px; margin-bottom: 36px; line-height: 1.8; }
+    .divider { width: 44px; height: 1.5px; background: var(--gold); margin: 18px 0 28px; }
+
+    /* ── Score cards ── */
+    .score-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 36px; }
+    .score-card { background: var(--white); border-radius: 10px; padding: 22px 18px; text-align: center; border: 1px solid var(--border); }
+    .score-num { font-family: var(--font-head); font-size: 42px; font-style: italic; font-weight: 500; line-height: 1; margin-bottom: 6px; }
+    .score-num.green { color: var(--green); } .score-num.amber { color: var(--amber); } .score-num.red { color: var(--red); }
+    .score-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--mid); font-weight: 600; }
+    @media(max-width:640px){ .score-grid { grid-template-columns: repeat(2,1fr); } }
+
+    /* ── Finding cards ── */
+    .findings { display: flex; flex-direction: column; gap: 14px; }
+    .finding { display: flex; gap: 16px; background: var(--white); border-radius: 10px; padding: 20px 22px; border: 1px solid var(--border); align-items: flex-start; }
+    .finding-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px; }
+    .finding-icon.good { background: #edf7f0; color: var(--green); }
+    .finding-icon.warn { background: #fef9ec; color: var(--amber); }
+    .finding-icon.bad  { background: #fef0ee; color: var(--red); }
+    .finding-body strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 4px; color: var(--dark); }
+    .finding-body p { font-size: 14px; color: var(--mid); line-height: 1.6; }
+
+    /* ── Two-col layout ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    @media(max-width:680px){ .two-col { grid-template-columns: 1fr; } }
+
+    /* ── Pill tags ── */
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .tag { font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 100px; letter-spacing: .5px; }
+    .tag.green { background: #edf7f0; color: var(--green); }
+    .tag.amber { background: #fef9ec; color: var(--amber); }
+    .tag.red   { background: #fef0ee; color: var(--red); }
+    .tag.gold  { background: #faf3e3; color: var(--gold); }
+
+    /* ── Info box ── */
+    .info-box { background: var(--white); border-left: 3px solid var(--gold); border-radius: 0 10px 10px 0; padding: 20px 24px; margin: 20px 0; }
+    .info-box p { font-size: 14px; color: var(--mid); line-height: 1.7; }
+    .info-box strong { color: var(--dark); }
+  </style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<div class="cover">
+  <div class="wrap cover-inner">
+    <p class="cover-eyebrow">Prepared for Radiant Nutrition · Argyle, TX</p>
+    <h1 class="cover-title">Website Audit &amp;<br /><span>Social Media Game Plan</span></h1>
+    <p class="cover-sub">A full review of your digital presence — with a clear action plan and ready-to-use social content prompts.</p>
+    <div class="cover-meta">
+      <span><i class="fa-solid fa-calendar-days"></i> May 2026</span>
+      <span><i class="fa-solid fa-location-dot"></i> radiantnutrition.com</span>
+      <span><i class="fa-solid fa-layer-group"></i> GoHighLevel Platform</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TABLE OF CONTENTS ══ -->
+<div class="wrap">
+  <div class="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+      <li><a href="#overview">Executive Summary</a></li>
+      <li><a href="#website">Website Audit</a></li>
+      <li><a href="#brand">Brand &amp; Design Review</a></li>
+      <li><a href="#seo">SEO Opportunities</a></li>
+      <li><a href="#content">Content Gaps</a></li>
+      <li><a href="#ux">User Experience (UX)</a></li>
+      <li><a href="#social-strategy">Social Media Strategy</a></li>
+      <li><a href="#pillars">Content Pillars</a></li>
+      <li><a href="#calendar">Posting Schedule</a></li>
+      <li><a href="#prompts">Content Prompts (30+)</a></li>
+      <li><a href="#hashtags">Hashtag Strategy</a></li>
+      <li><a href="#action">90-Day Action Plan</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ══ EXECUTIVE SUMMARY ══ -->
+<section class="section" id="overview">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 01</p>
+    <h2 class="section-title">Executive Summary</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Radiant Nutrition has a strong foundation — trusted local brand, real client results, and a clear specialty in personalized dietitian services. The current GoHighLevel site is functional but underperforms in three key areas: visual design, SEO discoverability, and social media presence. This document outlines exactly what to fix, in what order, and provides plug-and-play tools to get there.</p>
+    <div class="score-grid">
+      <div class="score-card"><div class="score-num amber">C+</div><div class="score-label">Website Design</div></div>
+      <div class="score-card"><div class="score-num red">D</div><div class="score-label">SEO Performance</div></div>
+      <div class="score-card"><div class="score-num amber">C</div><div class="score-label">Social Media</div></div>
+      <div class="score-card"><div class="score-num green">A−</div><div class="score-label">Brand Reputation</div></div>
+    </div>
+    <div class="info-box"><p><strong>Bottom line:</strong> The biggest wins are available through a refreshed website design (now in progress), consistent social media posting using the prompts in this document, and basic local SEO setup — most of which requires no paid advertising.</p></div>
+  </div>
+</section>
+
+<!-- ══ WEBSITE AUDIT ══ -->
+<section class="section" id="website">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 02</p>
+    <h2 class="section-title">Website Audit</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Review of radiantnutrition.com hosted on GoHighLevel, covering design, functionality, and conversion elements.</p>
+    <div class="findings">
+      <div class="finding"><div class="finding-icon good"><i class="fa-solid fa-check"></i></div><div class="finding-body"><strong>Insurance acceptance is prominently mentioned</strong><p>Clients searching "dietitian near me accepts insurance" find this reassuring. Keep it in the hero, FAQ, and every CTA section.</p></div></div>
+      <div class="finding"><div class="finding-icon good"><i class="fa-solid fa-check"></i></div><div class="finding-body"><strong>Telehealth offering is clearly communicated</strong><p>Telehealth expands your reach far beyond Argyle. Mention it in the hero, services, and FAQ on every page.</p></div></div>
+      <div class="finding"><div class="finding-icon good"><i class="fa-solid fa-check"></i></div><div class="finding-body"><strong>Authentic client testimonials are present</strong><p>Real Google review quotes build trust. Adding photos and a total review count would increase credibility further.</p></div></div>
+      <div class="finding"><div class="finding-icon warn"><i class="fa-solid fa-triangle-exclamation"></i></div><div class="finding-body"><strong>No team bios or dietitian photos</strong><p>Clients want to know who they're working with before booking. A "Meet the Team" section with headshots and credentials is a high-converting addition.</p></div></div>
+      <div class="finding"><div class="finding-icon warn"><i class="fa-solid fa-triangle-exclamation"></i></div><div class="finding-body"><strong>Only one CTA path (Insurance Verification Form)</strong><p>Many visitors aren't ready for a full form. Add a secondary CTA — "Call us" or "Book a free 15-min discovery call" — to capture warm leads earlier.</p></div></div>
+      <div class="finding"><div class="finding-icon warn"><i class="fa-solid fa-triangle-exclamation"></i></div><div class="finding-body"><strong>No blog or educational content</strong><p>Blog posts are the fastest path to free organic Google traffic. Even 4–6 posts per year targeting local health searches makes a measurable difference.</p></div></div>
+      <div class="finding"><div class="finding-icon bad"><i class="fa-solid fa-xmark"></i></div><div class="finding-body"><strong>No Google Business Profile link or reviews widget</strong><p>A GBP reviews widget or direct link reinforces local SEO signals and helps fence-sitters convert.</p></div></div>
+      <div class="finding"><div class="finding-icon bad"><i class="fa-solid fa-xmark"></i></div><div class="finding-body"><strong>Slow mobile load speed (GHL funnel overhead)</strong><p>Minimize custom code blocks, compress images, and avoid loading unused scripts. Test monthly at PageSpeed Insights.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BRAND & DESIGN ══ -->
+<section class="section" id="brand">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 03</p>
+    <h2 class="section-title">Brand &amp; Design Review</h2>
+    <div class="divider"></div>
+    <div class="two-col">
+      <div>
+        <h3 style="font-family:var(--font-head);font-style:italic;font-size:22px;margin-bottom:14px;">What's Working</h3>
+        <div class="findings">
+          <div class="finding"><div class="finding-icon good"><i class="fa-solid fa-check"></i></div><div class="finding-body"><strong>Gold color palette</strong><p>#AF8A3B reads as premium and wellness-forward. Consistent use across GHL and social will strengthen brand recognition.</p></div></div>
+          <div class="finding"><div class="finding-icon good"><i class="fa-solid fa-check"></i></div><div class="finding-body"><strong>"Radiant Nutrition" brand name</strong><p>Memorable, optimistic, on-brand — easy to search and share verbally.</p></div></div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-head);font-style:italic;font-size:22px;margin-bottom:14px;">What Needs Work</h3>
+        <div class="findings">
+          <div class="finding"><div class="finding-icon warn"><i class="fa-solid fa-triangle-exclamation"></i></div><div class="finding-body"><strong>Font inconsistency across pages</strong><p>The live site mixes Oswald, Lato, Roboto, and Inter. The redesign standardizes to Cormorant Garamond + Raleway for a cohesive, feminine feel.</p></div></div>
+          <div class="finding"><div class="finding-icon warn"><i class="fa-solid fa-triangle-exclamation"></i></div><div class="finding-body"><strong>No brand style guide</strong><p>Document your hex codes, fonts, logo rules, and tone of voice so GHL pages, social posts, and emails always look unified.</p></div></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;"><strong style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);">Approved Brand Colors</strong>
+      <div class="tags" style="margin-top:10px;">
+        <span class="tag gold">Primary Gold #AF8A3B</span>
+        <span class="tag gold">Light Gold #C8A557</span>
+        <span class="tag" style="background:#fef0ee;color:#c0392b;">Coral Accent #ec606a</span>
+        <span class="tag" style="background:#f0ece6;color:#434445;">Dark Text #434445</span>
+        <span class="tag" style="background:#faf8f5;color:#6b6560;">Cream BG #faf8f5</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SEO ══ -->
+<section class="section" id="seo">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 04</p>
+    <h2 class="section-title">SEO Opportunities</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Local SEO is the highest-ROI channel for a brick-and-mortar dietitian practice. These are the most impactful actions ranked by effort vs. reward.</p>
+    <div class="findings">
+      <div class="finding"><div class="finding-icon bad"><i class="fa-solid fa-xmark"></i></div><div class="finding-body"><strong>Google Business Profile not fully optimized</strong><p>Add all services, hours, photos, and a booking link. Post weekly GBP updates. This is the single highest-impact free SEO action available.</p></div></div>
+      <div class="finding"><div class="finding-icon bad"><i class="fa-solid fa-xmark"></i></div><div class="finding-body"><strong>Page titles and meta descriptions need rewriting</strong><p>Current title: generic. Target: "Registered Dietitian in Argyle, TX | Insurance Accepted | Radiant Nutrition." Each GHL page needs a unique, keyword-rich title and 155-character meta description.</p></div></div>
+      <div class="finding"><div class="finding-icon warn"><i class="fa-solid fa-triangle-exclamation"></i></div><div class="finding-body"><strong>No local keyword targeting in body copy</strong><p>Include phrases like "dietitian Argyle TX," "nutrition counseling Denton County," and "telehealth dietitian Texas" naturally in headings and body text.</p></div></div>
+      <div class="finding"><div class="finding-icon warn"><i class="fa-solid fa-triangle-exclamation"></i></div><div class="finding-body"><strong>Zero backlinks from local sources</strong><p>Get listed on local directories (Healthgrades, Zocdoc, Psychology Today, Vitals, local chamber). Each listing = a backlink + new discovery channel.</p></div></div>
+      <div class="finding"><div class="finding-icon good"><i class="fa-solid fa-check"></i></div><div class="finding-body"><strong>Address and phone are present on the site</strong><p>NAP (Name, Address, Phone) consistency is a local ranking factor. Make sure the exact same format appears on your GBP, website, and every directory listing.</p></div></div>
+    </div>
+    <div class="info-box" style="margin-top:24px;"><p><strong>Priority keyword targets:</strong> "dietitian Argyle TX" · "registered dietitian near me" · "nutrition counseling accepts insurance" · "sports nutrition Denton County" · "telehealth dietitian Texas" · "pediatric dietitian Argyle"</p></div>
+  </div>
+</section>
+
+<!-- ══ CONTENT GAPS ══ -->
+<section class="section" id="content">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 05</p>
+    <h2 class="section-title">Content Gaps</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Pages and content types that competing practices offer — and that clients actively search for — that Radiant Nutrition is currently missing.</p>
+    <div class="two-col">
+      <div class="findings">
+        <div class="finding"><div class="finding-icon bad"><i class="fa-solid fa-xmark"></i></div><div class="finding-body"><strong>Meet the Team page</strong><p>Individual dietitian bios, credentials, specialties, and a personal photo. This is the most-visited page on most healthcare sites.</p></div></div>
+        <div class="finding"><div class="finding-icon bad"><i class="fa-solid fa-xmark"></i></div><div class="finding-body"><strong>Blog / Resource Center</strong><p>Even 1 post per month on topics like "What to eat if you have high cholesterol" drives compounding organic traffic for years.</p></div></div>
+        <div class="finding"><div class="finding-icon bad"><i class="fa-solid fa-xmark"></i></div><div class="finding-body"><strong>Insurance Accepted page</strong><p>A dedicated page listing every accepted insurer with a "verify my benefits" CTA is a high-converting asset for cost-conscious clients.</p></div></div>
+      </div>
+      <div class="findings">
+        <div class="finding"><div class="finding-icon bad"><i class="fa-solid fa-xmark"></i></div><div class="finding-body"><strong>Before/After or Results page</strong><p>With client permission, showcase transformation stories with specific outcomes (lbs lost, A1C reduced, energy gained).</p></div></div>
+        <div class="finding"><div class="finding-icon warn"><i class="fa-solid fa-triangle-exclamation"></i></div><div class="finding-body"><strong>New Client Resources / What to Expect</strong><p>A simple "How It Works" page or section reduces anxiety for first-time nutrition clients and pre-qualifies them before they call.</p></div></div>
+        <div class="finding"><div class="finding-icon warn"><i class="fa-solid fa-triangle-exclamation"></i></div><div class="finding-body"><strong>Email newsletter opt-in</strong><p>Capture emails from visitors who aren't ready to book. A monthly "Nutrition Tip" email keeps Radiant Nutrition top of mind until they're ready.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ UX ══ -->
+<section class="section" id="ux">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 06</p>
+    <h2 class="section-title">User Experience (UX)</h2>
+    <div class="divider"></div>
+    <div class="findings">
+      <div class="finding"><div class="finding-icon bad"><i class="fa-solid fa-xmark"></i></div><div class="finding-body"><strong>No sticky "Book Now" button on mobile</strong><p>Mobile users scroll past the CTA. A fixed bottom bar with a phone/book button on mobile would dramatically increase conversions.</p></div></div>
+      <div class="finding"><div class="finding-icon bad"><i class="fa-solid fa-xmark"></i></div><div class="finding-body"><strong>Phone number is not click-to-call styled</strong><p>All phone numbers on mobile should be wrapped in <code>href="tel:"</code> links and visually styled as buttons.</p></div></div>
+      <div class="finding"><div class="finding-icon warn"><i class="fa-solid fa-triangle-exclamation"></i></div><div class="finding-body"><strong>Insurance form is the first commitment asked</strong><p>Move the insurance form deeper in the funnel. Lead with a lower-friction CTA (discovery call or phone call) so you don't lose warmer-but-hesitant visitors.</p></div></div>
+      <div class="finding"><div class="finding-icon good"><i class="fa-solid fa-check"></i></div><div class="finding-body"><strong>FAQ section reduces pre-call anxiety</strong><p>The current FAQ addresses the most common objections (insurance, location, telehealth, first visit). Keep and expand this section.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOCIAL STRATEGY ══ -->
+<section class="section" id="social-strategy">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 07</p>
+    <h2 class="section-title">Social Media Strategy</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Social media for a local healthcare practice is not about going viral — it's about staying visible, building trust, and giving people a reason to think of you when they're ready to take action.</p>
+    <div class="two-col" style="margin-bottom:32px;">
+      <div style="background:var(--white);border-radius:12px;padding:28px;border:1px solid var(--border);">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><i class="fa-brands fa-instagram" style="font-size:28px;color:#E1306C;"></i><div><strong style="display:block;font-size:15px;">Instagram</strong><span style="font-size:13px;color:var(--mid);">Primary Platform</span></div></div>
+        <p style="font-size:14px;color:var(--mid);line-height:1.7;">Your audience skews female, 28–55, health-conscious. Instagram's visual format is perfect for before/after results, recipe reels, and relatable nutrition content. <strong style="color:var(--dark);">Goal: 3–4 posts/week.</strong></p>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:28px;border:1px solid var(--border);">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><i class="fa-brands fa-facebook-f" style="font-size:28px;color:#1877F2;"></i><div><strong style="display:block;font-size:15px;">Facebook</strong><span style="font-size:13px;color:var(--mid);">Secondary Platform</span></div></div>
+        <p style="font-size:14px;color:var(--mid);line-height:1.7;">Ideal for sharing to local Argyle / Denton County community groups, running targeted local ads, and longer-form content. <strong style="color:var(--dark);">Goal: 2–3 posts/week, cross-posted from Instagram.</strong></p>
+      </div>
+    </div>
+    <div class="info-box"><p><strong>GHL Integration Tip:</strong> Use GHL's Social Planner to schedule posts for both Instagram and Facebook from one dashboard. Set up a recurring posting template so content goes out even during busy weeks.</p></div>
+  </div>
+</section>
+
+<!-- ══ CONTENT PILLARS ══ -->
+<section class="section" id="pillars">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 08</p>
+    <h2 class="section-title">Content Pillars</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Every post you create should belong to one of these five pillars. This keeps your feed varied, purposeful, and on-brand — without having to think from scratch every time.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;">
+      <div style="background:var(--white);border-radius:12px;padding:26px 20px;border:1px solid var(--border);text-align:center;">
+        <div style="width:52px;height:52px;border-radius:50%;background:#faf3e3;border:1.5px solid rgba(175,138,59,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;"><i class="fa-solid fa-lightbulb" style="color:var(--gold);font-size:20px;"></i></div>
+        <strong style="font-family:var(--font-head);font-style:italic;font-size:18px;display:block;margin-bottom:8px;">Educate</strong>
+        <p style="font-size:13px;color:var(--mid);">Nutrition tips, myth-busting, science-backed facts. Positions your team as the local experts.</p>
+        <div class="tags" style="justify-content:center;margin-top:12px;"><span class="tag gold">~30% of posts</span></div>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:26px 20px;border:1px solid var(--border);text-align:center;">
+        <div style="width:52px;height:52px;border-radius:50%;background:#edf7f0;border:1.5px solid rgba(74,124,89,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;"><i class="fa-solid fa-heart-pulse" style="color:var(--green);font-size:20px;"></i></div>
+        <strong style="font-family:var(--font-head);font-style:italic;font-size:18px;display:block;margin-bottom:8px;">Inspire</strong>
+        <p style="font-size:13px;color:var(--mid);">Client wins, motivational quotes, transformation stories. Emotional connection and social proof.</p>
+        <div class="tags" style="justify-content:center;margin-top:12px;"><span class="tag green">~25% of posts</span></div>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:26px 20px;border:1px solid var(--border);text-align:center;">
+        <div style="width:52px;height:52px;border-radius:50%;background:#fef9ec;border:1.5px solid rgba(217,119,6,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;"><i class="fa-solid fa-utensils" style="color:var(--amber);font-size:20px;"></i></div>
+        <strong style="font-family:var(--font-head);font-style:italic;font-size:18px;display:block;margin-bottom:8px;">Recipes</strong>
+        <p style="font-size:13px;color:var(--mid);">Quick, healthy recipes your audience can actually make. Highly shareable and saveable on Instagram.</p>
+        <div class="tags" style="justify-content:center;margin-top:12px;"><span class="tag amber">~20% of posts</span></div>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:26px 20px;border:1px solid var(--border);text-align:center;">
+        <div style="width:52px;height:52px;border-radius:50%;background:#fef0ee;border:1.5px solid rgba(192,57,43,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;"><i class="fa-solid fa-user-doctor" style="color:var(--red);font-size:20px;"></i></div>
+        <strong style="font-family:var(--font-head);font-style:italic;font-size:18px;display:block;margin-bottom:8px;">Behind the Scenes</strong>
+        <p style="font-size:13px;color:var(--mid);">Meet the team, office moments, a day in the life. Builds trust and makes your brand feel human.</p>
+        <div class="tags" style="justify-content:center;margin-top:12px;"><span class="tag red">~15% of posts</span></div>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:26px 20px;border:1px solid var(--border);text-align:center;">
+        <div style="width:52px;height:52px;border-radius:50%;background:#f0ece6;border:1.5px solid rgba(67,68,69,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;"><i class="fa-solid fa-bullhorn" style="color:var(--dark);font-size:20px;"></i></div>
+        <strong style="font-family:var(--font-head);font-style:italic;font-size:18px;display:block;margin-bottom:8px;">Promote</strong>
+        <p style="font-size:13px;color:var(--mid);">Service spotlights, booking CTAs, insurance reminders, telehealth promotions. Direct ask for the appointment.</p>
+        <div class="tags" style="justify-content:center;margin-top:12px;"><span class="tag" style="background:#f0ece6;color:var(--dark);">~10% of posts</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ POSTING SCHEDULE ══ -->
+<section class="section" id="calendar">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 09</p>
+    <h2 class="section-title">Recommended Posting Schedule</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Consistency beats volume. This schedule is realistic for a busy practice and keeps you visible without burning out your team.</p>
+    <div style="background:var(--white);border-radius:12px;border:1px solid var(--border);overflow:hidden;">
+      <table style="width:100%;border-collapse:collapse;font-size:14px;">
+        <thead><tr style="background:var(--gold);color:var(--white);">
+          <th style="padding:14px 18px;text-align:left;font-family:var(--font-body);font-weight:700;letter-spacing:1px;font-size:12px;text-transform:uppercase;">Day</th>
+          <th style="padding:14px 18px;text-align:left;font-family:var(--font-body);font-weight:700;letter-spacing:1px;font-size:12px;text-transform:uppercase;">Pillar</th>
+          <th style="padding:14px 18px;text-align:left;font-family:var(--font-body);font-weight:700;letter-spacing:1px;font-size:12px;text-transform:uppercase;">Format</th>
+          <th style="padding:14px 18px;text-align:left;font-family:var(--font-body);font-weight:700;letter-spacing:1px;font-size:12px;text-transform:uppercase;">Best Time</th>
+        </tr></thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:14px 18px;font-weight:600;">Monday</td><td style="padding:14px 18px;"><span class="tag gold">Educate</span></td><td style="padding:14px 18px;color:var(--mid);">Carousel or graphic — nutrition tip/myth</td><td style="padding:14px 18px;color:var(--mid);">7–9 AM</td></tr>
+          <tr style="border-bottom:1px solid var(--border);background:#fdfcfb;"><td style="padding:14px 18px;font-weight:600;">Wednesday</td><td style="padding:14px 18px;"><span class="tag amber">Recipes</span></td><td style="padding:14px 18px;color:var(--mid);">Reel or photo — quick healthy recipe</td><td style="padding:14px 18px;color:var(--mid);">11 AM–1 PM</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:14px 18px;font-weight:600;">Friday</td><td style="padding:14px 18px;"><span class="tag green">Inspire</span></td><td style="padding:14px 18px;color:var(--mid);">Quote graphic or client win story</td><td style="padding:14px 18px;color:var(--mid);">12–2 PM</td></tr>
+          <tr style="border-bottom:1px solid var(--border);background:#fdfcfb;"><td style="padding:14px 18px;font-weight:600;">Saturday</td><td style="padding:14px 18px;"><span class="tag red">Behind the Scenes</span></td><td style="padding:14px 18px;color:var(--mid);">Team photo, office moment, or Story</td><td style="padding:14px 18px;color:var(--mid);">9–11 AM</td></tr>
+          <tr><td style="padding:14px 18px;font-weight:600;">Bi-weekly</td><td style="padding:14px 18px;"><span class="tag" style="background:#f0ece6;color:var(--dark);">Promote</span></td><td style="padding:14px 18px;color:var(--mid);">Service spotlight or booking reminder</td><td style="padding:14px 18px;color:var(--mid);">Any day, morning</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTENT PROMPTS ══ -->
+<section class="section" id="prompts">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 10</p>
+    <h2 class="section-title">30+ Ready-to-Use Content Prompts</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Copy any of these prompts into GHL Social Planner, Canva, or your caption writer. Each includes the pillar, format suggestion, and the hook/caption starter. Customize names and details to match your voice.</p>
+
+    <div style="margin-bottom:40px;">
+      <h3 style="font-family:var(--font-head);font-style:italic;font-size:24px;margin-bottom:20px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-lightbulb" style="color:var(--gold);font-size:18px;"></i> Educate Prompts</h3>
+      <div class="findings">
+        <div class="finding"><div class="finding-icon" style="background:#faf3e3;color:var(--gold);">1</div><div class="finding-body"><strong>Nutrition Myth Monday</strong><p><em>Format: Carousel (5 slides) · Caption:</em> "You've probably heard [myth]. Here's what the research actually says... Swipe to see the truth your dietitian wants you to know. 👉"</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#faf3e3;color:var(--gold);">2</div><div class="finding-body"><strong>What Does a Dietitian Actually Do?</strong><p><em>Format: Reel (30–60 sec) · Caption:</em> "Hint: we don't just hand you a meal plan and send you home. Here's what a real session with us looks like 👇"</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#faf3e3;color:var(--gold);">3</div><div class="finding-body"><strong>Signs Your Blood Sugar Is Unbalanced</strong><p><em>Format: Graphic or carousel · Caption:</em> "Feeling tired after meals? Craving sweets constantly? These 5 signs might mean your blood sugar needs attention. Here's what to look for..."</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#faf3e3;color:var(--gold);">4</div><div class="finding-body"><strong>Protein 101</strong><p><em>Format: Single graphic · Caption:</em> "How much protein do you actually need? The answer might surprise you. Here's a simple breakdown by body weight..."</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#faf3e3;color:var(--gold);">5</div><div class="finding-body"><strong>Does [popular diet] actually work?</strong><p><em>Format: Reel or carousel · Caption:</em> "As a registered dietitian, here's my honest take on [keto / intermittent fasting / low carb]. The good, the bad, and who it's actually right for."</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#faf3e3;color:var(--gold);">6</div><div class="finding-body"><strong>Foods That Fight Inflammation</strong><p><em>Format: Carousel · Caption:</em> "Chronic inflammation is linked to heart disease, diabetes, and joint pain. These 7 foods are your best friends. Save this post for your next grocery run 🛒"</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#faf3e3;color:var(--gold);">7</div><div class="finding-body"><strong>Reading a Nutrition Label</strong><p><em>Format: Reel pointing at screen or label · Caption:</em> "Stop getting tricked at the grocery store. Here's exactly what to look at on a nutrition label — and what you can safely ignore."</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#faf3e3;color:var(--gold);">8</div><div class="finding-body"><strong>What I Eat in a Day (Dietitian Edition)</strong><p><em>Format: Reel or photo series · Caption:</em> "People always ask what a dietitian actually eats. Here's an honest look at my meals today — no perfection, just balance. 🌿"</p></div></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:40px;">
+      <h3 style="font-family:var(--font-head);font-style:italic;font-size:24px;margin-bottom:20px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-heart-pulse" style="color:var(--green);font-size:18px;"></i> Inspire Prompts</h3>
+      <div class="findings">
+        <div class="finding"><div class="finding-icon" style="background:#edf7f0;color:var(--green);">9</div><div class="finding-body"><strong>Client Win (Anonymous)</strong><p><em>Format: Quote graphic · Caption:</em> "We asked a client who's been with us for 6 months to describe her experience in one sentence. This was her answer 💬 [quote]. Ready to write your own story?"</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#edf7f0;color:var(--green);">10</div><div class="finding-body"><strong>Monday Motivation</strong><p><em>Format: Branded quote graphic · Caption:</em> "Healthy eating isn't about being perfect. It's about making a little more progress each week. What's one small win you're celebrating today? Drop it below 👇"</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#edf7f0;color:var(--green);">11</div><div class="finding-body"><strong>This Time Last Year vs. Now</strong><p><em>Format: Before/after graphic (with permission) · Caption:</em> "[Name] came to us struggling with [challenge]. One year later, she's [result]. No extreme diets. No quick fixes. Just consistency and a plan that fit her life."</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#edf7f0;color:var(--green);">12</div><div class="finding-body"><strong>Why I Became a Dietitian</strong><p><em>Format: Personal photo + story caption · Caption:</em> "I didn't always have a healthy relationship with food. Here's the moment I decided to change that — and why I now help others do the same..."</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#edf7f0;color:var(--green);">13</div><div class="finding-body"><strong>Your Goals Are Valid</strong><p><em>Format: Simple text graphic · Caption:</em> "Whether you want to lose 5 lbs or manage a chronic condition — your reason for being here matters. We meet you exactly where you are."</p></div></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:40px;">
+      <h3 style="font-family:var(--font-head);font-style:italic;font-size:24px;margin-bottom:20px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-utensils" style="color:var(--amber);font-size:18px;"></i> Recipe Prompts</h3>
+      <div class="findings">
+        <div class="finding"><div class="finding-icon" style="background:#fef9ec;color:var(--amber);">14</div><div class="finding-body"><strong>5-Ingredient Meal Under 30 Minutes</strong><p><em>Format: Reel or photo · Caption:</em> "Healthy doesn't have to be complicated. This [dish] uses only 5 ingredients and takes less than 30 minutes. Full recipe in the caption 👇"</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#fef9ec;color:var(--amber);">15</div><div class="finding-body"><strong>High-Protein Breakfast Idea</strong><p><em>Format: Photo or carousel · Caption:</em> "Starting your day with enough protein = fewer cravings, more energy, better focus. Here's what I made this morning and the macro breakdown..."</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#fef9ec;color:var(--amber);">16</div><div class="finding-body"><strong>Diabetes-Friendly Dessert</strong><p><em>Format: Photo + carousel · Caption:</em> "Yes, people with diabetes can have dessert. Here's a blood-sugar-friendly treat our clients actually love — and the science behind why it works."</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#fef9ec;color:var(--amber);">17</div><div class="finding-body"><strong>Meal Prep Sunday</strong><p><em>Format: Reel (time-lapse) · Caption:</em> "Spending 45 minutes on Sunday = a whole week of healthy eating on autopilot. Here's exactly what I prep every week and how long it takes."</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#fef9ec;color:var(--amber);">18</div><div class="finding-body"><strong>Kid-Approved Healthy Snack</strong><p><em>Format: Photo · Caption:</em> "Getting kids to eat healthy doesn't have to be a battle. This snack has been approved by the pickiest testers we know — our pediatric clients! 🧒"</p></div></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:40px;">
+      <h3 style="font-family:var(--font-head);font-style:italic;font-size:24px;margin-bottom:20px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-camera" style="color:var(--red);font-size:18px;"></i> Behind the Scenes Prompts</h3>
+      <div class="findings">
+        <div class="finding"><div class="finding-icon" style="background:#fef0ee;color:var(--red);">19</div><div class="finding-body"><strong>Meet [Dietitian Name]</strong><p><em>Format: Headshot + fun facts graphic · Caption:</em> "Meet [name]! She's been helping clients in Argyle for [X] years and specializes in [area]. Her favorite weekend meal? [answer]. Fun fact: [something personal]. Book with her 👇"</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#fef0ee;color:var(--red);">20</div><div class="finding-body"><strong>A Day in the Life</strong><p><em>Format: Reel (office clips) · Caption:</em> "Ever wonder what it's actually like to work with a dietitian? Here's what a typical client session looks like at Radiant Nutrition — from check-in to care plan."</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#fef0ee;color:var(--red);">21</div><div class="finding-body"><strong>Office Tour / Location Reminder</strong><p><em>Format: Reel or photo · Caption:</em> "We're tucked right off Hwy 377 in Argyle — Suite F, just past Point Bank. Come see us! Walk-in consultations welcome or book online 📍"</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#fef0ee;color:var(--red);">22</div><div class="finding-body"><strong>Team Appreciation Post</strong><p><em>Format: Group photo · Caption:</em> "Behind every radiant client transformation is this incredible team. We are so grateful to do this work every single day. [Tag each team member] 💛"</p></div></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:20px;">
+      <h3 style="font-family:var(--font-head);font-style:italic;font-size:24px;margin-bottom:20px;display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-bullhorn" style="color:var(--dark);font-size:18px;"></i> Promote Prompts</h3>
+      <div class="findings">
+        <div class="finding"><div class="finding-icon" style="background:#f0ece6;color:var(--dark);">23</div><div class="finding-body"><strong>Insurance Reminder</strong><p><em>Format: Graphic · Caption:</em> "Did you know many insurance plans cover nutrition counseling at little or no cost? We're in-network with [list insurers]. DM us or call (940) 464-9800 and we'll verify your benefits for FREE."</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#f0ece6;color:var(--dark);">24</div><div class="finding-body"><strong>Telehealth Availability</strong><p><em>Format: Graphic or Reel · Caption:</em> "Can't make it to Argyle? No problem. We offer secure telehealth appointments — same expert care, from your couch. Most insurance covers it the same as in-person. Book your first visit 👇"</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#f0ece6;color:var(--dark);">25</div><div class="finding-body"><strong>New Client Invitation</strong><p><em>Format: Clean graphic · Caption:</em> "If you've been putting off seeing a dietitian — this is your sign. Your first session is 2 full hours dedicated entirely to YOU. Let's build a plan that finally fits your life. Link in bio to get started."</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#f0ece6;color:var(--dark);">26</div><div class="finding-body"><strong>Sports Nutrition Spotlight</strong><p><em>Format: Action photo or graphic · Caption:</em> "Student athlete? We work with players at every level to optimize performance through nutrition. Faster recovery, better focus, more energy on game day. Book a sports nutrition session 👇"</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#f0ece6;color:var(--dark);">27</div><div class="finding-body"><strong>Pediatric Nutrition Awareness</strong><p><em>Format: Friendly family graphic · Caption:</em> "Picky eater? Growing too fast or not fast enough? We specialize in pediatric nutrition for infants through teens. Because what they eat now shapes their health for life."</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#f0ece6;color:var(--dark);">28</div><div class="finding-body"><strong>Limited Appointment Availability</strong><p><em>Format: Simple text graphic · Caption:</em> "We have [X] new client openings this month — both in-person in Argyle and via telehealth. Spots go quickly. Call (940) 464-9800 or visit the link in our bio to get on the schedule."</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#f0ece6;color:var(--dark);">29</div><div class="finding-body"><strong>Seasonal / Holiday Eating Tips + CTA</strong><p><em>Format: Graphic · Caption:</em> "The holidays don't have to derail your health goals. Here are 3 tips our dietitians share with every client this time of year... and if you want personalized help, we're booking for [month] now."</p></div></div>
+        <div class="finding"><div class="finding-icon" style="background:#f0ece6;color:var(--dark);">30</div><div class="finding-body"><strong>Review Request Post</strong><p><em>Format: Thank-you graphic · Caption:</em> "Your kind words mean the world to us. If working with Radiant Nutrition has made a difference in your life, we'd love a Google review — it helps other families in our community find us. 🔗 Link in bio."</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HASHTAGS ══ -->
+<section class="section" id="hashtags">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 11</p>
+    <h2 class="section-title">Hashtag Strategy</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Use 15–25 hashtags per Instagram post. Mix all three tiers below. Rotate your sets so Instagram doesn't flag you for repetition. Always include your local tags.</p>
+    <div class="two-col" style="margin-bottom:28px;">
+      <div style="background:var(--white);border-radius:12px;padding:24px;border:1px solid var(--border);">
+        <strong style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:12px;">Local &amp; Niche (Always Use)</strong>
+        <div class="tags">
+          <span class="tag gold">#ArgyleTexas</span><span class="tag gold">#ArgyleTX</span><span class="tag gold">#DentonCounty</span><span class="tag gold">#NorthTexasHealth</span><span class="tag gold">#RadiantNutrition</span><span class="tag gold">#DFWWellness</span><span class="tag gold">#ArgyleWellness</span><span class="tag gold">#DFWDietitian</span>
+        </div>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:24px;border:1px solid var(--border);">
+        <strong style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:12px;">Mid-Size (Rotate These)</strong>
+        <div class="tags">
+          <span class="tag green">#RegisteredDietitian</span><span class="tag green">#NutritionCounseling</span><span class="tag green">#DietitianApproved</span><span class="tag green">#EatForYourHealth</span><span class="tag green">#HealthyEatingTips</span><span class="tag green">#NutritionTips</span><span class="tag green">#InsuranceAccepted</span><span class="tag green">#TelehealthNutrition</span><span class="tag green">#SportsNutrition</span><span class="tag green">#PediatricNutrition</span><span class="tag green">#DiabetesDiet</span><span class="tag green">#WeightManagement</span>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--white);border-radius:12px;padding:24px;border:1px solid var(--border);">
+      <strong style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:12px;">Broad Reach (Pick 3–5 Per Post)</strong>
+      <div class="tags">
+        <span class="tag amber">#HealthyLiving</span><span class="tag amber">#Wellness</span><span class="tag amber">#CleanEating</span><span class="tag amber">#MealPrep</span><span class="tag amber">#HealthyRecipes</span><span class="tag amber">#NutritionFacts</span><span class="tag amber">#HealthyFamily</span><span class="tag amber">#MindfulEating</span><span class="tag amber">#FoodAsMedicine</span><span class="tag amber">#HealthGoals</span>
+      </div>
+    </div>
+    <div class="info-box" style="margin-top:20px;"><p><strong>Pro tip:</strong> Save 3–4 hashtag sets in your GHL Social Planner notes or a Notes app. Rotate them weekly so Instagram's algorithm keeps treating your posts as fresh. Always place hashtags at the end of the caption or in the first comment.</p></div>
+  </div>
+</section>
+
+<!-- ══ 90-DAY ACTION PLAN ══ -->
+<section class="section" id="action">
+  <div class="wrap">
+    <p class="section-eyebrow">Section 12</p>
+    <h2 class="section-title">90-Day Action Plan</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Prioritized by impact. Focus on Month 1 items first — they have the highest return and lowest cost.</p>
+    <div style="background:var(--white);border-radius:12px;border:1px solid var(--border);overflow:hidden;">
+      <table style="width:100%;border-collapse:collapse;font-size:14px;">
+        <thead><tr style="background:var(--gold);color:var(--white);">
+          <th style="padding:14px 18px;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Phase</th>
+          <th style="padding:14px 18px;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Action Item</th>
+          <th style="padding:14px 18px;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Owner</th>
+          <th style="padding:14px 18px;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Priority</th>
+        </tr></thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);background:#fffdf9;"><td style="padding:14px 18px;font-weight:700;color:var(--gold);">Month 1</td><td style="padding:14px 18px;">Launch redesigned GHL website prototype</td><td style="padding:14px 18px;color:var(--mid);">Dev / GHL</td><td style="padding:14px 18px;"><span class="tag red">Critical</span></td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:14px 18px;font-weight:700;color:var(--gold);">Month 1</td><td style="padding:14px 18px;">Fully optimize Google Business Profile (photos, services, hours, booking link)</td><td style="padding:14px 18px;color:var(--mid);">Practice Owner</td><td style="padding:14px 18px;"><span class="tag red">Critical</span></td></tr>
+          <tr style="border-bottom:1px solid var(--border);background:#fffdf9;"><td style="padding:14px 18px;font-weight:700;color:var(--gold);">Month 1</td><td style="padding:14px 18px;">Set up GHL Social Planner — schedule first 4 weeks of posts</td><td style="padding:14px 18px;color:var(--mid);">Admin / GHL</td><td style="padding:14px 18px;"><span class="tag red">Critical</span></td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:14px 18px;font-weight:700;color:var(--gold);">Month 1</td><td style="padding:14px 18px;">Update all page meta titles and descriptions in GHL</td><td style="padding:14px 18px;color:var(--mid);">GHL / Dev</td><td style="padding:14px 18px;"><span class="tag amber">High</span></td></tr>
+          <tr style="border-bottom:1px solid var(--border);background:#fffdf9;"><td style="padding:14px 18px;font-weight:700;color:var(--gold);">Month 1</td><td style="padding:14px 18px;">Photograph all dietitians (headshots + candid office shots)</td><td style="padding:14px 18px;color:var(--mid);">Practice Owner</td><td style="padding:14px 18px;"><span class="tag amber">High</span></td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:14px 18px;font-weight:700;color:var(--dark);">Month 2</td><td style="padding:14px 18px;">Add "Meet the Team" page to GHL site</td><td style="padding:14px 18px;color:var(--mid);">Dev / GHL</td><td style="padding:14px 18px;"><span class="tag amber">High</span></td></tr>
+          <tr style="border-bottom:1px solid var(--border);background:#fffdf9;"><td style="padding:14px 18px;font-weight:700;color:var(--dark);">Month 2</td><td style="padding:14px 18px;">Submit to 5+ health directories (Healthgrades, Zocdoc, Vitals, local chamber)</td><td style="padding:14px 18px;color:var(--mid);">Admin</td><td style="padding:14px 18px;"><span class="tag amber">High</span></td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:14px 18px;font-weight:700;color:var(--dark);">Month 2</td><td style="padding:14px 18px;">Add email newsletter opt-in to GHL site + set up welcome automation</td><td style="padding:14px 18px;color:var(--mid);">GHL</td><td style="padding:14px 18px;"><span class="tag gold">Medium</span></td></tr>
+          <tr style="border-bottom:1px solid var(--border);background:#fffdf9;"><td style="padding:14px 18px;font-weight:700;color:var(--dark);">Month 2</td><td style="padding:14px 18px;">Publish first 2 blog posts targeting local keywords</td><td style="padding:14px 18px;color:var(--mid);">Dietitian / Writer</td><td style="padding:14px 18px;"><span class="tag gold">Medium</span></td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:14px 18px;font-weight:700;color:var(--green);">Month 3</td><td style="padding:14px 18px;">Launch Google review request campaign via GHL automation</td><td style="padding:14px 18px;color:var(--mid);">GHL</td><td style="padding:14px 18px;"><span class="tag amber">High</span></td></tr>
+          <tr style="border-bottom:1px solid var(--border);background:#fffdf9;"><td style="padding:14px 18px;font-weight:700;color:var(--green);">Month 3</td><td style="padding:14px 18px;">Run first Facebook / Instagram ad ($150–300 test budget, local radius)</td><td style="padding:14px 18px;color:var(--mid);">Practice Owner</td><td style="padding:14px 18px;"><span class="tag gold">Medium</span></td></tr>
+          <tr><td style="padding:14px 18px;font-weight:700;color:var(--green);">Month 3</td><td style="padding:14px 18px;">Review analytics: top posts, website traffic sources, booking rate — adjust strategy</td><td style="padding:14px 18px;color:var(--mid);">All</td><td style="padding:14px 18px;"><span class="tag gold">Medium</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer style="background:#1c160b;color:rgba(255,255,255,.5);text-align:center;padding:36px 28px;font-size:13px;letter-spacing:.5px;">
+  <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/Q4i3VdMSLVwO3MoF3Imn/media/677dace365b87ebf5717efcd.png" alt="Radiant Nutrition" style="height:46px;margin:0 auto 16px;opacity:.8;" />
+  <p style="color:rgba(255,255,255,.3);margin-top:8px;">Radiant Nutrition · 306 Hwy 377, Suite F, Argyle, TX 76226 · (940) 464-9800</p>
+  <p style="margin-top:6px;color:rgba(255,255,255,.2);">Website Audit &amp; Social Media Game Plan · Prepared May 2026</p>
+</footer>
+
+</body>
+</html>

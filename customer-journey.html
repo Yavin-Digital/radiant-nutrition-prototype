@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radiant Nutrition — Patient Journey Map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --gold:      #AF8A3B;
+      --gold-lt:   #C8A557;
+      --cream:     #faf8f5;
+      --dark:      #2e2b26;
+      --ins:       #AF8A3B;   /* Insurance — gold */
+      --pay:       #7a5c9e;   /* Self-Pay  — plum */
+      --pep:       #4a8872;   /* Peptides  — sage */
+      --ins-bg:    #fdf8ee;
+      --pay-bg:    #f8f4fd;
+      --pep-bg:    #f0f8f4;
+      --fh: 'Cormorant Garamond', Georgia, serif;
+      --fb: 'Raleway', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--fb); background: #f5f3ef; color: var(--dark); line-height: 1.6; }
+
+    /* ── COVER ── */
+    .cover { background: var(--dark); padding: 52px 40px 44px; text-align: center; position: relative; overflow: hidden; }
+    .cover::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(175,138,59,.22) 0%, transparent 70%); }
+    .cover__logo { height: 72px; width: auto; margin: 0 auto 28px; display: block; position: relative; }
+    .cover__tag { font-family: var(--fb); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-lt); font-weight: 600; margin-bottom: 14px; position: relative; }
+    .cover__title { font-family: var(--fh); font-size: clamp(32px, 5vw, 58px); font-weight: 400; font-style: italic; color: #fff; line-height: 1.1; margin-bottom: 16px; position: relative; }
+    .cover__title span { color: var(--gold-lt); }
+    .cover__sub { font-size: 15px; color: rgba(255,255,255,.6); font-weight: 300; max-width: 580px; margin: 0 auto 32px; position: relative; }
+    .cover__paths { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; position: relative; }
+    .cover__badge { display: flex; align-items: center; gap: 8px; padding: 8px 20px; border-radius: 40px; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+    .badge--ins { background: rgba(175,138,59,.18); border: 1px solid rgba(175,138,59,.5); color: var(--gold-lt); }
+    .badge--pay { background: rgba(122,92,158,.18); border: 1px solid rgba(122,92,158,.5); color: #b49dd4; }
+    .badge--pep { background: rgba(74,136,114,.18); border: 1px solid rgba(74,136,114,.5); color: #7ec4ad; }
+
+    /* ── PRINT BUTTON ── */
+    .print-bar { background: var(--cream); border-bottom: 1px solid #e8e2d8; padding: 14px 40px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .print-bar p { font-size: 13px; color: #888; font-weight: 400; }
+    .btn-print { font-family: var(--fb); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; background: var(--gold); color: #fff; border: none; padding: 10px 28px; border-radius: 40px; cursor: pointer; transition: background .2s; }
+    .btn-print:hover { background: var(--gold-lt); }
+
+    /* ── JOURNEY GRID ── */
+    .journey { max-width: 1200px; margin: 0 auto; padding: 52px 28px 0; }
+    .journey__intro { text-align: center; margin-bottom: 48px; }
+    .journey__intro h2 { font-family: var(--fh); font-size: clamp(26px,4vw,42px); font-style: italic; font-weight: 400; margin-bottom: 10px; }
+    .journey__intro p { font-size: 15px; color: #777; max-width: 620px; margin: 0 auto; }
+    .divider { width: 48px; height: 1.5px; background: var(--gold); margin: 14px auto 0; }
+
+    /* ── COLUMNS ── */
+    .cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: start; }
+    @media (max-width: 860px) { .cols { grid-template-columns: 1fr; } }
+
+    .col-header { border-radius: 16px 16px 0 0; padding: 28px 24px 22px; text-align: center; }
+    .col-header__icon { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 22px; }
+    .col-header h3 { font-family: var(--fh); font-size: 26px; font-style: italic; font-weight: 500; margin-bottom: 4px; }
+    .col-header p { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; opacity: .7; }
+
+    .col--ins .col-header { background: var(--ins); color: #fff; }
+    .col--ins .col-header__icon { background: rgba(255,255,255,.2); color: #fff; }
+    .col--pay .col-header { background: var(--pay); color: #fff; }
+    .col--pay .col-header__icon { background: rgba(255,255,255,.2); color: #fff; }
+    .col--pep .col-header { background: var(--pep); color: #fff; }
+    .col--pep .col-header__icon { background: rgba(255,255,255,.2); color: #fff; }
+
+    /* ── STEPS ── */
+    .steps { background: #fff; border-radius: 0 0 16px 16px; border: 1px solid #ede8e0; border-top: none; overflow: hidden; }
+    .step { display: flex; gap: 16px; padding: 20px 22px; border-bottom: 1px solid #f5f0ea; position: relative; }
+    .step:last-child { border-bottom: none; }
+    .step__num { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .col--ins .step__num { background: var(--ins-bg); color: var(--ins); border: 1.5px solid var(--ins); }
+    .col--pay .step__num { background: var(--pay-bg); color: var(--pay); border: 1.5px solid var(--pay); }
+    .col--pep .step__num { background: var(--pep-bg); color: var(--pep); border: 1.5px solid var(--pep); }
+    .step__body h4 { font-family: var(--fb); font-size: 14px; font-weight: 700; margin-bottom: 4px; color: var(--dark); }
+    .step__body p { font-size: 13px; color: #777; line-height: 1.65; }
+    .step__icon { font-size: 13px; margin-right: 5px; }
+    .step__tag { display: inline-block; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; padding: 2px 10px; border-radius: 20px; margin-top: 6px; }
+    .col--ins .step__tag { background: var(--ins-bg); color: var(--ins); }
+    .col--pay .step__tag { background: var(--pay-bg); color: var(--pay); }
+    .col--pep .step__tag { background: var(--pep-bg); color: var(--pep); }
+
+    /* ── CONVERGENCE ── */
+    .converge { max-width: 1200px; margin: 36px auto 0; padding: 0 28px; }
+    .converge__arrows { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-bottom: 0; }
+    .converge__arrow { display: flex; flex-direction: column; align-items: center; padding: 10px 0 0; }
+    .converge__arrow span { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
+    .arrow--ins span { color: var(--ins); }
+    .arrow--pay span { color: var(--pay); }
+    .arrow--pep span { color: var(--pep); }
+    .arrow-line { width: 2px; height: 32px; }
+    .arrow--ins .arrow-line { background: var(--ins); }
+    .arrow--pay .arrow-line { background: var(--pay); }
+    .arrow--pep .arrow-line { background: var(--pep); }
+    .arrow-head { width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; }
+    .arrow--ins .arrow-head { border-top: 10px solid var(--ins); }
+    .arrow--pay .arrow-head { border-top: 10px solid var(--pay); }
+    .arrow--pep .arrow-head { border-top: 10px solid var(--pep); }
+
+    .converge__card { background: var(--dark); border-radius: 20px; padding: 44px 40px; text-align: center; margin: 0 0 52px; }
+    .converge__card h2 { font-family: var(--fh); font-size: clamp(26px,4vw,40px); font-style: italic; font-weight: 400; color: #fff; margin-bottom: 12px; }
+    .converge__card h2 span { color: var(--gold-lt); }
+    .converge__card > p { font-size: 15px; color: rgba(255,255,255,.65); max-width: 620px; margin: 0 auto 36px; font-weight: 300; }
+    .converge__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+    .converge__item { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 24px 20px; text-align: center; }
+    .converge__item i { font-size: 24px; color: var(--gold-lt); margin-bottom: 12px; display: block; }
+    .converge__item h4 { font-family: var(--fb); font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 6px; letter-spacing: .5px; }
+    .converge__item p { font-size: 12px; color: rgba(255,255,255,.5); line-height: 1.6; }
+
+    /* ── FOOTER ── */
+    .doc-footer { background: var(--cream); border-top: 1px solid #e8e2d8; padding: 28px 40px; text-align: center; }
+    .doc-footer p { font-size: 12px; color: #aaa; line-height: 1.8; }
+    .doc-footer strong { color: var(--gold); }
+
+    @media print {
+      .print-bar { display: none; }
+      body { background: #fff; }
+      .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .col-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .converge__card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<div class="cover">
+  <img class="cover__logo" src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/Q4i3VdMSLVwO3MoF3Imn/media/677dace365b87ebf5717efcd.png" alt="Radiant Nutrition" />
+  <p class="cover__tag">Internal Strategy Document</p>
+  <h1 class="cover__title">Patient Booking<br /><span>Journey Map</span></h1>
+  <p class="cover__sub">A visual guide to every path a patient takes from first discovery to ongoing care — across all three service lines.</p>
+  <div class="cover__paths">
+    <span class="cover__badge badge--ins"><i class="fa-solid fa-shield-heart"></i> Insurance</span>
+    <span class="cover__badge badge--pay"><i class="fa-solid fa-credit-card"></i> Self-Pay</span>
+    <span class="cover__badge badge--pep"><i class="fa-solid fa-flask"></i> Peptides</span>
+  </div>
+</div>
+
+<!-- ══ PRINT BAR ══ -->
+<div class="print-bar">
+  <p>Radiant Nutrition · 306 Hwy 377, Suite F, Argyle, TX 76226 · (940) 464-9800 · RadiantNutrition.com</p>
+  <button class="btn-print" onclick="window.print()"><i class="fa-solid fa-print" style="margin-right:8px;"></i>Print / Save PDF</button>
+</div>
+
+<!-- ══ JOURNEY ══ -->
+<div class="journey">
+  <div class="journey__intro">
+    <h2>Three Pathways to Better Health</h2>
+    <p>Each path is designed to remove friction, build trust, and deliver a personalized care experience from the very first touchpoint.</p>
+    <div class="divider"></div>
+  </div>
+
+  <div class="cols">
+
+    <!-- ══ INSURANCE COLUMN ══ -->
+    <div class="col col--ins">
+      <div class="col-header">
+        <div class="col-header__icon"><i class="fa-solid fa-shield-heart"></i></div>
+        <h3>Insurance</h3>
+        <p>In-Network · Little or No Cost</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__num">1</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-magnifying-glass step__icon"></i>Discovery</h4>
+            <p>Patient finds Radiant Nutrition via Google search, social media, doctor referral, or word of mouth.</p>
+            <span class="step__tag">Awareness</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">2</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-file-lines step__icon"></i>New Client Form</h4>
+            <p>Patient clicks "Insurance, Book Now" and completes the online Insurance Verification Form with personal and plan details.</p>
+            <span class="step__tag">Action</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">3</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-gears step__icon"></i>Benefits Verification</h4>
+            <p>Office team verifies insurance coverage within <strong>2 business days</strong>. Patient is contacted via text and email with their coverage details.</p>
+            <span class="step__tag">Office</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">4</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-calendar-check step__icon"></i>Schedule Appointment</h4>
+            <p>Patient receives a scheduling link and books their first visit at a convenient time — in-office or telehealth.</p>
+            <span class="step__tag">Booking</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">5</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-stethoscope step__icon"></i>Initial Appointment (2 hrs)</h4>
+            <p>Deep-dive intake: health history, goals, dietary habits, challenges. InBody scan completed. Personalized plan delivered.</p>
+            <span class="step__tag">Care Begins</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">6</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-arrow-rotate-right step__icon"></i>Ongoing Follow-Ups</h4>
+            <p>Frequency set by patient + dietitian (weekly, biweekly, or monthly). Goals adjusted, progress tracked, plan refined.</p>
+            <span class="step__tag">Retention</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SELF-PAY COLUMN ══ -->
+    <div class="col col--pay">
+      <div class="col-header">
+        <div class="col-header__icon"><i class="fa-solid fa-credit-card"></i></div>
+        <h3>Self-Pay</h3>
+        <p>Flexible · Transparent Pricing</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__num">1</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-magnifying-glass step__icon"></i>Discovery</h4>
+            <p>Patient finds Radiant Nutrition via Google, social media, referral, or direct search for a local dietitian.</p>
+            <span class="step__tag">Awareness</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">2</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-phone step__icon"></i>Contact Office</h4>
+            <p>Patient clicks "Self-Pay, Book Now" or calls <strong>(940) 464-9800</strong> to speak directly with the Radiant Nutrition team.</p>
+            <span class="step__tag">Action</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">3</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-comments-dollar step__icon"></i>Rate Discussion</h4>
+            <p>Office walks through self-pay session rates, package options, and any available payment plans to find the right fit.</p>
+            <span class="step__tag">Office</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">4</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-calendar-check step__icon"></i>Schedule Appointment</h4>
+            <p>Appointment booked over the phone or via scheduling link. Patient receives confirmation and intake paperwork.</p>
+            <span class="step__tag">Booking</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">5</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-stethoscope step__icon"></i>Initial Appointment (2 hrs)</h4>
+            <p>Same comprehensive intake experience as insurance patients — full history, InBody scan, and a fully customized nutrition plan.</p>
+            <span class="step__tag">Care Begins</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">6</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-arrow-rotate-right step__icon"></i>Ongoing Follow-Ups</h4>
+            <p>Flexible scheduling based on patient budget and goals. Package bundles available for committed follow-up plans.</p>
+            <span class="step__tag">Retention</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PEPTIDES COLUMN ══ -->
+    <div class="col col--pep">
+      <div class="col-header">
+        <div class="col-header__icon"><i class="fa-solid fa-flask"></i></div>
+        <h3>Peptides</h3>
+        <p>Advanced Wellness · Ongoing Support</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__num">1</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-magnifying-glass step__icon"></i>Discovery</h4>
+            <p>New or existing patient expresses interest in peptide therapy via website, social media, or during a nutrition appointment.</p>
+            <span class="step__tag">Awareness</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">2</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-message-medical step__icon"></i>Inquiry & Screening</h4>
+            <p>Patient contacts the office to learn more. A brief intake questionnaire is sent to assess candidacy and health goals.</p>
+            <span class="step__tag">Screening</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">3</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-user-doctor step__icon"></i>Peptide Consultation</h4>
+            <p>Dedicated appointment with a dietitian to review health history, goals, lifestyle, and determine the best peptide protocol.</p>
+            <span class="step__tag">Consultation</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">4</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-vial step__icon"></i>Lab Work / Assessment</h4>
+            <p>InBody scan and relevant baseline labs reviewed. Findings used to personalize the peptide program and set benchmarks.</p>
+            <span class="step__tag">Assessment</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">5</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-file-prescription step__icon"></i>Personalized Protocol</h4>
+            <p>Dietitian presents a tailored peptide plan paired with a complementary nutrition strategy for maximum results.</p>
+            <span class="step__tag">Plan</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">6</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-bag-shopping step__icon"></i>Enrollment & Ordering</h4>
+            <p>Patient enrolls in the peptide program. Products are ordered and patient is educated on proper use and expectations.</p>
+            <span class="step__tag">Enrollment</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">7</div>
+          <div class="step__body">
+            <h4><i class="fa-solid fa-chart-line step__icon"></i>Monitoring & Adjustments</h4>
+            <p>Regular check-in appointments track progress, side effects, and outcomes. Protocol adjusted as needed for optimal results.</p>
+            <span class="step__tag">Retention</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /cols -->
+</div><!-- /journey -->
+
+<!-- ══ CONVERGENCE ══ -->
+<div class="converge">
+  <div class="converge__arrows">
+    <div class="converge__arrow arrow--ins"><span>Insurance</span><div class="arrow-line"></div><div class="arrow-head"></div></div>
+    <div class="converge__arrow arrow--pay"><span>Self-Pay</span><div class="arrow-line"></div><div class="arrow-head"></div></div>
+    <div class="converge__arrow arrow--pep"><span>Peptides</span><div class="arrow-line"></div><div class="arrow-head"></div></div>
+  </div>
+  <div class="converge__card">
+    <h2>All Paths Lead to <span>Ongoing Care</span></h2>
+    <p>Every patient — regardless of entry point — receives the same standard of personalized, evidence-based care and long-term support.</p>
+    <div class="converge__grid">
+      <div class="converge__item">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <h4>Personalized Plans</h4>
+        <p>Fully customized to each client's lifestyle, goals, and medical history</p>
+      </div>
+      <div class="converge__item">
+        <i class="fa-solid fa-calendar-days"></i>
+        <h4>Flexible Scheduling</h4>
+        <p>Weekly, biweekly, or monthly — set by the patient and dietitian together</p>
+      </div>
+      <div class="converge__item">
+        <i class="fa-solid fa-video"></i>
+        <h4>In-Person & Telehealth</h4>
+        <p>In-office at Argyle or secure video from anywhere — covered by most plans</p>
+      </div>
+      <div class="converge__item">
+        <i class="fa-solid fa-chart-line"></i>
+        <h4>Progress Tracking</h4>
+        <p>InBody scans + goal reviews at every follow-up to measure real results</p>
+      </div>
+      <div class="converge__item">
+        <i class="fa-solid fa-people-arrows"></i>
+        <h4>Whole-Person Support</h4>
+        <p>Nutrition, lifestyle, sleep, stress — every factor that affects your health</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<div class="doc-footer">
+  <p><strong>Radiant Nutrition</strong> · 306 Hwy 377, Suite F, Argyle, TX 76226 · <strong>(940) 464-9800</strong> · admin@radiantnutrition.com · RadiantNutrition.com<br>
+  This document is intended for internal strategy and client presentation purposes only. Not for public distribution.</p>
+</div>
+
+</body>
+</html>
+</html>

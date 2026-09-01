@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brand Guide — Radiant Nutrition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold:     #AF8A3B;
+      --gold-lt:  #C8A557;
+      --dark:     #434445;
+      --cream:    #faf8f5;
+      --white:    #ffffff;
+      --dark-bg:  #1c160b;
+      --dark-bg2: #2e2618;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: var(--dark-bg);
+      padding: 32px 48px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      border-bottom: 2px solid var(--gold);
+    }
+    .site-header img {
+      height: 64px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+    .header-text h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.04em;
+    }
+    .header-text p {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--gold-lt);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 72px 0;
+      border-bottom: 1px solid #e2ddd6;
+    }
+    .section:last-of-type { border-bottom: none; }
+
+    .section-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 40px;
+      line-height: 1.2;
+    }
+
+    /* ── LOGO ── */
+    .logo-panels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .logo-panel {
+      border-radius: 8px;
+      padding: 48px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .logo-panel.light { background: var(--white); border: 1px solid #e2ddd6; }
+    .logo-panel.dark  { background: var(--dark-bg); }
+    .logo-panel img   { width: 100%; max-width: 320px; height: auto; }
+    .logo-panel.dark img { filter: brightness(0) invert(1); }
+    .logo-panel-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .logo-panel.light .logo-panel-label { color: var(--dark); }
+    .logo-panel.dark  .logo-panel-label { color: var(--gold-lt); }
+
+    .logo-meta {
+      margin-top: 36px;
+      background: var(--white);
+      border: 1px solid #e2ddd6;
+      border-radius: 8px;
+      padding: 28px 32px;
+    }
+    .logo-meta table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .logo-meta td {
+      padding: 10px 0;
+      border-bottom: 1px solid #f0ece5;
+      vertical-align: top;
+    }
+    .logo-meta td:first-child {
+      font-weight: 700;
+      color: var(--dark);
+      width: 160px;
+      padding-right: 24px;
+    }
+    .logo-meta td:last-child { color: #666; }
+    .logo-meta tr:last-child td { border-bottom: none; }
+
+    /* ── COLOR PALETTE ── */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+    }
+    .swatch-card {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+    .swatch-block {
+      height: 120px;
+      width: 100%;
+    }
+    .swatch-info {
+      background: var(--white);
+      padding: 14px 16px;
+    }
+    .swatch-var {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .swatch-hex {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .swatch-role {
+      font-size: 0.75rem;
+      color: #888;
+      line-height: 1.4;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .type-group {
+      margin-bottom: 48px;
+    }
+    .type-group-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid #e2ddd6;
+      padding-bottom: 8px;
+      margin-bottom: 28px;
+    }
+    .type-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 24px;
+      align-items: baseline;
+      padding: 16px 0;
+      border-bottom: 1px solid #f0ece5;
+    }
+    .type-row:last-child { border-bottom: none; }
+    .type-meta {
+      font-size: 0.75rem;
+      color: #999;
+      line-height: 1.5;
+    }
+    .type-meta strong { color: var(--dark); font-weight: 700; display: block; }
+
+    /* Cormorant samples */
+    .cg-display-italic { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-style: italic; font-weight: 500; color: var(--dark); line-height: 1.1; }
+    .cg-heading        { font-family: 'Cormorant Garamond', serif; font-size: 2rem;   font-style: normal; font-weight: 600; color: var(--dark); line-height: 1.15; }
+    .cg-subheading     { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: normal; font-weight: 400; color: var(--dark); line-height: 1.3; }
+
+    /* Raleway samples */
+    .rw-bold       { font-family: 'Raleway', sans-serif; font-size: 1rem;  font-weight: 700; color: var(--dark); }
+    .rw-semibold   { font-family: 'Raleway', sans-serif; font-size: 1rem;  font-weight: 600; color: var(--dark); }
+    .rw-regular    { font-family: 'Raleway', sans-serif; font-size: 1rem;  font-weight: 400; color: var(--dark); }
+    .rw-light      { font-family: 'Raleway', sans-serif; font-size: 1rem;  font-weight: 300; color: var(--dark); }
+
+    /* ── BUTTONS ── */
+    .btn-demo-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 36px;
+    }
+    .btn-gold {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: 2px solid var(--gold);
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s;
+    }
+    .btn-gold:hover { background: var(--gold-lt); border-color: var(--gold-lt); }
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--gold);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: 2px solid var(--gold);
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s;
+    }
+    .btn-outline:hover { background: var(--gold); color: var(--white); }
+    .btn-dark {
+      display: inline-block;
+      background: var(--dark-bg);
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: 2px solid var(--dark-bg);
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.25s;
+    }
+    .btn-dark:hover { background: var(--dark-bg2); border-color: var(--dark-bg2); }
+    .btn-disabled {
+      display: inline-block;
+      background: #d6d2cc;
+      color: #aaa;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: 2px solid #d6d2cc;
+      border-radius: 2px;
+      cursor: not-allowed;
+      text-decoration: none;
+    }
+
+    .btn-block {
+      background: var(--white);
+      border: 1px solid #e2ddd6;
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-bottom: 16px;
+    }
+    .btn-block-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .code-block {
+      background: var(--dark-bg);
+      color: #c8f0b0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      padding: 16px 20px;
+      border-radius: 6px;
+      margin-top: 14px;
+      overflow-x: auto;
+      white-space: pre;
+      line-height: 1.6;
+    }
+
+    /* ── VOICE & TONE ── */
+    .voice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+    .voice-card {
+      background: var(--white);
+      border: 1px solid #e2ddd6;
+      border-radius: 8px;
+      padding: 28px 32px;
+    }
+    .voice-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 14px;
+    }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 5px 14px;
+      border-radius: 20px;
+    }
+    .tag-gold { background: #f5ede0; color: var(--gold); }
+    .tag-red  { background: #fdecea; color: #b94040; text-decoration: line-through; }
+
+    .tagline-block {
+      background: var(--dark-bg);
+      border-left: 4px solid var(--gold);
+      border-radius: 6px;
+      padding: 28px 36px;
+      margin-top: 32px;
+    }
+    .tagline-block p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-style: italic;
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .tagline-block span {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      display: block;
+      margin-top: 10px;
+    }
+
+    /* ── USAGE RULES ── */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .rule-card {
+      background: var(--white);
+      border: 1px solid #e2ddd6;
+      border-radius: 8px;
+      padding: 24px 28px;
+    }
+    .rule-card h4 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .rule-list {
+      list-style: none;
+      padding: 0;
+    }
+    .rule-list li {
+      font-size: 0.9rem;
+      color: #555;
+      padding: 6px 0;
+      border-bottom: 1px solid #f0ece5;
+      padding-left: 16px;
+      position: relative;
+    }
+    .rule-list li:last-child { border-bottom: none; }
+    .rule-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .rule-list.no-list li::before { background: #c0392b; }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: var(--dark-bg);
+      border-top: 2px solid var(--gold);
+      padding: 32px 48px;
+      text-align: center;
+    }
+    .site-footer p {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      color: #9a8f7a;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .site-header { padding: 24px 20px; flex-direction: column; align-items: flex-start; gap: 16px; }
+      .header-text h1 { font-size: 1.8rem; }
+      .container { padding: 0 20px; }
+      .section { padding: 48px 0; }
+      .logo-panels { grid-template-columns: 1fr; }
+      .color-grid { grid-template-columns: repeat(2, 1fr); }
+      .type-row { grid-template-columns: 1fr; gap: 8px; }
+      .voice-grid { grid-template-columns: 1fr; }
+      .rules-grid { grid-template-columns: 1fr; }
+      .site-footer { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/Q4i3VdMSLVwO3MoF3Imn/media/677dace365b87ebf5717efcd.png" alt="Radiant Nutrition Logo" />
+    <div class="header-text">
+      <h1>Brand Guide</h1>
+      <p>Radiant Nutrition — Visual Identity Standards</p>
+    </div>
+  </header>
+
+  <!-- SECTION 1: LOGO -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Section 01</p>
+      <h2 class="section-title">Logo</h2>
+
+      <div class="logo-panels">
+        <div class="logo-panel light">
+          <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/Q4i3VdMSLVwO3MoF3Imn/media/677dace365b87ebf5717efcd.png" alt="Radiant Nutrition Logo on light background" />
+          <span class="logo-panel-label">On Light Background</span>
+        </div>
+        <div class="logo-panel dark">
+          <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/Q4i3VdMSLVwO3MoF3Imn/media/677dace365b87ebf5717efcd.png" alt="Radiant Nutrition Logo on dark background" />
+          <span class="logo-panel-label">On Dark Background</span>
+        </div>
+      </div>
+
+      <div class="logo-meta">
+        <table>
+          <tr>
+            <td>Source URL</td>
+            <td>https://assets.cdn.filesafe.space/Q4i3VdMSLVwO3MoF3Imn/media/677dace365b87ebf5717efcd.png</td>
+          </tr>
+          <tr>
+            <td>Format</td>
+            <td>PNG / WebP (served via LeadConnector CDN with WebP optimization)</td>
+          </tr>
+          <tr>
+            <td>Light Background</td>
+            <td>Use logo as-is. No filter required. Ensure minimum 160px width in navigation.</td>
+          </tr>
+          <tr>
+            <td>Dark Background</td>
+            <td>Apply CSS: <code style="background:#f0ece5;padding:2px 6px;border-radius:3px;font-size:0.8rem;">filter: brightness(0) invert(1)</code> to render logo in white.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: COLOR PALETTE -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Section 02</p>
+      <h2 class="section-title">Color Palette</h2>
+
+      <div class="color-grid">
+        <div class="swatch-card">
+          <div class="swatch-block" style="background:#AF8A3B;"></div>
+          <div class="swatch-info">
+            <p class="swatch-var">--gold</p>
+            <p class="swatch-hex">#AF8A3B</p>
+            <p class="swatch-role">Primary brand color. CTAs, accents, borders, icon highlights.</p>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-block" style="background:#C8A557;"></div>
+          <div class="swatch-info">
+            <p class="swatch-var">--gold-lt</p>
+            <p class="swatch-hex">#C8A557</p>
+            <p class="swatch-role">Hover states, secondary accents, links on dark surfaces.</p>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-block" style="background:#434445;"></div>
+          <div class="swatch-info">
+            <p class="swatch-var">--dark</p>
+            <p class="swatch-hex">#434445</p>
+            <p class="swatch-role">Primary body text, UI elements, headings on light backgrounds.</p>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-block" style="background:#faf8f5; border-bottom:1px solid #e2ddd6;"></div>
+          <div class="swatch-info">
+            <p class="swatch-var">--cream</p>
+            <p class="swatch-hex">#faf8f5</p>
+            <p class="swatch-role">Page backgrounds, card fill, section alternation.</p>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-block" style="background:#ffffff; border-bottom:1px solid #e2ddd6;"></div>
+          <div class="swatch-info">
+            <p class="swatch-var">--white</p>
+            <p class="swatch-hex">#ffffff</p>
+            <p class="swatch-role">Text on dark surfaces, card backgrounds, modal fill.</p>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-block" style="background:#1c160b;"></div>
+          <div class="swatch-info">
+            <p class="swatch-var">--dark-bg</p>
+            <p class="swatch-hex">#1c160b</p>
+            <p class="swatch-role">Footer, hero overlays, dark section backgrounds.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: TYPOGRAPHY -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Section 03</p>
+      <h2 class="section-title">Typography</h2>
+
+      <p style="font-size:0.82rem;color:#888;margin-bottom:36px;">
+        Google Fonts import: <code style="background:#f0ece5;padding:2px 8px;border-radius:3px;">https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;family=Raleway:wght@300;400;600;700&amp;display=swap</code>
+      </p>
+
+      <div class="type-group">
+        <p class="type-group-label">Cormorant Garamond — Headings &amp; Display</p>
+
+        <div class="type-row">
+          <div class="type-meta"><strong>Display Italic</strong>500 / italic</div>
+          <p class="cg-display-italic">Nourish Your Body</p>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><strong>Heading</strong>600 / normal</div>
+          <p class="cg-heading">Expert Dietitian Care</p>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><strong>Subheading</strong>400 / normal</div>
+          <p class="cg-subheading">Personalized Nutrition for Lasting Wellness</p>
+        </div>
+      </div>
+
+      <div class="type-group">
+        <p class="type-group-label">Raleway — Body &amp; UI</p>
+
+        <div class="type-row">
+          <div class="type-meta"><strong>Bold</strong>700 / normal</div>
+          <p class="rw-bold">Schedule Your Consultation Today</p>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><strong>Semibold</strong>600 / normal</div>
+          <p class="rw-semibold">Evidence-based guidance tailored to your lifestyle.</p>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><strong>Regular</strong>400 / normal</div>
+          <p class="rw-regular">We combine clinical expertise with compassionate support to help you achieve sustainable, radiant health through personalized nutrition strategies.</p>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><strong>Light</strong>300 / normal</div>
+          <p class="rw-light">Janna Weaver, MS, RDN — Registered Dietitian Nutritionist</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: BUTTON STYLES -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Section 04</p>
+      <h2 class="section-title">Button Styles</h2>
+
+      <div class="btn-demo-grid" style="margin-bottom:40px;">
+        <a href="#" class="btn-gold">Book a Consultation</a>
+        <a href="#" class="btn-outline">Learn More</a>
+        <a href="#" class="btn-dark">View Programs</a>
+        <span class="btn-disabled">Unavailable</span>
+      </div>
+
+      <div class="btn-block">
+        <p class="btn-block-label">.btn-gold — Primary / CTA</p>
+        <a href="#" class="btn-gold">Book a Consultation</a>
+        <div class="code-block">.btn-gold {
+  background: #AF8A3B;
+  color: #ffffff;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border: 2px solid #AF8A3B;
+  border-radius: 2px;
+  transition: background 0.25s, border-color 0.25s;
+}
+.btn-gold:hover {
+  background: #C8A557;
+  border-color: #C8A557;
+}</div>
+      </div>
+
+      <div class="btn-block">
+        <p class="btn-block-label">.btn-outline — Secondary / Ghost</p>
+        <a href="#" class="btn-outline">Learn More</a>
+        <div class="code-block">.btn-outline {
+  background: transparent;
+  color: #AF8A3B;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border: 2px solid #AF8A3B;
+  border-radius: 2px;
+  transition: background 0.25s, color 0.25s;
+}
+.btn-outline:hover {
+  background: #AF8A3B;
+  color: #ffffff;
+}</div>
+      </div>
+
+      <div class="btn-block">
+        <p class="btn-block-label">.btn-dark — Tertiary / Dark</p>
+        <a href="#" class="btn-dark">View Programs</a>
+        <div class="code-block">.btn-dark {
+  background: #1c160b;
+  color: #ffffff;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border: 2px solid #1c160b;
+  border-radius: 2px;
+  transition: background 0.25s, border-color 0.25s;
+}
+.btn-dark:hover {
+  background: #2e2618;
+  border-color: #2e2618;
+}</div>
+      </div>
+
+      <div class="btn-block">
+        <p class="btn-block-label">Disabled State</p>
+        <span class="btn-disabled">Unavailable</span>
+        <div class="code-block">/* Disabled — apply directly or via [disabled] / .is-disabled */
+.btn-disabled {
+  background: #d6d2cc;
+  color: #aaa;
+  border: 2px solid #d6d2cc;
+  cursor: not-allowed;
+  pointer-events: none;
+}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: VOICE & TONE -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Section 05</p>
+      <h2 class="section-title">Voice &amp; Tone</h2>
+
+      <div class="voice-grid">
+        <div class="voice-card">
+          <h4>Brand Personality</h4>
+          <div class="tag-list">
+            <span class="tag tag-gold">Warm</span>
+            <span class="tag tag-gold">Approachable</span>
+            <span class="tag tag-gold">Expert</span>
+            <span class="tag tag-gold">Empowering</span>
+            <span class="tag tag-gold">Clinical</span>
+            <span class="tag tag-gold">Compassionate</span>
+          </div>
+        </div>
+        <div class="voice-card">
+          <h4>Words to Use</h4>
+          <div class="tag-list">
+            <span class="tag tag-gold">personalized</span>
+            <span class="tag tag-gold">evidence-based</span>
+            <span class="tag tag-gold">nourish</span>
+            <span class="tag tag-gold">empower</span>
+            <span class="tag tag-gold">sustainable</span>
+            <span class="tag tag-gold">compassionate</span>
+          </div>
+        </div>
+        <div class="voice-card" style="grid-column: 1 / -1;">
+          <h4>Words to Avoid</h4>
+          <div class="tag-list">
+            <span class="tag tag-red">diet (as restriction)</span>
+            <span class="tag tag-red">cheat meal</span>
+            <span class="tag tag-red">bad food</span>
+            <span class="tag tag-red">detox (unscientific)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tagline-block">
+        <p>"Radiant health through personalized nutrition."</p>
+        <span>Brand Tagline</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: USAGE RULES -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Section 06</p>
+      <h2 class="section-title">Usage Rules</h2>
+
+      <div class="rules-grid">
+        <div class="rule-card">
+          <h4>Logo Sizing</h4>
+          <ul class="rule-list">
+            <li>Minimum 160px wide in navigation</li>
+            <li>Minimum 240px wide in hero sections and brand documents</li>
+            <li>Always maintain original aspect ratio</li>
+          </ul>
+        </div>
+        <div class="rule-card">
+          <h4>Logo Usage — Do</h4>
+          <ul class="rule-list">
+            <li>Use the original logo on white or cream backgrounds</li>
+            <li>Apply <code style="font-size:0.78rem;">brightness(0) invert(1)</code> filter on dark backgrounds</li>
+            <li>Ensure clear space equal to the logo height on all sides</li>
+          </ul>
+        </div>
+        <div class="rule-card">
+          <h4>Logo Usage — Do Not</h4>
+          <ul class="rule-list no-list">
+            <li>Never stretch or distort the logo</li>
+            <li>Never place on busy or low-contrast backgrounds</li>
+            <li>Never alter logo colors or apply unapproved filters</li>
+          </ul>
+        </div>
+        <div class="rule-card">
+          <h4>Copy &amp; Design Rules</h4>
+          <ul class="rule-list no-list">
+            <li>No emojis in professional copy or print materials</li>
+            <li>Always maintain WCAG AA color contrast minimums</li>
+            <li>Do not pair Cormorant Garamond at small sizes (below 14px)</li>
+            <li>Do not use more than two typeface weights per layout section</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>© 2026 Janna Weaver Nutrition &amp; Wellness DBA Radiant Nutrition. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>

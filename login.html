@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In | Radiant Nutrition</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WNKJLGK27X"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WNKJLGK27X');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root{--gold:#AF8A3B;--gold-light:#C8A557;--dark:#434445;--cream:#faf8f5;--white:#ffffff;--font-head:'Cormorant Garamond',Georgia,serif;--font-body:'Raleway',sans-serif;--radius:50px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:var(--font-body);color:var(--dark);background:var(--cream);padding-top:42px;}
+    img{max-width:100%;display:block;}a{color:inherit;text-decoration:none;}
+    /* PROTOTYPE BANNER */
+    .proto-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:#1c160b;border-bottom:1.5px solid var(--gold);height:42px;display:flex;align-items:center;justify-content:center;padding:0 16px;gap:12px;}
+    .proto-banner__text{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.6);font-weight:500;}
+    .proto-banner__btn{background:transparent;border:1px solid rgba(175,138,59,.55);color:var(--gold-light);font-family:var(--font-body);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;padding:4px 14px;border-radius:20px;cursor:pointer;transition:all .2s;}
+    .proto-banner__btn:hover{background:var(--gold);color:var(--white);border-color:var(--gold);}
+    /* MODALS */
+    .modal-overlay{display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.6);backdrop-filter:blur(3px);align-items:center;justify-content:center;padding:24px;}
+    .modal-overlay.open{display:flex;}
+    .modal-box{background:var(--white);border-radius:20px;padding:40px;max-width:480px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,.25);position:relative;}
+    .modal-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:20px;color:#bbb;cursor:pointer;line-height:1;}.modal-close:hover{color:var(--dark);}
+    .modal-gold-line{width:40px;height:1.5px;background:var(--gold);margin:0 0 16px;}
+    .modal-box h3{font-family:var(--font-head);font-size:26px;font-weight:400;font-style:italic;color:var(--dark);margin-bottom:8px;}
+    .modal-box p{font-size:14px;color:#777;line-height:1.8;margin-bottom:12px;}
+    .modal-stat{display:flex;align-items:center;gap:10px;background:var(--cream);border-radius:12px;padding:14px 18px;margin:16px 0;}
+    .modal-stat i{color:var(--gold);font-size:15px;}.modal-stat span{font-size:13px;font-weight:600;color:var(--dark);}
+    /* SPLIT LAYOUT */
+    .split{display:flex;min-height:calc(100vh - 42px);}
+    .split__brand{flex:0 0 42%;background:#1c160b;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 48px;text-align:center;position:relative;overflow:hidden;}
+    .split__brand::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(175,138,59,.1) 0%,transparent 70%);}
+    .split__brand__inner{position:relative;z-index:1;}
+    .split__brand img{height:88px;width:auto;margin:0 auto 36px;}
+    .split__brand__divider{width:48px;height:1px;background:rgba(175,138,59,.35);margin:0 auto 22px;}
+    .split__brand__tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-light);font-weight:600;margin-bottom:12px;}
+    .split__brand__tagline{font-family:var(--font-head);font-size:clamp(22px,2.5vw,34px);font-weight:400;font-style:italic;color:var(--white);line-height:1.3;margin-bottom:20px;}
+    .split__brand__sub{font-size:13px;color:rgba(255,255,255,.45);line-height:1.8;font-weight:300;max-width:260px;margin:0 auto;}
+    .split__brand__back{margin-top:44px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:color .2s;}
+    .split__brand__back:hover{color:var(--gold-light);}
+    .split__form{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 40px;background:var(--white);}
+    .form-card{width:100%;max-width:420px;}
+    .form-card__title{font-family:var(--font-head);font-size:clamp(28px,3vw,40px);font-weight:400;font-style:italic;color:var(--dark);margin-bottom:6px;}
+    .form-card__sub{font-size:13px;color:#aaa;margin-bottom:36px;}
+    .form-group{margin-bottom:20px;}
+    .form-label{display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--dark);margin-bottom:8px;}
+    .form-input{width:100%;padding:14px 18px;border:1.5px solid #e5e0d8;border-radius:12px;font-family:var(--font-body);font-size:14px;color:var(--dark);background:var(--white);transition:border-color .2s,box-shadow .2s;outline:none;}
+    .form-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(175,138,59,.1);}
+    .input-wrap{position:relative;}.input-wrap .form-input{padding-right:48px;}
+    .toggle-eye{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#ccc;font-size:14px;transition:color .2s;}.toggle-eye:hover{color:var(--gold);}
+    .btn-full{display:block;width:100%;padding:15px;border-radius:var(--radius);font-family:var(--font-body);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;background:var(--gold);color:var(--white);transition:background .25s;margin-top:8px;}
+    .btn-full:hover{background:var(--gold-light);}
+    .form-links{margin-top:24px;text-align:center;display:flex;flex-direction:column;gap:10px;}
+    .form-links a{font-size:13px;color:#bbb;transition:color .2s;}.form-links a:hover{color:var(--gold);}
+    .form-links .primary-link{font-weight:600;color:var(--gold);}.form-links .primary-link:hover{color:var(--gold-light);}
+    .back-mobile{display:none;}
+    @media(max-width:768px){
+      .split{flex-direction:column;}
+      .split__brand{flex:none;padding:48px 28px 40px;}
+      .split__brand img{height:68px;margin-bottom:24px;}
+      .split__brand__back{display:none;}
+      .split__form{padding:40px 24px 60px;}
+      .back-mobile{display:block !important;}
+      .proto-banner__text{font-size:10px;letter-spacing:.5px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- PROTOTYPE BANNER -->
+<div class="proto-banner">
+  <span class="proto-banner__text">For prototype purposes only — not a live application</span>
+  <button class="proto-banner__btn" onclick="document.getElementById('perfModal').classList.add('open')">View Performance Report</button>
+</div>
+
+<!-- PERFORMANCE MODAL -->
+<div class="modal-overlay" id="perfModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('perfModal').classList.remove('open')" aria-label="Close">&times;</button>
+    <div class="modal-gold-line"></div>
+    <h3>Performance Report</h3>
+    <p>Prototype build metrics for this page.</p>
+    <div class="modal-stat"><i class="fa-solid fa-stopwatch"></i><span>Estimated load time: &lt;0.8s (static HTML, no server round-trip)</span></div>
+    <p style="font-size:13px;color:#aaa;line-height:1.7;">Developer note: This is a static HTML prototype. In the live application, authentication will be handled by a secure backend with session management, encrypted credential storage, and HTTPS-enforced redirects. No real data is transmitted on this page.</p>
+  </div>
+</div>
+
+<!-- LOGIN SIMULATION MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('loginModal').classList.remove('open')" aria-label="Close">&times;</button>
+    <div class="modal-gold-line"></div>
+    <h3>Login Simulation</h3>
+    <p>In the live application, you would be authenticated and redirected to your patient portal.</p>
+    <p style="font-size:13px;color:#aaa;line-height:1.7;">This is a prototype — no credentials are stored or transmitted. The live login flow will integrate with a secure patient portal and return an encrypted session token.</p>
+  </div>
+</div>
+
+<!-- SPLIT LAYOUT -->
+<div class="split">
+
+  <!-- BRAND PANEL -->
+  <div class="split__brand">
+    <div class="split__brand__inner">
+      <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/Q4i3VdMSLVwO3MoF3Imn/media/677dace365b87ebf5717efcd.png" alt="Radiant Nutrition" />
+      <div class="split__brand__divider"></div>
+      <p class="split__brand__tag">Patient Portal</p>
+      <h2 class="split__brand__tagline">Your health journey continues here</h2>
+      <p class="split__brand__sub">Access your care plan, track your progress, and stay connected with your dietitian team.</p>
+      <a href="index.html" class="split__brand__back"><i class="fa-solid fa-arrow-left"></i> Back to site</a>
+    </div>
+  </div>
+
+  <!-- FORM PANEL -->
+  <div class="split__form">
+    <div class="form-card">
+      <h1 class="form-card__title">Welcome back</h1>
+      <p class="form-card__sub">Sign in to your Radiant Nutrition account</p>
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Email Address</label>
+          <input class="form-input" type="email" id="loginEmail" name="email" placeholder="you@example.com" autocomplete="email" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Password</label>
+          <div class="input-wrap">
+            <input class="form-input" type="password" id="loginPassword" name="password" placeholder="Your password" autocomplete="current-password" required />
+            <button type="button" class="toggle-eye" onclick="togglePw('loginPassword','eye1')" aria-label="Toggle password visibility"><i class="fa-regular fa-eye" id="eye1"></i></button>
+          </div>
+        </div>
+        <button type="submit" class="btn-full">Sign In</button>
+      </form>
+      <div class="form-links">
+        <a href="forgot-password.html" class="primary-link">Forgot your password?</a>
+        <a href="contact.html">Don't have an account? Contact us</a>
+        <a href="index.html" class="back-mobile" style="margin-top:8px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:#bbb;"><i class="fa-solid fa-arrow-left"></i> Back to site</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function togglePw(inputId,iconId){
+    const inp=document.getElementById(inputId),ico=document.getElementById(iconId);
+    if(inp.type==='password'){inp.type='text';ico.className='fa-regular fa-eye-slash';}
+    else{inp.type='password';ico.className='fa-regular fa-eye';}
+  }
+  function handleLogin(e){e.preventDefault();document.getElementById('loginModal').classList.add('open');}
+  document.querySelectorAll('.modal-overlay').forEach(el=>{
+    el.addEventListener('click',function(e){if(e.target===el)el.classList.remove('open');});
+  });
+</script>
+</body>
+</html>
